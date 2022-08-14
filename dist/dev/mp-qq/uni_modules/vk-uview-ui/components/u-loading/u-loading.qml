@@ -1,0 +1,1 @@
+<view qq:if="{{a}}" class="{{['u-loading', 'data-v-35d0dd20', b]}}" style="{{c}}"></view>

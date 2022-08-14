@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "成工要闻",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tm-navbar": "../../tmui/components/tm-navbar/tm-navbar",
+    "fat-fat-meng-swiper-mfw": "../../uni_modules/FatFatMeng-Swiper-mfw/components/FatFatMeng-Swiper-mfw/FatFatMeng-Swiper-mfw",
+    "tm-input": "../../tmui/components/tm-input/tm-input",
+    "tm-divider": "../../tmui/components/tm-divider/tm-divider",
+    "tm-tabs": "../../tmui/components/tm-tabs/tm-tabs",
+    "tm-sheet": "../../tmui/components/tm-sheet/tm-sheet",
+    "tm-skeleton": "../../tmui/components/tm-skeleton/tm-skeleton",
+    "good-list": "../../components/good-list/good-list",
+    "tm-sticky": "../../tmui/components/tm-sticky/tm-sticky",
+    "mescroll-uni": "../../uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni",
+    "tm-app": "../../tmui/components/tm-app/tm-app"
+  }
+}

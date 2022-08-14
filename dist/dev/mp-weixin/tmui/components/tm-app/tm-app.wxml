@@ -1,0 +1,1 @@
+<view class="flex flex-col relative" style="{{e + ';' + f}}"><view wx:if="{{a}}" class="{{['flex', 'flex-col', 'flex-1', b]}}" style="{{c + ';' + d}}"><block wx:if="{{$slots.d}}"><slot></slot></block><block wx:else><text>在这里放置内容</text></block></view></view>

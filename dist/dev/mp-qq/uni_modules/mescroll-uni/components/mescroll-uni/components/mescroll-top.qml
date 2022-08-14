@@ -1,0 +1,1 @@
+<image qq:if="{{a}}" class="{{['mescroll-totop', b, c]}}" style="{{'z-index:' + d + ';' + ('left:' + e) + ';' + ('right:' + f) + ';' + ('bottom:' + g) + ';' + ('width:' + h) + ';' + ('border-radius:' + i)}}" src="{{j}}" mode="widthFix" bindtap="{{k}}"/>

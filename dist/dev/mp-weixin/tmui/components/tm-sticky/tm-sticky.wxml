@@ -1,0 +1,1 @@
+<view class="data-v-4329f4ab"><view class="tm-sticky flex flex-col data-v-4329f4ab" style="{{a + ';' + b + ';' + c}}"><view class="flex flex-col data-v-4329f4ab"><slot name="sticky"></slot></view></view><view class="data-v-4329f4ab"><slot></slot></view></view>

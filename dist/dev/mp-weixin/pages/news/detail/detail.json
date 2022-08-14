@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "新闻详情页",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tm-text": "../../../tmui/components/tm-text/tm-text",
+    "u-parse": "../../../uni_modules/vk-uview-ui/components/u-parse/u-parse",
+    "tm-sheet": "../../../tmui/components/tm-sheet/tm-sheet",
+    "tm-app": "../../../tmui/components/tm-app/tm-app"
+  }
+}

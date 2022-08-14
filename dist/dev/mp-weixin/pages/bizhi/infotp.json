@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "二课",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "pop": "../../components/ming-pop/ming-pop"
+  }
+}

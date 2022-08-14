@@ -1,0 +1,26 @@
+{
+  "navigationBarTitleText": "掌上成工",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-swiper": "../../uni_modules/vk-uview-ui/components/u-swiper/u-swiper",
+    "tm-waterfall-item": "../../tmui/components/tm-waterfall-item/tm-waterfall-item",
+    "tm-waterfall": "../../tmui/components/tm-waterfall/tm-waterfall",
+    "tm-app": "../../tmui/components/tm-app/tm-app",
+    "tm-sheet": "../../tmui/components/tm-sheet/tm-sheet",
+    "tm-button": "../../tmui/components/tm-button/tm-button",
+    "tm-float-button": "../../tmui/components/tm-float-button/tm-float-button",
+    "tm-message": "../../tmui/components/tm-message/tm-message",
+    "tm-input": "../../tmui/components/tm-input/tm-input",
+    "tm-sticky": "../../tmui/components/tm-sticky/tm-sticky",
+    "tm-divider": "../../tmui/components/tm-divider/tm-divider",
+    "tm-icon": "../../tmui/components/tm-icon/tm-icon",
+    "tm-grid-item": "../../tmui/components/tm-grid-item/tm-grid-item",
+    "tm-grid": "../../tmui/components/tm-grid/tm-grid",
+    "tm-navbar": "../../tmui/components/tm-navbar/tm-navbar",
+    "tm-cell": "../../tmui/components/tm-cell/tm-cell",
+    "tm-image": "../../tmui/components/tm-image/tm-image",
+    "tm-text": "../../tmui/components/tm-text/tm-text",
+    "tm-drawer": "../../tmui/components/tm-drawer/tm-drawer"
+  }
+}

@@ -1,0 +1,1 @@
+<view><view class="flex flex-col flex-col-top-start flex-between relative overflow" style="{{a}}"><slot></slot></view><tm-sheet wx:if="{{b}}" u-s="{{['d']}}" u-i="7a42695a-0" bind:__l="__l" u-p="{{d}}"><tm-icon wx:if="{{c}}" u-i="7a42695a-1,7a42695a-0" bind:__l="__l" u-p="{{c}}"></tm-icon></tm-sheet></view>

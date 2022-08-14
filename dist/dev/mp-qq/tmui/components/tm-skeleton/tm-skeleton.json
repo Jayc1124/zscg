@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tm-skeleton-line": "../tm-skeleton-line/tm-skeleton-line"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tm-text": "../../../tmui/components/tm-text/tm-text",
+    "tm-icon": "../../../tmui/components/tm-icon/tm-icon",
+    "tm-grid-item": "../../../tmui/components/tm-grid-item/tm-grid-item",
+    "tm-grid": "../../../tmui/components/tm-grid/tm-grid",
+    "tm-sheet": "../../../tmui/components/tm-sheet/tm-sheet",
+    "u-swiper": "../../../uni_modules/vk-uview-ui/components/u-swiper/u-swiper"
+  }
+}

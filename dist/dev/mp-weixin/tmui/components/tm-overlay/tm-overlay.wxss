@@ -1,0 +1,14 @@
+
+.blurbg.data-v-cf63bea2{
+
+		-webkit-backdrop-filter: blur(4px);
+
+		        backdrop-filter: blur(4px);
+
+
+
+
+
+		opacity: 0;
+}
+

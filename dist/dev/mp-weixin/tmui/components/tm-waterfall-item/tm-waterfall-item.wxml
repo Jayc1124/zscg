@@ -1,0 +1,1 @@
+<view ref="itemWall" class="absolute itemWall" style="{{f + ';' + g}}"><tm-sheet wx:if="{{e}}" u-s="{{['d']}}" u-i="57816399-0" bind:__l="__l" u-p="{{e}}"><tm-image wx:if="{{a}}" bindclick="{{b}}" bindload="{{c}}" u-i="57816399-1,57816399-0" bind:__l="__l" u-p="{{d}}"></tm-image><view class="flex flex-col flex-1 flex-col-top-start"><slot></slot></view></tm-sheet></view>

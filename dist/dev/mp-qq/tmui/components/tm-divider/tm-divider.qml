@@ -1,0 +1,1 @@
+<view><view qq:if="{{a}}" style="{{b + ';' + c}}" class="{{[d]}}"></view><view qq:if="{{e}}" class="flex flex-row flex-center"><view style="{{f}}" class="{{[g, h, i, j]}}"></view><view class="{{[l]}}"><tm-text qq:if="{{k}}" u-i="4c743f33-0" bind:__l="__l" u-p="{{k}}"></tm-text></view><view style="{{m}}" class="{{[n, o, p, q]}}"></view></view></view>

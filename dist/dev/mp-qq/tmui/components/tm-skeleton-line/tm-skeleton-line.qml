@@ -1,0 +1,1 @@
+<view class="{{['tmSkeletonLine', 'flex-12', 'my-10', 'data-v-1c826222', a]}}" style="{{b + ';' + c}}"></view>

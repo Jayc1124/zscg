@@ -1,0 +1,192 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^tm-(.*)": "@/tmui/components/tm-$1/tm-$1.vue"
+		}
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "掌上成工",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+				
+			}
+			
+		},{
+			"path": "pages/index/search",
+			"style": {
+				"navigationBarTitleText": "掌上成工",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "成工要闻",
+
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+
+			}
+
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "掌上成工",
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/erke/erke",
+			"style": {
+				"navigationBarTitleText": "二课",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/login/wxLogin",
+			"style": {
+				"navigationBarTitleText": "微信登陆",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/bizhi/bizhi",
+			"style": {
+				"navigationBarTitleText": "壁纸"
+
+			}
+
+		},
+		{
+			"path": "pages/bizhi/infotp",
+			"style": {
+				"navigationBarTitleText": "二课",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}
+
+		, {
+			"path": "pages/news/detail/detail",
+			"style": {
+				"navigationBarTitleText": "新闻详情页",
+				"enablePullDownRefresh": false
+				// "navigationStyle": "custom"	
+			}
+
+		},
+		 {
+			"path": "pages/luntan/luntan",
+			"style": {
+				"navigationBarTitleText": "社区",
+				"enablePullDownRefresh": false
+				// "navigationStyle": "custom"	
+			}
+		
+		}
+	    ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "21312",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/webview/webview_f",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/webview/webview_w",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+			"path": "pages/me/me2/me2",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/tool/barrage/start",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/tool/barrage/barrage",
+			"style": {
+				"navigationBarTitleText": "手持弹幕",
+				"enablePullDownRefresh": false
+			}
+
+		}
+		
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#aaaaaa",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tab_icon/document.png",
+				"selectedIconPath": "static/tab_icon/document_cur.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/news/news",
+				"iconPath": "static/tab_icon/comment.png",
+				"selectedIconPath": "static/tab_icon/comment_cur.png",
+				"text": "工院"
+			},
+
+			{
+				"pagePath": "pages/erke/erke",
+				"iconPath": "static/tab_icon/custom.png",
+				"selectedIconPath": "static/tab_icon/custom_cur.png",
+				"text": "二课"
+			},
+			{
+				"pagePath": "pages/luntan/luntan",
+				"iconPath": "static/tab_icon/tpl.png",
+				"selectedIconPath": "static/tab_icon/tpl_cur.png",
+				"text": "社区"
+			}
+
+			, {
+				"pagePath": "pages/me/me2/me2",
+				"iconPath": "static/tab_icon/my.png",
+				"selectedIconPath": "static/tab_icon/my_cur.png",
+				"text": "我的"
+			}
+		]
+	}
+}

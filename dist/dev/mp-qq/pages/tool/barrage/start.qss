@@ -1,0 +1,44 @@
+
+.marquee.data-v-0da7bac0 {
+  width: 100vh; /* width based on screen height */
+  transform:rotate(90deg) translateY(calc(-50% - 50vw)); /* rotate and center */
+  transform-origin:top left;
+}
+.text-oneLine.data-v-0da7bac0{
+		display:block;            /*内联对象需加*/
+		word-break:keep-all;      /* 不换行 */
+		white-space:nowrap;       /* 不换行 */
+		overflow:hidden;          /* 内容超出宽度时隐藏超出部分的内容 */
+}
+.close.data-v-0da7bac0 {
+	z-index: 1;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 50px;
+    height: 50px;
+    background: silver;
+    border-radius: 25px;
+    box-shadow: 0px 0px 0px 0px black;
+    cursor: pointer;
+}
+.close.data-v-0da7bac0:before {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 10px;
+    background: white;
+    transform: rotate(45deg);
+    top: 20px;
+    left: 10px;
+}
+.close.data-v-0da7bac0:after{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    background: white;
+    transform: rotate(-45deg);
+    top: 20px;
+    left: 10px;
+}

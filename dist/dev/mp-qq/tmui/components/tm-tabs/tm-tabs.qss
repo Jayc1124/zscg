@@ -1,0 +1,13 @@
+
+.tmTabsPane.data-v-07988156 {
+	transition-delay: 0;
+	transition-timing-function: ease;
+	transition-property: transform;
+	transition-duration: 0.3s;
+}
+.anilineBar.data-v-07988156 {
+	transition-delay: 0;
+	transition-timing-function: ease;
+	transition-property: transform, width;
+	transition-duration: 0.3s;
+}

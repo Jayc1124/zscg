@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/search",
+    "pages/news/news",
+    "pages/login/login",
+    "pages/erke/erke",
+    "pages/login/wxLogin",
+    "pages/bizhi/bizhi",
+    "pages/bizhi/infotp",
+    "pages/news/detail/detail",
+    "pages/luntan/luntan",
+    "pages/webview/webview",
+    "pages/webview/webview_f",
+    "pages/webview/webview_w",
+    "pages/me/me2/me2",
+    "pages/tool/barrage/start",
+    "pages/tool/barrage/barrage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#aaaaaa",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab_icon/document.png",
+        "selectedIconPath": "static/tab_icon/document_cur.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "static/tab_icon/comment.png",
+        "selectedIconPath": "static/tab_icon/comment_cur.png",
+        "text": "工院"
+      },
+      {
+        "pagePath": "pages/erke/erke",
+        "iconPath": "static/tab_icon/custom.png",
+        "selectedIconPath": "static/tab_icon/custom_cur.png",
+        "text": "二课"
+      },
+      {
+        "pagePath": "pages/luntan/luntan",
+        "iconPath": "static/tab_icon/tpl.png",
+        "selectedIconPath": "static/tab_icon/tpl_cur.png",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/me/me2/me2",
+        "iconPath": "static/tab_icon/my.png",
+        "selectedIconPath": "static/tab_icon/my_cur.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "fix-2648": "/fix-2648"
+  }
+}

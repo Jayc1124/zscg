@@ -1,0 +1,28 @@
+.mainBox.data-v-912988e4 {
+  height: 100vh;
+}
+.mainBox .logoImg.data-v-912988e4 {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-left: -70rpx;
+  top: 170rpx;
+  display: block;
+}
+.mainBox .logoName.data-v-912988e4 {
+  width: 750rpx;
+  position: absolute;
+  left: 0;
+  top: 340rpx;
+  text-align: center;
+}
+.bottom_bg.data-v-912988e4 {
+  width: 750rpx;
+  position: fixed;
+  bottom: 0;
+}
+.bottom_bg image.data-v-912988e4 {
+  width: 750rpx;
+}

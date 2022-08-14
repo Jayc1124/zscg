@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tm-text": "../../tmui/components/tm-text/tm-text",
+    "tm-divider": "../../tmui/components/tm-divider/tm-divider",
+    "tm-image": "../../tmui/components/tm-image/tm-image",
+    "tm-tag": "../../tmui/components/tm-tag/tm-tag",
+    "tm-sheet": "../../tmui/components/tm-sheet/tm-sheet",
+    "tm-result": "../../tmui/components/tm-result/tm-result"
+  }
+}

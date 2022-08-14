@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "微信登陆",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {}
+}

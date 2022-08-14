@@ -1,0 +1,8 @@
+.u-content.data-v-8a50fcd2 {
+  margin: 50rpx 15rpx;
+}
+.title.data-v-8a50fcd2 {
+  text-align: center;
+  font-weight: bolder;
+  margin: 15rpx 0;
+}
