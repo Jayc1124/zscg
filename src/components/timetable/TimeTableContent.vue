@@ -133,14 +133,14 @@ const ClickCourse = (course: any) => {
                     }"
                   >
                     <text style="font-size: 24rpx">
-                      {{ parserCourseTitle("市场营销学") }}
+                      {{ parserCourseTitle("考研数据结构") }}
                     </text>
                     <text
                       :style="{
                         fontSize: ('XC4213'.length >= 5 ? '20' : '22') + 'rpx',
                       }"
                     >
-                      {{ `\n@XC4213` }}
+                      {{ `\n@CodeCJ1224` }}
                     </text>
                   </text>
                   <view
