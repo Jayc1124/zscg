@@ -140,7 +140,7 @@ const ClickCourse = (course: any) => {
                         fontSize: ('XC4213'.length >= 5 ? '20' : '22') + 'rpx',
                       }"
                     >
-                      {{ `\n@CodeCJ1224` }}
+                      {{ `\n@曹杰1224` }}
                     </text>
                   </text>
                   <view
