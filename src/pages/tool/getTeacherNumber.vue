@@ -1,6 +1,6 @@
 <template>
 	<view>
-			<tm-message ref="toast"></tm-message>
+			<!-- <tm-message ref="toast"></tm-message> -->
 		
 		<view class="bannerBg" @tap="plateShow = true">
 			<image src="https://zhoukaiwen.com/img/keyboard.jpeg" mode="widthFix"></image>
@@ -11,13 +11,13 @@
 
 			<view class="cu-item">
 				<view class="content">
-					<image src="https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/1-210326133036.png" class="png" mode="aspectFit"></image>
-					<text class="text-grey">请输入教师姓名:</text>
+					<!-- <image src="https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/1-210326133036.png" class="png" mode="aspectFit"></image> -->
+				
 
 				</view>
 				<view class="action">
-					<input v-model="name"></input>
-
+					<!-- <input v-model="name"></input> -->
+	<tm-input  v-model="name" prefixLabel="姓名" :margin="[0,24]" placeholder="请输入姓名" ></tm-input>
 					<!-- 	<view v-if="PageCur=='1'" class="cu-tag round bg-blue light">{{plateNo | plateNoF}}</view>
 					<view v-if="PageCur!='1'" class="cu-tag round bg-green light">{{plateNo | plateNoF}}</view> -->
 				</view>
@@ -29,7 +29,7 @@
 			<view class="cu-list menu" v-for="(item,index) in res">
 				<view class="cu-item">
 					<view class="content">
-						<image src="https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/%E5%A7%93%E5%90%8D.png" class="png" mode="aspectFit"></image>
+						
 						<text class="text-grey">教师姓名</text>
 					</view>
 					<view >
@@ -38,7 +38,7 @@
 				</view>
 				<view class="cu-item">
 					<view class="content">
-						<image src="https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/%E9%83%A8%E9%97%A8.png" class="png" mode="aspectFit"></image>
+				
 						<text class="text-grey">院系</text>
 					</view>
 					<view>
@@ -49,7 +49,7 @@
 				
 				<view class="cu-item">
 					<view class="content">
-						<image src="https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/%E7%BB%84%E4%BB%B6-%E6%89%8B%E6%9C%BA%E5%8F%B7.png" class="png" mode="aspectFit"></image>
+						
 						<text class="text-grey">手机号</text>
 					</view>
 					<view>
@@ -76,25 +76,20 @@
 				</view>
 			</view>
 		</view>
-		<!-- 	<uni-view class="padding flex flex-direction">
-			<uni-button v-show="plateNo != ''" style="border-radius: 12rpx;" class="cu-btn margin-tb-sm lg" :class="PageCur=='1'?'bg-blue':'bg-green'">确认支付 ¥30.00</uni-button>
-		<!-- 	<u-input v-show="plateNo == ''" @tap="plateShow = true" style="border-radius: 12rpx;" class="cu-btn margin-tb-sm lg" :class="PageCur=='1'?'bg-blue':'bg-green'"></u-input> -->
+	
+		
 
-		</uni-view>
-
-		<!-- 自定义键盘组件 -->
-		<!-- <plate-input @typeChange="typeChange" v-if="plateShow" :plate="plateNo" @export="setPlate"
-			@close="plateShow = false & close()" /> -->
+	
 	</view>
 
 </template>
 
 <script>
 	import request from '@/common/request.js';
-	import tmMessage from "@/tm-vuetify/components/tm-message/tm-message.vue"
+	// import tmMessage from "@/tm-vuetify/components/tm-message/tm-message.vue"
 	export default {
 		components: {
-			tmMessage
+			// tmMessage
 		},
 		data() {
 			return {
@@ -125,10 +120,10 @@
 				// console.log(this.name)
 				
 				console.log(this.name)
-				if(this.name==null){
-				this.$refs.toast.show({model:'info',label:"请输入教师姓名",wait:"primary"})
-				}
-				this.$refs.toast.show({model:'load',mask:true})
+				// if(this.name==null){
+				// this.$refs.toast.show({model:'info',label:"请输入教师姓名",wait:"primary"})
+				// }
+				// this.$refs.toast.show({model:'load',mask:true})
 				request.httpTokenRequest(opts).then(res => {
 					if(res.data.data==500){
 						this.$refs.toast.show({
@@ -139,7 +134,7 @@
 					}
 					
 					if (res.data.code == 200) {
-							this.$refs.toast.hide()
+							// this.$refs.toast.hide()
 						this.res = res.data.data
 						this.number = res.data.data.mphone
 						this.dept = res.data.data.depname

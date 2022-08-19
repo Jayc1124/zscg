@@ -10,7 +10,9 @@ const _sfc_main = {
       data: "",
       url: "",
       webviewStyles: {
-        progress: {}
+        progress: {
+          color: false
+        }
       }
     };
   }

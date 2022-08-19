@@ -9,7 +9,11 @@ require("../../../theme/index.js");
 require("../../../tmui/tool/function/util.js");
 require("../../../tmui/tool/function/preview.js");
 const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+const uParse = () => "../../../uni_modules/u-parse/u-parse.js";
 const _sfc_main = {
+  components: {
+    uParse
+  },
   data() {
     return {
       tip: "\u53EF\u4EE5\u5206\u4EAB\u94FE\u63A5\u5230\u670B\u53CB\u5708\u4E86\u54E6",
@@ -59,17 +63,16 @@ const _sfc_main = {
 };
 if (!Array) {
   const _easycom_tm_text2 = common_vendor.resolveComponent("tm-text");
-  const _easycom_u_parse2 = common_vendor.resolveComponent("u-parse");
+  const _component_u_parse = common_vendor.resolveComponent("u-parse");
   const _easycom_tm_sheet2 = common_vendor.resolveComponent("tm-sheet");
   const _easycom_tm_app2 = common_vendor.resolveComponent("tm-app");
-  (_easycom_tm_text2 + _easycom_u_parse2 + _easycom_tm_sheet2 + _easycom_tm_app2)();
+  (_easycom_tm_text2 + _component_u_parse + _easycom_tm_sheet2 + _easycom_tm_app2)();
 }
 const _easycom_tm_text = () => "../../../tmui/components/tm-text/tm-text.js";
-const _easycom_u_parse = () => "../../../uni_modules/vk-uview-ui/components/u-parse/u-parse.js";
 const _easycom_tm_sheet = () => "../../../tmui/components/tm-sheet/tm-sheet.js";
 const _easycom_tm_app = () => "../../../tmui/components/tm-app/tm-app.js";
 if (!Math) {
-  (_easycom_tm_text + _easycom_u_parse + _easycom_tm_sheet + _easycom_tm_app)();
+  (_easycom_tm_text + _easycom_tm_sheet + _easycom_tm_app)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({

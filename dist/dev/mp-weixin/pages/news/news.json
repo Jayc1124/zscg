@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "navigationStyle": "custom",
   "usingComponents": {
+    "tab-bar": "../../components/TheTabBar",
     "tm-navbar": "../../tmui/components/tm-navbar/tm-navbar",
     "fat-fat-meng-swiper-mfw": "../../uni_modules/FatFatMeng-Swiper-mfw/components/FatFatMeng-Swiper-mfw/FatFatMeng-Swiper-mfw",
     "tm-input": "../../tmui/components/tm-input/tm-input",

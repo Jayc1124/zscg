@@ -1,0 +1,71 @@
+page {
+  background-color: #ffffff;
+}
+.content {
+  text-align: center;
+  height: 86vh;
+  display: flex;
+  flex-direction: column;
+}
+.flex-column {
+  flex-direction: column;
+}
+.jo-list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  padding: 30rpx 0;
+  border-bottom: rgba(213, 213, 213, 0.5) solid 2rpx;
+}
+.jo-list .list-text {
+  font-size: 30rpx;
+  color: #3e4049;
+}
+.jo-list .list-icon {
+  font-size: 40rpx;
+  color: #dadada;
+}
+.jo-logo-box {
+  margin: 40rpx 0 50rpx 0;
+}
+.jo-logo-box .jo-logo {
+  border-radius: 40rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.jo-logo-box .title {
+  font-size: 36rpx;
+  color: #373737;
+  font-weight: bold;
+  margin: 20rpx 0 10rpx;
+}
+.jo-logo-box .version {
+  font-size: 28rpx;
+  color: #7e7e83;
+  vertical-align: text-top;
+  line-height: 40rpx;
+}
+.footer {
+  position: flex;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+}
+.footer_pri {
+  color: #0f58ff;
+  font-size: 22rpx;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-decoration: underline;
+}
+.footer_pri .linecenter {
+  margin: 0 20rpx;
+  margin-top: 5rpx;
+}
+.footer_Copyright {
+  color: #adafb4;
+  font-size: 22rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}

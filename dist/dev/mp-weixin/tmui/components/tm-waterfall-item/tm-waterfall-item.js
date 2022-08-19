@@ -42,8 +42,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   },
   emits: ["img-click"],
   setup(__props, { emit: emits }) {
+    var _a, _b;
     const props = __props;
-    const { proxy } = common_vendor.getCurrentInstance();
+    const proxy = (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const _width = common_vendor.inject("tmWaterFallItemRealWidth", common_vendor.computed$1(() => common_vendor.index.upx2px(_width.value)));
     let _nodeInfo = common_vendor.ref({
       id: common_vendor.index.$tm.u.getUid(2),
@@ -80,13 +81,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }, 50);
     }
     function getParent() {
-      var _a;
+      var _a2;
       let parent = proxy.$parent;
       while (parent) {
         if ((parent == null ? void 0 : parent.parentNameId) == "tmWaterfallId" || !parent) {
           break;
         } else {
-          parent = (_a = parent == null ? void 0 : parent.$parent) != null ? _a : void 0;
+          parent = (_a2 = parent == null ? void 0 : parent.$parent) != null ? _a2 : void 0;
         }
       }
       return parent;

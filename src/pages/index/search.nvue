@@ -1,15 +1,15 @@
 <template>
 	<tm-app>
-		<tm-sheet darkBgColor="#050505" :margin="[0, 0]">
+		<tm-sheet darkBgColor="#050505" :margin="[0, 10]">
 			<view class="flex-row flex-row-center-start pb-10">
 				<tm-image :width="108" :height="67.5" :src="logoimg"></tm-image>
 				<view class="pl-16">
-					<tm-text _class="text-weight-b" :font-size="36" label="TMUI 3.0.0"></tm-text>
+					<tm-text _class="text-weight-b" :font-size="36" label="掌上成工 3.0.0"></tm-text>
 					<tm-text color="grey" label="全端兼容vue3 TypeScript pinia组件库"></tm-text>
 				</view>
 			</view>
-			<tm-input placeholder="组件中文/英文名称" :border="1" showClear prefix="tmicon-search" v-model="str"
-				@search='search' @clear="search" searchLabel="搜索组件"></tm-input>
+			<tm-input placeholder="输入关键字" :border="1" showClear prefix="tmicon-search" v-model="str"
+				@search='search' @clear="search" searchLabel="搜索"></tm-input>
 		</tm-sheet>
 		<tm-result v-if="result.length === 0" :showBtn="false" subTitle="请重新输入关键词"></tm-result>
 
@@ -18,13 +18,13 @@
 				:title="item.title"> </tm-cell>
 		</view>
 
-		<tm-cell showAvatar :round="3" :titleFontSize="30" title="行动支持" rightText="看广告赚积分">
+		<!-- <tm-cell showAvatar :round="3" :titleFontSize="30" title="行动支持" rightText="看广告赚积分">
 			<template v-slot:avatar>
 				<tm-icon color="orange" :font-size="38" name="tmicon-heart-fill"></tm-icon>
 			</template>
-		</tm-cell>
+		</tm-cell> -->
 		<view class="py-32 mx-32">
-			<tm-divider color="grey-2" label="tmui 3.0.0 原生渲染，全端兼容"></tm-divider>
+			<tm-divider color="grey-2" label="掌上成工 3.0.0 原生渲染，全端兼容"></tm-divider>
 		</view>
 		<tm-message ref="msg"></tm-message>
 	</tm-app>
@@ -101,7 +101,7 @@ const totalList = [
 	{ path: "/pages/fankui/overlay", title: "遮罩 Overlay" },
 	{ path: "/pages/fankui/progress", title: "进度条 Progress" },
 	{ path: "/pages/fankui/spin", title: "加载中 Spin" },
-	{ path: "/pages/fankui/skeleton", title: "骨架屏 Skeleton" },
+	{ path: "/pages/fankui/skeleton", title: "骨架屏 Skeleton骨架屏 " },
 	{ path: "/pages/fankui/translate", title: "动效 Translate" },
 	{ path: "/pages/fankui/notification", title: "通知提醒 Notificat, nextTickion", nextTick },
 	{ path: "/pages/fankui/slideSwitch", title: "左滑操作栏 slideSwitch" },

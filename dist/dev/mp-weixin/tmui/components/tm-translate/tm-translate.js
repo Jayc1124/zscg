@@ -29,7 +29,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   props: __spreadProps(__spreadValues({}, tmui_tool_lib_minxs.custom_props), {
     duration: {
       type: Number,
-      default: 200
+      default: 300
     },
     delay: {
       type: Number,
@@ -66,10 +66,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["start", "end", "click"],
   setup(__props, { expose, emit: emits }) {
+    var _a, _b;
     const props = __props;
     function hanlder(e) {
       emits("click", e);
     }
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const customCSSStyle = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedStyle(props));
     const customClass = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedClass(props));
     const computedHeight = common_vendor.computed$1(() => {

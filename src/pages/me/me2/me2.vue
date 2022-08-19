@@ -1,204 +1,144 @@
 <template>
-
-	<view class="container" style="background-color:#F3F3F3;">
-		<!-- <tm-menubars title="个人中心" color="primary" :showback="false" flat ="true" theme="white" transparent="true" iconColor="white"></tm-menubars> -->
+	<tm-app ref="app">
 		<view class="header">
-			<view class="userInfo" @tap="touserspace">
-				<view class="avatar" @tap="touserspace">
-					<image class="avatar" :src="homeinfo.userpic||'https://cdn2.jaycao.com/cdtu/a.png'"
-						mode="aspectFill"></image>
-				</view>
-				<view class="name" @tap="touserspace">{{homeinfo.username}} </view>
-				<view style="margin-left: 180upx;"> <text class="text-grey">uid:{{xh}}</text></view>
-			</view>
 
-			<!-- <view class="userInfo" v-else><view @click="getCode" class="login-btn">立即登录</view></view> -->
-
-		</view>
-			</view>
-		<view class="" style="margin-top: 150upx;">
-		<tm-sheet :round="3"  style=""> 
-			<tm-text :font-size="40" _class="font-weight-b" label="个人中心"></tm-text>
-			<!-- <tm-divider></tm-divider> -->
-			<tm-grid :col="3" :width="630">
-			
-				<tm-grid-item text url="../chart/index" :height="180" >
-					<tm-icon color="blue-grey" _class="pb-10" :font-size="52" name="tmicon-borderbottom-fill">
-					</tm-icon>
-					<tm-text :font-size="28" _class="font-weight-b" label="信息绑定"></tm-text>
-					
-				</tm-grid-item>
-				<tm-grid-item text url="../chart/index" :height="180" >
-					<tm-icon color="blue-grey" _class="pb-10" :font-size="52" name="tmicon-borderbottom-fill">
-					</tm-icon>
-					<tm-text :font-size="28" _class="font-weight-b" label="身份认证"></tm-text>
-				
-				</tm-grid-item>
-				<tm-grid-item text url="../chart/index" :height="180" >
-					<tm-icon color="blue-grey" _class="pb-10" :font-size="52" name="tmicon-borderbottom-fill">
-					</tm-icon>
-					<tm-text :font-size="28" _class="font-weight-b" :label="1"></tm-text>
-				
-				</tm-grid-item>
-		
-		
-			</tm-grid>
-		</tm-sheet>
-			<view class="banner px-20 mt-20">
-				<u-swiper :list="list" height="165" mode=""></u-swiper>
-			</view>
-
-		</view>
-
-		<view class="bgColor"></view>
-		<view class="tool-list">
-				<view class="title">常用工具</view>
-				<view class="flex">
-					<view class="item" v-for="(item, index) in tools" :key="index" @click="goTool(item.url)">
-				
-							<image :src="item.icon" mode=""></image>
-							<view>{{ item.title }}</view>
-					
+			<view class="uesr">
+				<view class="top-xh">
+					<view class="h2">
+						<tm-text :font-size="40" _class="font-weight-b" label="个人中心"></tm-text>
+					</view>
+					<view class="pic">
+						<!-- <image src="../../../static/cy-my/xiaoxi.png" style="width: 40rpx;" mode="widthFix"></image> -->
 					</view>
 				</view>
+
+				<view class="fot-xh">
+					<navigator url="/pages/me/editme" hover-class="none">
+						<view class="pic">
+							<!-- <image :src="userinfo.avatar" style="width: 130rpx;" mode="widthFix" round>
+						</image> -->
+
+							<tm-avatar :round="12" text :margin="[10, 0]" :size="110" :label="pic" trigger
+								triggerIcon="tmicon-check"></tm-avatar>
+						</view>
+						<view class="txt">
+							<view class="name">
+								<view class="h3">
+									<tm-text :font-size="30" _class="font-weight-b" :label="userinfo.userName">
+									</tm-text>
+								</view>
+
+								<view style="margin-top:15upx">
+									<tm-text :font-size="30" _class="font-weight-n " :label="userinfo.xh"></tm-text>
+								</view>
+							</view>
+						</view>
+					</navigator>
+				</view>
+
+
+
 			</view>
 
+			<!-- <view class="about">
+			<view class="m-a1">
+				<navigator url="" hover-class="none">
+					<view class="pic">
+						<image src="../../../static/cy-my/tianjia.png" style="width: 76rpx;" mode="widthFix"></image>
+					</view>
+					<view class="txt">
+						<text class="s1">点击此处添加宝宝</text>
+						<text>记录宝宝成长</text>
+					</view>
+				</navigator>
+			</view>
+		</view> -->
+			<!-- <view class="banner px-20 mb-30" >
+				<u-swiper :list="list2" height="250" name="img" mode="" bg-color="" @click="openurl3"></u-swiper>
+			</view> -->
+			<tm-sheet :margin="[10, 0]" :round="10">
 
+				<view class="ul-list1-xh">
+					<!-- <view class="li">
+				<navigator url="" hover-class="none">
+					<view class="pic">
+						<image src="../../../static/cy-my/qianbao.png" style="width: 40rpx;" mode="widthFix"></image>
+					</view>
+					<view class="txt">
+					  <tm-text :font-size="24" _class="font-weight-b" label="意见反馈"></tm-text>
+					</view>
+				</navigator>
+			</view> -->
+
+
+					<view class="li">
+						<navigator url="/pages/me/editme" hover-class="none">
+							<view class="pic">
+								<image src="../../../static/me/yijian.png" style="width: 35rpx;" mode="widthFix">
+								</image>
+							</view>
+							<view class="txt">
+								<tm-text :font-size="32" _class="font-weight-b" label="个人信息"></tm-text>
+							</view>
+						</navigator>
+					</view>
+					<tm-divider></tm-divider>
+					<view class="li">
+						<navigator
+							:url="'/pages/webview/webview?detailData=' + 'https://support.qq.com/embed/phone/408686'"
+							hover-class="none">
+							<view class="pic">
+								<image src="../../../static/me/shehzi.png" style="width: 35rpx;" mode="widthFix">
+								</image>
+							</view>
+							<view class="txt" style="border-bottom: none;">
+								<tm-text :font-size="32" _class="font-weight-b" label="意见反馈"></tm-text>
+							</view>
+						</navigator>
+					</view>
+					<tm-divider></tm-divider>
+					<view class="li">
+						<navigator url="/pages/me/abme/abme" hover-class="none">
+							<view class="pic">
+								<image src="../../../static/me/guanyhu.png" style="width: 35rpx;" mode="widthFix">
+								</image>
+							</view>
+							
+							<view class="txt">
+								<tm-text :font-size="32" _class="font-weight-b" label="关于我们"></tm-text>
+							</view>
+						</navigator>
+					</view>
+
+				</view>
+				          <tm-button block label="退出登录" @click="clearStorage"></tm-button>
+			</tm-sheet>
+
+		</view>
+		
+		<view class="py-32 mx-32">
+				<!-- <tm-divider color="grey-2" label="掌上成工 5.0.0 谢谢你的使用"></tm-divider> -->
+				<tm-divider color="grey-2" label="CodeCJ "></tm-divider>
+				
+			</view>
+			 <tab-bar :active="4"></tab-bar>
+	</tm-app>
 </template>
 
-
 <script>
-	// import homeInfo from '../../../components/home-info.vue';
-	// import homeInfo2 from '../../../components/home-info2.vue';
-	// import homeData from '../../../components/home-data.vue';
-	import request from '@/common/request.js';
-	export default {
-		components: {
-
-			// homeInfo,
-			// homeInfo2,
-
-			// homeData
-		},
-		data() {
-
-			return {
-				tools: [{
-						url: '1',
-						icon: '../../../static/tools-1.png',
-					title: '成工排行',
-					show: true
-				},
-				{
-					url: '2',
-					icon: '../../../static/tools-2.png',
-				title: '用户统计',
-				show: true
-			}, {
-				url: '3',
-				icon: '../../../static/tools-3.png',
-			title: '意见反馈',
-				show: true
-		},
-		{
-			url: '4',
-			icon: '../../../static/tools-7.png',
-		title: '更新记录',
-		status: 0,
-		statusFlag: 1,
-		show: true
-	}, {
-		url: '5',
-		icon: '../../../static/vip.png',
-	title: '管理申请',
-		status: 0,
-		show: true
-	}, {
-		url: '6',
-		icon: '../../../static/tools-6.png',
-	title: '加入Q群',
-		show: false
-	}, {
-		url: '7',
-		icon: '../../../static/tools-8.png',
-	title: '清除缓存',
-		show: false
-	}, {
-		url: '8',
-		icon: '../../../static/tools-8.png',
-	title: '关于开发者',
-		show: false
-	}
-	],
-	orders: [{
-				id: 1,
-				icon: '../../../static/my_service/images/my_service_8_8.jpg',
-				title: '动态',
-			},
-			{
-				id: 2,
-				icon: '../../../static/my_service/images/my_service_11_11.jpg',
-			title: '评论',
-		}, {
-			id: 3,
-			icon: '../../../static/my_service/images/my_service_14_14.jpg',
-		title: '信息绑定',
-	}, {
-		id: 4,
-		icon: '../../../static/my_service/images/my_service_17_17.jpg',
-	title: '身份认证',
-	}, {
-		id: 5,
-		icon: '../../../static/order-5.png',
-	title: '已完成',
-	}
-	],
-	// background: {
-	// 	backgroundColor: '#001f3f',
-
-	// 	// 导航栏背景图
-	// 	background: 'url(https://youjin.phpcaff.cn/uploads/20220503/38638bc88a85e10507bdffbbacd1fff8.png) no-repeat',
-	// 	// 还可以设置背景图size属性
-	// 	// backgroundSize: 'cover',
-
-	// 	// 渐变色
-	// 	// backgroundImage: 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
-	// },
-	bgColor: 'transparent',
-		userinfo: {},
-		homeinfo: {
-			username: '梦想',
-			userpic: 'https://cdn2.jaycao.com/cdtu/a.png',
-			totalnum: 10,
-			todaynum: 10
-		},
-		homedata: [{
-				name: '动态',
-				num: 0
-			},
-			{
-				name: '评论',
-				num: 0
-			},
-			{
-				name: '收藏',
-				num: 0
-			}
-		],
-		// Custom: this.Custom,
-
-		storageSize: '',
-		spaceShow: true,
-		pic: '',
-		url: '',
-		qq: '',
-		xh: '',
-		userName: '同学',
-		nickName: '同学',
-		modalName: null,
-		status: '未认证',
-		picName: '流星之夜',
-		list: [{
+import TabBar from "@/components/TheTabBar.vue";
+import request from '@/common/request.js';
+export default {
+			 components: {
+ TabBar
+  },
+	data() {
+		return {
+			title: 'Hello',
+			userinfo: '',
+			pic: '',
+			storageSize:'',
+			list: [{
 				image: 'https://cdn2.jaycao.com/cdtu/tool1.png',
 				title: '昨夜星辰昨夜风，画楼西畔桂堂东'
 			},
@@ -206,217 +146,19 @@
 				image: 'https://cdn2.jaycao.com/cdtu/wban.png',
 				title: '身无彩凤双飞翼，心有灵犀一点通'
 			}
-		],
-		pic: [{
-			link: 'https://wx.jaycao.com/zjx_me_bg1.jpeg',
-			name: '春天'
-		}, {
-			link: 'https://wx.jaycao.com/zjx_me_bg2.jpeg',
-			name: '夏天'
-		}, {
-			link: 'https://cdn.zhoukaiwen.com/zjx_me_bg3.jpeg',
-			name: '秋天'
-		}, {
-			link: 'https://cdn.zhoukaiwen.com/zjx_me_bg4.jpeg',
-			name: '冬天'
-		}, {
-			link: 'https://cdn.zhoukaiwen.com/zjx_me_bg5.jpeg',
-			name: '幽静'
-		}, {
-			link: 'https://cdn.zhoukaiwen.com/zjx_me_bg6.jpg',
-			name: '天空'
-		}],
-		topBackGroupImageIndex: 3,
-		inter: [{
-			title: 'mimicry',
-			name: '活力春天',
-			color: ''
-		}, {
-			title: 'theme',
-			name: '清爽夏日',
-			color: ''
-		}, {
-			title: 'theme',
-			name: '金秋之韵',
-			color: ''
-		}, {
-			title: 'theme',
-			name: '冬日之阳',
-			color: ''
-		}, {
-			title: 'theme',
-			name: '幽兰星空',
-			color: ''
-		}, {
-			title: 'theme',
-			name: '流星之夜',
-			color: ''
-		}]
-	}
+			],
+			list2: []
+		}
 	},
-	// 分享小程序
-	onShareAppMessage(res) {
-			return {
-				title: '看看这个小程序多好玩～',
-			};
-		},
-		watch: {
-			topBackGroupImageIndex(val) {
-				console.log(val)
-				if (val == 4 || val == 5) {
-					this.spaceShow = true;
-				} else {
-					this.spaceShow = false;
-				}
-			}
-		},
-		onLoad() {
-
-			if (uni.getStorageSync('userinfo').avatar) {
-				this.homeinfo.userpic = uni.getStorageSync('userinfo').avatar
-
-			}
-
-			this.homeinfo.username = uni.getStorageSync('userinfo').userName
-			this.getStorageSize();
-			this.getjiaquninfo();
-			if (uni.getStorageSync('xh') != null) {
-
-				this.status = '已认证'
-				console.log(this.status)
-			}
-		},
-		mounted() {
-
-			this.xh = ((parseInt(uni.getStorageSync('userinfo').xh) + 8888) * 12).toString()
-
-		},
-		methods: {
-			goOrder(id) {
-				if (!uni.getStorageSync('xh')) {
-					// this.$tools.toast('请先登录');
-					return;
-				}
-				if (id == 1) this.touserspace()
-				else if (id == 2) this.touserspace()
-				else if (id == 3) this.getInfo()
-				else if (id == 4) this.vertify()
-			},
-			goTool(url) {
-				if (!uni.getStorageSync('xh')) {
-					// this.$tools.toast('请先登录');
-					return;
-				}
-				if (url == 1) {
-					uni.navigateTo({
-						url: '../../me/salary'
-					})
-				} else if (url == 2) {
-					uni.navigateTo({
-						url: '../../me/charts'
-					})
-				} else if (url == 3) this.fk()
-				else if (url == 4) {
-					uni.navigateTo({
-						url: '../../me/log/log'
-					})
-				} else if (url == 5) this.jiaqun()
-				else if (url == 6) this.jiaqun()
-				else if (url == 7) this.clearStorage()
-				else if (url == 8) this.goAboutMe()
-			},
-			touserspace() {
-				uni.navigateTo({
-					url: '../../../pages/userspace/userspace?xh=' + this.xh
-				})
-			},
-			fk() {
-
-				uni.navigateTo({
-					url: '../../webView/webView?detailData=' + encodeURIComponent(JSON.stringify(
-						'https://support.qq.com/embed/phone/408686')),
-				});
-
-
-
-
-			},
-			submit() {
-				uni.request({
-					url: "https://support.qq.com/product/408686",
-					method: 'POST',
-					header: {
-						'content-type': "application/x-www-form-urlencoded"
-					},
-					data: {
-						// 对于上面的form表单提交，我们可以直接在uni.request的data属性中直接提交就行了
-						nickname: this.homeinfo.username.substr(0, 1) + "同学",
-						avatar: this.homeinfo.userpic,
-						openid: this.homeinfo.username,
-					},
-					success: (res) => {
-						// 服务器返回结果
-					}
-				})
-			},
-			getjiaquninfo() {
-				request.httpRequest({
-					url: 'notice/noticeBanner/getAppInfo/5'
-				}).then(res => {
-					if (res.data.code == 200) {
-						console.log(res.data.data)
-						this.qq = res.data.data.img
-						this.url = res.data.data.navurl
-					}
-
-
-				})
-			},
-			fuzhiqq() {
-				uni.setClipboardData({
-					data: this.qq, //要被复制的内容
-					success: () => { //复制成功的回调函数
-						uni.showToast({ //提示
-							title: 'QQ群已复制，若加群失败,请手动加群'
-						})
-					}
-				});
-			},
-			jiaqun() {
-
-
-
-
-				//#ifdef APP-PLUS
-				plus.runtime.openURL(this.url);
-				//#endif
-				// #ifdef H5
-				window.location.href = this.url
-				// #endif	
-
-				//提示模板
-
-
-				// uni.navigateTo({
-				//     url: 'https://qm.qq.com/cgi-bin/qm/qr?k=-58QbU4j1nW2LUNTUM_BNhCknlDHF1lV&jump_from=webapi'
-				// });
-
-
-
-			},
-			vertify() {
-				const xh = uni.getStorageSync('xh')
-				if (xh == null) {
-					uni.navigateTo({
-						url: '../../me/setNumber/setNumber'
-					})
-				} else {
-					uni.showToast({
-						title: '已认证'
-					})
-				}
-			},
-			getStorageSize: function() {
+	onLoad() {
+		this.getbannaer()
+		this.userinfo = uni.getStorageSync("userinfo")
+		var str = this.userinfo.userName
+		console.log(str)
+		this.pic = str.charAt(str.length - 1)
+	},
+	methods: {
+		getStorageSize: function() {
 				let that = this;
 				uni.getStorageInfo({
 					success(res) {
@@ -431,7 +173,7 @@
 					}
 				})
 			},
-			clearStorage: function() {
+		clearStorage: function() {
 				let that = this;
 				uni.showModal({
 					title: '提示',
@@ -452,251 +194,170 @@
 					}
 				})
 			},
-
-			// authUserInfo(){
-			// 	uni.getUserProfile ({
-			// 		desc:'weixin',
-			// 		lang:'zh_CN',
-			// 		success:res=>{
-			// 			console.log("用户",JSON.stringify(res));
-			// 			uni.setStorageSync('nickname',res.userInfo.nickName)
-			// 			this.userName=uni.getStorageSync('nickname'),
-			// 			this.userInfo={
-			// 			nickname:res.userInfo.nickName,
-
-			// 			// sex:res.userinfo.gender===1,
-			// 			avatar:res.userInfo.avatarUrl,
-			// 			// city:res.userInfo.city,
-			// 			}
-			// 			console.log("userinfo",this.userInfo);
-			// 			let opts = {
-			// 			url:'wx/user/wx421dd1550095f40c/postAuth',
-			// 			method: 'post'
-			// 			};
-			// 			request.httpTokenRequest(opts,this.userInfo).then(res=>{
-			// 					console.log(res)
-			// 				}
-			// 			)
-
-			// 		}
-
-			// 	})
-			// },
-			getGitee() {
-				uni.setClipboardData({
-					data: 'https://gitee.com/kevin_chou',
-					success: function() {
-						console.log('success');
-					}
-				});
-			},
-			switchImage(index, name) {
-				this.topBackGroupImageIndex = index;
-				this.modalName = null;
-				this.picName = name;
-			},
-			showModal(e) {
-				this.modalName = e.currentTarget.dataset.target
-			},
-			showGitee(e) {
-				this.modalName = e.currentTarget.dataset.target
-			},
-			hideModal(e) {
-				this.modalName = null
-			},
+		getbannaer() {
+			request.httpRequest({
+				url: 'notice/noticeBanner/getAppInfo'
+			}).then(res => {
+				if (res.data.code == 200) {
 
 
-			getInfo() {
-				uni.navigateTo({
-					url: '../../me/editme'
-				})
-			},
-			// 关于作者
-			goAboutMe() {
-				uni.navigateTo({
-					url: '../../me/abme/abme'
-				})
-			},
+					this.list2 = res.data.data.slice(7)
 
-		}
+				}
+			})
+		},
+		 openurl3(index) {
+	console.log(this.list2[index].navurl)
+	uni.navigateTo({
+		url: this.list2[index].navurl
+	})
+	// // #ifdef H5
+	// window.location.href = listimg[index].navurl
+	// // #endif
+	// // #ifdef APP-PLUS
+	 plus.runtime.openURL(this.list2[index].navurl);
+	// //#endif
+
+}
 	}
+}
 </script>
-<style lang="scss">
-	// .bgColor {
-	// 	position: fixed;
-	// 	top: 0;
-	// 	left: 0;
-	// 	right: 0;
-	// 	bottom: 0;
-	// 	background: #F3F3F3;
-	// 	z-index: -1;
-	// }
 
-	.header {
-		background: url(https://youjin.phpcaff.cn/uploads/20220503/38638bc88a85e10507bdffbbacd1fff8.png) no-repeat;
-		background-size: cover;
-		padding-top: 30px;
-	}
+<style>
+.top-xh {
+	padding-top: 40rpx;
+	overflow: hidden;
+	margin-bottom: 60rpx;
 
-	.userInfo {
-		padding: 60px 30upx 0;
-		border-radius: 12upx 12upx 0px 0px;
-		height: 130upx;
-		display: flex;
-		align-items: center;
+}
 
-		.avatar {
-			width: 130upx;
-			height: 130upx;
-			border-radius: 100%;
-			position: relative;
+.top-xh .h2 {
+	float: left;
+	font-size: 32rpx;
+	font-weight: bold;
+}
 
-			.level {
-				width: 32upx;
-				height: 32upx;
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
-		}
+.top-xh .pic {
+	float: right;
+}
 
-		.name {
-			margin-left: 28upx;
-			font-size: 36upx;
-			font-weight: 500;
-			color: #000000;
-		}
+.uesr {
+	/* overflow: hidden; */
+	margin-top: 80upx;
+	padding: 0 20rpx;
+	/* background: url(https://jaycao-demo01.oss-cn-chengdu.aliyuncs.com/CDTU%E5%8F%A3%E8%A2%8B%E5%90%9BBanner/1.png) no-repeat 0 center; */
 
-		.login-btn {
-			flex: 1;
-			font-size: 32upx;
-			font-weight: 500;
-			color: #3bb061;
-			line-height: 176upx;
-			text-align: center;
-		}
-	}
+	height: 300rpx;
+}
 
-	.card-group {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 50upx 8upx;
-		border-radius: 0px 0px 12upx 12upx;
+.fot-xh .pic {
+	float: left;
+	margin-right: 30rpx;
+}
 
-		.item {
-			width: 172upx;
-			padding-bottom: 38upx;
-			border-radius: 12upx;
-			text-align: center;
+.fot-xh .txt {
+	padding: 20rpx 0;
+	overflow: hidden;
+}
 
-			.num {
-				font-size: 42upx;
-				font-weight: bold;
-				color: #333333;
-				line-height: 1;
-				margin-top: 20upx;
-			}
-
-			.title {
-				font-size: 24upx;
-				font-weight: 500;
-				color: #999999;
-				line-height: 1;
-				margin-top: 20upx;
-			}
-		}
-	}
-
-	.order {
-		background: #ffffff;
-		border-radius: 16upx;
-		// margin: 20upx;
+.fot-xh .txt .name {
+	position: relative;
+	display: block;
+}
 
 
 
-		.title {
-			font-size: 34upx;
-			font-weight: bold;
-			color: #333333;
-			padding: 42upx 32upx 46upx;
-		}
+.fot-xh .txt .name .phone {
+	height: 40rpx;
+	line-height: 40rpx;
+	font-size: 20rpx;
+	width: 330rpx;
+	/* background: url(../../../static/cy-my/jifen.png) no-repeat right center; */
+	background-size: 100rpx;
 
-		.flex {
-			font-size: 26upx;
-			font-weight: 400;
-			color: #999999;
-		}
+}
 
-		.list {
-			// @include menu-list(5);
-			padding-bottom: 30upx;
+.fot-xh .name::after {
+	content: '';
+	position: absolute;
+	/* border-top: 4rpx solid rgb(179, 179, 179); */
+	/* border-left: 4rpx solid rgb(179, 179, 179); */
+	width: 14rpx;
+	height: 14rpx;
+	right: 5rpx;
+	top: 30%;
+	transform: rotate(135deg);
+}
 
-			.item {
-				image {
-					width: 52upx;
-					height: 52upx;
-				}
+.m-a1 {
+	overflow: hidden;
+	padding: 20rpx;
+	/* background-color: #fff; */
+	margin: 0 60rpx;
+	/* box-shadow: 0rpx 5rpx 16rpx 0rpx rgb(226, 236, 255); */
+	margin-top: -40rpx;
+	border-radius: 40rpx;
 
-				view {
-					font-size: 26upx;
-					color: #666666;
-					margin-top: 10upx;
-				}
-			}
-		}
-	}
+}
 
-	// .banner {
-	// 	margin: 20upx 0;
+.m-a1 .txt {
+	overflow: hidden;
+}
 
-	// image {
-	// 		width: 100%;
-	// 		height: 120upx;
-	// 	}
-	// }
+.m-a1 .pic {
+	float: left;
+	margin-right: 20rpx;
+}
 
-	.tool-list {
-		background: #fff;
-		border-radius: 16upx;
-		margin: 20upx;
+.m-a1 text {
+	display: block;
+	font-size: 24rpx;
+	/* color: rgb(179, 179, 179); */
+}
 
-		.title {
-			font-size: 34upx;
-			font-weight: bold;
-			color: #333333;
-			padding: 42upx 32upx 46upx;
-		}
+.m-a1 .txt .s1 {
+	font-size: 24rpx;
+	margin-bottom: 10rpx;
+	/* color: rgb(0, 0, 0); */
+	font-weight: bold;
+}
 
-		.flex {
-			flex-wrap: wrap;
-		}
+.ul-list1-xh {
+	overflow: hidden;
+	padding: 0 30rpx;
+	padding-top: 30rpx;
+	padding-bottom: 20rpx;
+}
 
-		.item {
-			width: 25%;
-			text-align: center;
-			margin-bottom: 60upx;
-			font-size: 28upx;
-			font-weight: 400;
-			color: #222222;
-			position: relative;
+.ul-list1-xh .li {
+	padding: 20rpx 0;
+	overflow: hidden;
+	position: relative;
 
-			.tip {
-				position: absolute;
-				right: 60upx;
-				top: 0;
-				z-index: 100;
-				width: 20upx;
-				height: 20upx;
-				border-radius: 100%;
-				// background: $color-error;
-			}
+}
 
-			image {
-				width: 60upx;
-				height: 60upx;
-				margin-bottom: 10upx;
-			}
-		}
-	}
+.ul-list1-xh .li .pic {
+	float: left;
+	margin-right: 20rpx;
+
+}
+
+.ul-list1-xh .li .txt {
+	overflow: hidden;
+	font-size: 32rpx;
+	padding-bottom: 20rpx;
+	/* border-bottom: 1px solid rgb(242, 242, 242); */
+}
+
+.ul-list1-xh .li::after {
+	content: '';
+	position: absolute;
+	/* border-top: 3rpx solid rgb(179, 179, 179);
+		border-left: 3rpx solid rgb(179, 179, 179); */
+	width: 12rpx;
+	height: 12rpx;
+	right: 5rpx;
+	top: 30%;
+	transform: rotate(135deg);
+}
 </style>

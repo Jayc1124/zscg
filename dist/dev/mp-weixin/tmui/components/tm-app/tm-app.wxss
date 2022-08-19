@@ -1,0 +1,28 @@
+
+.menu.data-v-a00065e2 {
+		z-index: 999;
+		transform: translateX(-101%);
+}
+.menu.data-v-a00065e2 {
+		transition-duration: 0.25s;
+		transition-timing-function: ease;
+		transition-property: transform;
+		transition-delay: 0ms;
+		transform: translateX(-101%);
+		z-index: 999;
+}
+.menuOn.data-v-a00065e2 {
+		transform: translateX(0%);
+}
+.body.data-v-a00065e2 {
+		transition-duration: 0.25s;
+		transition-timing-function: ease;
+		transition-property: transform;
+		transition-delay: 0ms;
+		transform: translateX(0%) scale(1);
+}
+.bodyOn.data-v-a00065e2 {
+		transform: translateX(70%) scale(0.8);
+}
+
+

@@ -1,5 +1,8 @@
 <template>
-    <tm-drawer  :round="props.round" ref="drawer" :height="dHeight" @update:show="_show = $event" :show="_show" @close="close" @open="open"
+    <tm-drawer  :round="props.round" ref="drawer" :height="dHeight" 
+	@update:show="_show = $event" :show="_show" @close="close" 
+	:ok-color="props.color"
+	@open="open"
         title="请选择时间" :closable="true" @ok="confirm">
          <tm-time-view
             :height="dHeight-230"
@@ -40,7 +43,7 @@ import tmDrawer from "../tm-drawer/tm-drawer.vue";
 import TmSheet from "../tm-sheet/tm-sheet.vue";
 import tmText from "../tm-text/tm-text.vue";
 import tmButton from "../tm-button/tm-button.vue";
-const { proxy } = getCurrentInstance();
+const proxy = getCurrentInstance()?.proxy??null;
 const drawer = ref<InstanceType<typeof tmDrawer> | null>(null)
 const emits = defineEmits(["update:modelValue", "update:modelStr", "update:show", "confirm","change", "cancel", "close", "open"])
 

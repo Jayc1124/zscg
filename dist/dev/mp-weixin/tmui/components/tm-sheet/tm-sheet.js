@@ -89,8 +89,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "longpress", "touchend", "touchstart", "touchcancel", "mousedown", "mouseup", "mouseleave"],
   setup(__props, { emit: emits }) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const parenClass_p = common_vendor.computed$1(() => props.parenClass);
     const contStyle_p = common_vendor.computed$1(() => props.contStyle);
     const _transprent = common_vendor.computed$1(() => props.transprent);
@@ -128,13 +130,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     common_vendor.watch(() => isDark.value, () => {
     });
     const _bgcolor = common_vendor.computed$1(() => {
-      var _a;
+      var _a2;
       if (_transprent.value === true)
         return `background-color:rgba(255,255,255,0);`;
       if (props.darkBgColor !== "" && isDark.value === true) {
         return `background-color:${props.darkBgColor};`;
       }
-      if (((_a = tmcomputed.value.gradientColor) == null ? void 0 : _a.length) === 2) {
+      if (((_a2 = tmcomputed.value.gradientColor) == null ? void 0 : _a2.length) === 2) {
         return tmcomputed.value.backgroundColorCss;
       }
       if (_noLevel.value && tmcomputed.value.isBlackAndWhite === true && isDark.value === true) {
@@ -153,7 +155,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     }
     function touchend(e) {
       isLongPress.value = false;
-      console.log(isLongPress.value);
       emits("touchend", e);
     }
     function touchcancel(e) {

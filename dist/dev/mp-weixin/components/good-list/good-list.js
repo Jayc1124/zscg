@@ -45,7 +45,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       return {
         a: "02471c89-1-" + i0 + "," + ("02471c89-0-" + i0),
         b: common_vendor.p({
-          preview: true,
           round: 2,
           width: 310,
           height: 200,

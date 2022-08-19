@@ -1,5 +1,5 @@
-const cfg = require('./config.js'),
-	isLetter = c => (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+import cfg from './config.js'
+var isLetter = c => (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 
 function CssHandler(tagStyle) {
 	var styles = Object.assign(Object.create(null), cfg.userAgentStyles);
@@ -22,7 +22,7 @@ CssHandler.prototype.match = function(name, attrs) {
 		matched += tmp + ';';
 	return matched;
 }
-module.exports = CssHandler;
+export default CssHandler;
 
 function parser(data, init) {
 	this.data = data;

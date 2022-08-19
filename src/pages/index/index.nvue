@@ -1,9 +1,9 @@
 <template>
-	<tm-app ref="app">
-		<!-- <view class="top-bc">
+  <tm-app ref="app">
+    <!-- <view class="top-bc">
 		</view> -->
-		<tm-sticky offset="0">
-			<!-- <template v-slot:sticky>
+    <tm-sticky offset="0">
+      <!-- <template v-slot:sticky>
 				
 				<tm-sheet :margin="[0, 0]">
 					<view class="flex-row flex-row-center-start pb-10">
@@ -21,451 +21,497 @@
 				</tm-sheet>
 
 			</template> -->
-			<tm-navbar title="CDTU 掌上成工" :shadow="0" hide-home>
-				<template v-slot:left>
-					<view class="flex flex-center flex-row">
-						<tm-icon @click="onChangeDark" :color="store.tmStore.dark ? 'yellow' : ''" _class="pl-32"
-							:font-size="42" name="tmicon-ios-sunny"></tm-icon>
-					</view>
-				</template>
+      <tm-navbar title="CDTU 掌上成工" :shadow="0" hide-home>
+        <template v-slot:left>
+          <view class="flex flex-center flex-row">
+            <tm-icon
+              @click="onChangeDark"
+              :color="store.tmStore.dark ? 'yellow' : ''"
+              _class="pl-32"
+              :font-size="42"
+              name="tmicon-ios-sunny"
+            ></tm-icon>
+          </view>
+        </template>
 
-				<!-- <template v-slot:left>
+        <!-- <template v-slot:left>
 							<view class="flex flex-center flex-row">
 								<navigator url="settheme" class="pl-10 pr-12"><tm-icon :font-size="32" name="tmicon-cog-fill"></tm-icon></navigator>
 							</view>
 						</template> -->
-			</tm-navbar>
-			<!-- <view style="width: 95%;margin: auto;margin-top: 15upx;" >
+      </tm-navbar>
+      <!-- <view style="width: 95%;margin: auto;margin-top: 15upx;" >
 				<tm-image :width="280" :height="75" :src="cdtulogo"></tm-image>
 			</view> -->
-			<!-- <tm-sheet :margin="[0, 0]">
+      <!-- <tm-sheet :margin="[0, 0]">
 				<tm-input :transprent="true" :placeholder="language('index.search.tips')" :border="1" showClear prefix="tmicon-search"
 					v-model="str" @search='search' :searchLabel="language('index.search.btntext')"></tm-input>
 			</tm-sheet> -->
-			<tm-sheet :margin="[0, 0]">
-				<tm-input placeholder="请输入内容" :border="1" showClear prefix="tmicon-search" v-model="str"
-					@search='search' searchLabel="搜索功能"></tm-input>
-			</tm-sheet>
-			<view style="margin: 10upx;">
-				<u-swiper @click="openurl1" :height="200" :width="600" :list="listimg" name="img" :border-radius="10"
-					mode="none" :effect3d="true" bg-color=""></u-swiper>
-				<!-- <tm-carousel autoplay :margin="[0,16]" :round="3" :width="686" :height="200" :list="listimg" :indicatorDots="false" @change="c1"  @click="nav"></tm-carousel> -->
-			</view>
-			<!-- #ifdef MP-WEIXIN -->
-			<view class="px-32">
+      <tm-sheet :margin="[0, 0]">
+        <tm-input
+          placeholder="请输入内容"
+          :border="1"
+          showClear
+          prefix="tmicon-search"
+          v-model="str"
+          @search="search"
+          searchLabel="搜索功能"
+        ></tm-input>
+      </tm-sheet>
+      <view style="margin-top: 15upx;margin-bottom: 15upx">
+        <!-- <u-swiper
+          @click="openurl1"
+          :height="200"
+          :width="600"
+          :list="listimg"
+          name="img"
+          :border-radius="20"
+          mode="none"
+          :effect3d="true"
+          bg-color=""
+        ></u-swiper> -->
+        <!-- <tm-carousel autoplay :margin="[0,16]" :round="3" :width="686" :height="200" :list="listimg" :indicatorDots="false" @change="c1"  @click="nav"></tm-carousel> -->
+      </view>
+      <!-- #ifdef MP-WEIXIN -->
+      <!-- <view class="px-32">
 				<ad unit-id="adunit-e85c28c4a7499ed5"></ad>
-			</view>
-			<!-- #endif -->
+			</view> -->
+      <!-- #endif -->
 
-			<tm-sheet style="margin: auto;" :round="3" :margin="[5, 5]">
-				<tm-cell :margin="[0, 0]" :padding="[0, 5]" rightText="" :titleFontSize="32" title="醉美成工"
-					@click="navNewsBar"> </tm-cell>
-				<!-- <tm-divider></tm-divider> -->
+      <tm-sheet style="" :round="3" :margin="[0, 0]">
+        <tm-text
+          :font-size="36"
+          _class=""
+          label="成工"
+          style="float: left; font-size: 36rpx; font-weight: bold;margin-left:20upx"
+        ></tm-text>
+		<!-- </tm-sheet> -->
+        <!-- <tm-divider></tm-divider> -->
 
-				<view class="flex flex-row flex-wrap flex-row-center-between">
-					<view v-for="(item, index) in list3" :key="index">
-						<tm-image :width="340" :height="180" :round="8" :margin="[0, 10]" :src="item.img"
-							@click="openurl2(index)"></tm-image>
-						<!--   <tm-image  :width="340" :height="180" :round="8" :margin="[0, 10]" src="https://s1.ax1x.com/2022/08/04/vm11Bj.png"></tm-image>
+        <view class="flex flex-row flex-wrap flex-row-center-between">
+          <view v-for="(item, index) in list3" :key="index">
+            <tm-image
+              :width="340"
+              :height="180"
+              :round="8"
+              :margin="[0, 10]"
+              :src="item.img"
+              @click="openurl2(index)"
+            ></tm-image>
+            <!--   <tm-image  :width="340" :height="180" :round="8" :margin="[0, 10]" src="https://s1.ax1x.com/2022/08/04/vm11Bj.png"></tm-image>
 										  <tm-image :width="340" :height="180" :round="8" :margin="[0, 10]" src="https://s1.ax1x.com/2022/08/04/vm11Bj.png"></tm-image>
 										    <tm-image  :width="340" :height="180" :round="8" :margin="[0, 10]" src="https://s1.ax1x.com/2022/08/04/vm11Bj.png"></tm-image> -->
-					</view>
-					<!-- 
-								<tm-sheet color="purple" _style="width:285upx;height:130upx" :round="3" class="flex flex-col flex-wrap">
-																		     <tm-row :gutter="5" color="blue-grey" justify="between">
-																		                 <tm-col class="flex-7" height="80" width="100" align="center" color="purple">
-																		                   <tm-text :font-size="30" _class="font-weight-b" label="校情概况" _style=""  ></tm-text>
-																		                 </tm-col>
-																		                 <tm-col class="flex-3"  height="80" width="100" color="purple">
-																		                    <tm-avatar img="https://picsum.photos/200/300" :size="70"></tm-avatar>
-																		                 </tm-col>
-																		             </tm-row>
-																		     
-								</tm-sheet>
-						<tm-sheet color="green" _style="width:285upx;height:130upx" :round="3" class="flex flex-col flex-wrap">
-																     <tm-row :gutter="5" color="blue-grey" justify="between">
-																                 <tm-col class="flex-7" height="80" width="100" align="center" color="green">
-																                   <tm-text :font-size="30" _class="font-weight-b" label="师资概况" _style=""  ></tm-text>
-																                 </tm-col>
-																                 <tm-col class="flex-3"  height="80" width="100" color="green">
-																                    <tm-avatar img="https://picsum.photos/200/300" :size="70"></tm-avatar>
-																                 </tm-col>
-																             </tm-row>
-																    
-						</tm-sheet>
-									     <tm-sheet color="yellow" _style="width:285upx;height:130upx" :round="3" class="flex flex-col flex-wrap">
-											     <tm-row :gutter="5" color="blue-grey" justify="between" >
-											                 <tm-col class="flex-7" height="80" width="100" align="center" color="yellow">
-											                   <tm-text :font-size="30" _class="font-weight-b" label="校区导图" _style=""  ></tm-text>
-											                 </tm-col>
-											                 <tm-col class="flex-3"  height="80" width="100" color="yellow" >
-											                    <tm-avatar img="https://picsum.photos/200/300" :size="70"></tm-avatar>
-											                 </tm-col>
-											             </tm-row>
-											     
-										
-										 </tm-sheet> -->
+          </view>
+        </view>
+      </tm-sheet>
+      <tm-sheet style="" :round="3" :margin="[0, 0]">
+        <tm-text
+          :font-size="36"
+          _class=""
+          label="学习"
+          style="float: left; font-size: 32rpx; font-weight: bold;margin-left:20upx"
+        ></tm-text>
+		</tm-sheet>
+  
+        <!-- <tm-divider></tm-divider> -->
+        <tm-grid :col="4" :width="750" :margin="[0, 0]">
+		
+          <view v-for="(item, index) in list" :key="index" style="margin: left 0upx;;">
+            <tm-grid-item
+              :url="item.url"
+              :height="150"
+              :count="item.color"
+              :color="item.ys"
+              :dot="item.status"
+            >
+              <tm-image
+                :width="100"
+                :height="100"
+                :round="3"
+                :src="item.cuicon"
+              >
+              </tm-image>
+              <tm-text
+                :font-size="28"
+                text-weight-b
+                :label="item.name"
+                class="mt-10"
+              ></tm-text>
+            </tm-grid-item>
+          </view>
+        </tm-grid>
+      
+      <!-- <u-swiper
+        @click="openurl3"
+        :height="220"
+        :list="list2"
+        name="img"
+        mode="none"
+        bg-color=""
+      ></u-swiper> -->
+      <!-- <tm-carousel autoplay :margin="[0,0]" :round="6" :width="650" :height="200" :list="list2" :indicatorDots="false"></tm-carousel> -->
+      <!-- <tm-sheet style="margin: auto" :round="3" :margin="[5, 5]"> -->
+    <tm-sheet style="" :round="3" :margin="[0, 0]">
+        <tm-text
+          :font-size="36"
+          _class=""
+          label="娱乐"
+          style="float: left; font-size: 36rpx; font-weight: bold;margin-left:20upx"
+        ></tm-text>
+		</tm-sheet>
+      
+        <!-- <tm-divider></tm-divider> -->
+        <tm-grid :col="4" :width="750">
+          <view v-for="(item, index) in list_yule" :key="index">
+            <tm-grid-item
+              :url="item.url"
+              :height="160"
+              :count="item.color"
+              :color="item.ys"
+              :dot="item.status"
+            >
+              <tm-image
+                :width="100"
+                :height="100"
+                :round="3"
+                :src="item.cuicon"
+              >
+              </tm-image>
+              <tm-text
+                :font-size="28"
+                text-weight-b
+                :label="item.name"
+                class="mt-10"
+              ></tm-text>
+            </tm-grid-item>
+          </view>
+        </tm-grid>
+      <!-- </tm-sheet> -->
 
-					<!-- 
-				<tm-coupon color="pink" linear="right" linear-deep="accent"  mainColor="yellow" font-color="" extra>
-					<template v-slot:extra>
-						<tm-text :font-size="22" _class="opacity-7" label="1.使用不受限制"></tm-text>
-						<tm-text :font-size="22" _class="opacity-7"  label="2.使用不受限制"></tm-text>
-					</template>
-				</tm-coupon>
-				<tm-coupon color="yellow"  mainColor="pink" font-color="" extra>
-					<template v-slot:extra>
-						<tm-text :font-size="22" _class="opacity-7" label="1.使用不受限制"></tm-text>
-						<tm-text :font-size="22" _class="opacity-7"  label="2.使用不受限制"></tm-text>
-					</template>
-				</tm-coupon> -->
-				</view>
+      <tm-sheet :margin="[0, 10]">
+        <tm-cell
+          :margin="[0, 5]"
+          :padding="[0, 8]"
+          rightText="查看更多"
+          :titleFontSize="36"
+          title="要闻🔥"
+		       style="float: left; font-size: 36rpx; font-weight: bold;margin-left:10upx"
+          @click="navNewsBar"
+        >
+        </tm-cell>
+		  
 
+        <!-- <tm-divider></tm-divider> -->
+        <view class="flex flex-col flex-col-top-center">
+          <tm-waterfall :width="720">
+            <view v-for="(item, index) in newslist" @click="navNews(item.id)">
+              <tm-waterfall-item
+                :img="item.img || 'https://cdn2.jaycao.com/cdtu/cdtunews.jpg'"
+              >
+                <view class="py-24">
+                  <tm-text
+                    _class="text-overflow-2"
+                    :label="item.title"
+                  ></tm-text>
+                </view>
+              </tm-waterfall-item>
+            </view>
+          </tm-waterfall>
+        </view>
+		</tm-sheet>
+    
 
-			</tm-sheet>
-			<tm-sheet style="margin: auto;" :round="3" :margin="[5, 0]">
-				<tm-cell :margin="[0, 0]" :padding="[0, 5]" rightText="查看更多" :titleFontSize="32" title="学习"
-					@click="navNewsBar"> </tm-cell>
-				<!-- <tm-divider></tm-divider> -->
-				<tm-grid :col="4" :width="698">
-					<view v-for="(item, index) in list" :key="index">
-						<tm-grid-item :url="item.url" :height="160" :count="item.color" :color="item.ys"
-							:dot="item.status">
-							<tm-image :width="100" :height="100" :round="3" :src="item.cuicon">
-							</tm-image>
-							<tm-text :font-size="28" text-weight-b :label="item.name" class="mt-10"></tm-text>
-						</tm-grid-item>
-					</view>
-
-				</tm-grid>
-
-			</tm-sheet>
-			<u-swiper @click="openurl3" :height="220" :list="list2" name="img" mode="none" bg-color=""></u-swiper>
-			<!-- <tm-carousel autoplay :margin="[0,0]" :round="6" :width="650" :height="200" :list="list2" :indicatorDots="false"></tm-carousel> -->
-			<tm-sheet style="margin: auto;" :round="3" :margin="[5, 5]">
-				<tm-cell :margin="[0, 0]" :padding="[0, 5]" rightText="查看更多" :titleFontSize="32" title="娱乐"
-					@click="navNewsBar"> </tm-cell>
-				<!-- <tm-divider></tm-divider> -->
-				<tm-grid :col="4" :width="698">
-					<view v-for="(item, index) in list_yule" :key="index">
-						<tm-grid-item :url="item.url" :height="160" :count="item.color" :color="item.ys"
-							:dot="item.status">
-							<tm-image :width="100" :height="100" :round="3" :src="item.cuicon">
-							</tm-image>
-							<tm-text :font-size="28" text-weight-b :label="item.name" class="mt-10"></tm-text>
-						</tm-grid-item>
-					</view>
-
-				</tm-grid>
-
-			</tm-sheet>
-
-
-			<tm-sheet :margin="[0, 0]">
-				<tm-cell :margin="[0, 0]" :padding="[0, 0]" rightText="查看更多" :titleFontSize="32" title="成工院 · 最新要闻🔥"
-					@click="navNewsBar"> </tm-cell>
-
-				<tm-divider></tm-divider>
-				<view class="flex flex-col flex-col-top-center">
-					<tm-waterfall :width="720">
-						<view v-for="(item, index) in newslist" @click="navNews(item.id)" >
-
-							<tm-waterfall-item :img="item.img || 'https://cdn2.jaycao.com/cdtu/cdtunews.jpg'"
-								>
-								<view class="py-24" >
-									<tm-text _class="text-overflow-2" :label="item.title"></tm-text>
-								</view>
-							</tm-waterfall-item>
-						</view>
-
-					</tm-waterfall>
-				</view>
-			</tm-sheet>
-
-			<!-- <tm-sheet :margin="[5,5]" >
+      <!-- <tm-sheet :margin="[5,5]" >
 					
 					</tm-sheet> -->
 
-
-
-
-
-			<view class="py-32 mx-32">
-				<tm-divider color="grey-2" label="掌上成工 3.0.0 全端兼容,原生渲染"></tm-divider>
-			</view>
-			<tm-float-button @click="onChangeDark" :btn="{ icon: 'tmicon-ios-sunny', color: 'pink', linear: 'right' }">
-			</tm-float-button>
-			<tm-message ref="msg"></tm-message>
-			<tm-drawer v-model:show="showCustom" placement="center" hideHeader :height="450" :width="600">
-				<view class="pa-32 flex flex-col">
-					<view class="text-align-center py-24">
-						<tm-text _class="text-weight-b" :font-size="32" label="自定义主题"></tm-text>
-					</view>
-					<tm-input prefixLabel="颜色值" placeholder="请输入颜色值,比如:#FF00FF" :border="1" showClear
-						v-model="showCustomColor"></tm-input>
-					<tm-input prefixLabel="颜色名称" :margin="[0, 24]" placeholder="字母,如:darkGreen" :border="1" showClear
-						v-model="showCustomName"></tm-input>
-					<tm-button @click="changeCustomColor" block label="确认切换"></tm-button>
-				</view>
-			</tm-drawer>
-		</tm-sticky>
-
-
-	</tm-app>
+      <view class="py-32 mx-32">
+        <tm-divider
+          color="grey-2"
+          label="掌上成工 3.0.0 全端兼容,原生渲染"
+        ></tm-divider>
+      </view>
+      <!-- <tm-float-button
+        @click="onChangeDark"
+        :btn="{ icon: 'tmicon-ios-sunny', color: 'pink', linear: 'right' }"
+      >
+      </tm-float-button> -->
+      <tm-message ref="msg"></tm-message>
+      <tm-drawer
+        v-model:show="showCustom"
+        placement="center"
+        hideHeader
+        :height="450"
+        :width="600"
+      >
+        <view class="pa-32 flex flex-col">
+          <view class="text-align-center py-24">
+            <tm-text
+              _class="text-weight-b"
+              :font-size="32"
+              label="自定义主题"
+            ></tm-text>
+          </view>
+          <tm-input
+            prefixLabel="颜色值"
+            placeholder="请输入颜色值,比如:#FF00FF"
+            :border="1"
+            showClear
+            v-model="showCustomColor"
+          ></tm-input>
+          <tm-input
+            prefixLabel="颜色名称"
+            :margin="[0, 24]"
+            placeholder="字母,如:darkGreen"
+            :border="1"
+            showClear
+            v-model="showCustomName"
+          ></tm-input>
+          <tm-button
+            @click="changeCustomColor"
+            block
+            label="确认切换"
+          ></tm-button>
+        </view>
+      </tm-drawer>
+    </tm-sticky>
+        <tab-bar :active="0"></tab-bar>
+  </tm-app>
 </template>
 <script lang="ts" setup>
-import {
-	ref,
-	getCurrentInstance,
-	nextTick,
-	reactive
-} from "vue"
-import {
-	onShow,
-	onLoad,
-} from "@dcloudio/uni-app";
-import {
-	language
-} from "@/tmui/tool/lib/language"
-import {
-	useTmpiniaStore
-} from '@/tmui/tool/lib/tmpinia';
+import { ref, getCurrentInstance, nextTick, reactive } from "vue";
+import { onShow, onLoad } from "@dcloudio/uni-app";
+import { language } from "@/tmui/tool/lib/language";
+import { useTmpiniaStore } from "@/tmui/tool/lib/tmpinia";
 const store = useTmpiniaStore();
-import tmApp from "@/tmui/components/tm-app/tm-app.vue"
-import tmSheet from "@/tmui/components/tm-sheet/tm-sheet.vue"
-import tmButton from "@/tmui/components/tm-button/tm-button.vue"
-import tmFloatButton from "@/tmui/components/tm-float-button/tm-float-button.vue"
-import tmMessage from "@/tmui/components/tm-message/tm-message.vue"
-
-import tmInput from "@/tmui/components/tm-input/tm-input.vue"
-import tmSticky from "@/tmui/components/tm-sticky/tm-sticky.vue"
-import tmDivider from "@/tmui/components/tm-divider/tm-divider.vue"
-import tmIcon from "@/tmui/components/tm-icon/tm-icon.vue"
-import tmGridItem from "@/tmui/components/tm-grid-item/tm-grid-item.vue"
-import tmGrid from "@/tmui/components/tm-grid/tm-grid.vue"
-import tmNavbar from "@/tmui/components/tm-navbar/tm-navbar.vue"
-import tmCell from "@/tmui/components/tm-cell/tm-cell.vue"
-import tmImage from "@/tmui/components/tm-image/tm-image.vue"
+import tmApp from "@/tmui/components/tm-app/tm-app.vue";
+import tmSheet from "@/tmui/components/tm-sheet/tm-sheet.vue";
+import tmButton from "@/tmui/components/tm-button/tm-button.vue";
+import tmFloatButton from "@/tmui/components/tm-float-button/tm-float-button.vue";
+import tmMessage from "@/tmui/components/tm-message/tm-message.vue";
+import TabBar from "@/components/TheTabBar.vue";
+import tmInput from "@/tmui/components/tm-input/tm-input.vue";
+import tmSticky from "@/tmui/components/tm-sticky/tm-sticky.vue";
+import tmDivider from "@/tmui/components/tm-divider/tm-divider.vue";
+import tmIcon from "@/tmui/components/tm-icon/tm-icon.vue";
+import tmGridItem from "@/tmui/components/tm-grid-item/tm-grid-item.vue";
+import tmGrid from "@/tmui/components/tm-grid/tm-grid.vue";
+import tmNavbar from "@/tmui/components/tm-navbar/tm-navbar.vue";
+import tmCell from "@/tmui/components/tm-cell/tm-cell.vue";
+import tmImage from "@/tmui/components/tm-image/tm-image.vue";
 import tmText from "@/tmui/components/tm-text/tm-text.vue";
-import tmDrawer from "@/tmui/components/tm-drawer/tm-drawer.vue"
-import logoimg from "@/static/logo.png"
-import cdtulogo from "@/static/cdtulogo.png"
-import request from '@/common/request.js';
+import tmDrawer from "@/tmui/components/tm-drawer/tm-drawer.vue";
+import logoimg from "@/static/logo.png";
+import cdtulogo from "@/static/cdtulogo.png";
+import request from "@/common/request.js";
 
+import { share } from "@/tmui/tool/lib/share";
 
-import {
-	share
-} from "@/tmui/tool/lib/share"
-
-
-const {
-	proxy
-} = getCurrentInstance();
-const str = ref("")
-const showCustomColor = ref("#60ab41")
-const showCustomName = ref("darkGreen")
-const showCustom = ref(false)
-const listimg = ref([])
-const list2 = ref([])
-const list = ref([])
-const list_yule = ref([])
+const { proxy } = getCurrentInstance();
+const str = ref("");
+const showCustomColor = ref("#60ab41");
+const showCustomName = ref("darkGreen");
+const showCustom = ref(false);
+const listimg = ref([]);
+const list2 = ref([]);
+const list = ref([]);
+const list_yule = ref([]);
 //轮播图下方四个功能的list
-const list3 = ref([])
+const list3 = ref([]);
 //用于跳转的list 存全部
-const navList = ref([])
-const newslist = ref([])
+const navList = ref([]);
+const newslist = ref([]);
 
 const cur_index = ref(0);
 
 function get_gongneng() {
-	request.httpTokenRequest({
-		url: 'wx/getTools',
-		method: 'get'
-	}, {}).then(res => {
-		list.value = res.data.data[1].iconsList
-		list_yule.value = res.data.data[2].iconsList
-	})
+  request
+    .httpTokenRequest(
+      {
+        url: "wx/getTools",
+        method: "get",
+      },
+      {}
+    )
+    .then((res) => {
+      list.value = res.data.data[1].iconsList;
+      list_yule.value = res.data.data[2].iconsList;
+    });
 }
 function c1(e) {
-	cur_index.value = e;
+  cur_index.value = e;
 }
 //轮播图跳转
 function nav() {
-	console.log(cur_index.value)
+  console.log(cur_index.value);
 }
 
 //获取轮播图
 function getbannaer() {
-	request.httpRequest({
-		url: 'notice/noticeBanner/getAppInfo'
-	}).then(res => {
-		if (res.data.code == 200) {
-			navList.value = res.data.data
-			listimg.value = res.data.data.slice(0, 3)
-			list3.value = res.data.data.slice(3, 7)
-			list2.value = res.data.data.slice(7)
-
-		}
-	})
+  request
+    .httpRequest({
+      url: "notice/noticeBanner/getAppInfo",
+    })
+    .then((res) => {
+      if (res.data.code == 200) {
+        navList.value = res.data.data;
+        listimg.value = res.data.data.slice(0, 3);
+        list3.value = res.data.data.slice(3, 7);
+        list2.value = res.data.data.slice(7);
+      }
+    });
 }
 //顶部轮播图跳转
 function openurl1(index) {
-	console.log(listimg.value[index].navurl)
-	uni.navigateTo({
-		url: listimg.value[index].navurl
-	})
-	// // #ifdef H5
-	// window.location.href = listimg[index].navurl
-	// // #endif
-	// //#ifdef APP-PLUS
-	// plus.runtime.openURL(listimg[index].navurl);
-	// //#endif
-
+  console.log(listimg.value[index].navurl);
+  uni.navigateTo({
+    url: listimg.value[index].navurl,
+  });
+  // // #ifdef H5
+  // window.location.href = listimg[index].navurl
+  // // #endif
+  // //#ifdef APP-PLUS
+  // plus.runtime.openURL(listimg[index].navurl);
+  // //#endif
 }
 //四个功能跳转
 function openurl2(index) {
-	console.log(list3.value[index].navurl)
-	uni.navigateTo({
-		url: list3.value[index].navurl
-	})
-	// // #ifdef H5
-	// window.location.href = listimg[index].navurl
-	// // #endif
-	// //#ifdef APP-PLUS
-	// plus.runtime.openURL(listimg[index].navurl);
-	// //#endif
-
+  console.log(list3.value[index].navurl);
+  uni.navigateTo({
+    url: list3.value[index].navurl,
+  });
+  // // #ifdef H5
+  // window.location.href = listimg[index].navurl
+  // // #endif
+  // //#ifdef APP-PLUS
+  // plus.runtime.openURL(listimg[index].navurl);
+  // //#endif
 }
 //下方轮播图
 function openurl3(index) {
-	console.log(list2.value[index].navurl)
-	uni.navigateTo({
-		url: list2.value[index].navurl
-	})
-	// // #ifdef H5
-	// window.location.href = listimg[index].navurl
-	// // #endif
-	// // #ifdef APP-PLUS
-	 plus.runtime.openURL(listimg[index].navurl);
-	// //#endif
-
+  console.log(list2.value[index].navurl);
+  uni.navigateTo({
+    url: list2.value[index].navurl,
+  });
+  // // #ifdef H5
+  // window.location.href = listimg[index].navurl
+  // // #endif
+  // // #ifdef APP-PLUS
+  plus.runtime.openURL(listimg[index].navurl);
+  // //#endif
 }
- function navNews(id) {
-	console.log(id);
-	uni.navigateTo({
-		url: "/pages/news/detail/detail?detailData=" + id
-	})
+function navNews(id) {
+  console.log(id);
+  uni.navigateTo({
+    url: "/pages/news/detail/detail?detailData=" + id,
+  });
 }
 function navNewsBar() {
-	uni.switchTab({
-		url: "/pages/news/news"
-	})
+  uni.switchTab({
+    url: "/pages/news/news",
+  });
 }
 function get_news() {
+  request
+    .httpTokenRequest(
+      {
+        url: "news/item/1?pageNum=1",
+        method: "get",
+      },
+      {}
+    )
+    .then((res) => {
+      newslist.value = res.data.rows;
 
-
-
-	request.httpTokenRequest({
-		url: 'news/item/1?pageNum=1',
-		method: 'get'
-	}, {}).then(res => {
-		newslist.value = res.data.rows
-
-		// arr.push(...res.data.rows)
-
-	})
-
-
+      // arr.push(...res.data.rows)
+    });
 }
 
 function onChangeDark() {
-	proxy.$refs.app.setDark()
-	// #ifdef APP-PLUS
+  proxy.$refs.app.setDark();
+  // #ifdef APP-PLUS
 
-	const anhei = uni.getStorageSync('anhei')
-	uni.setStorageSync('anhei', !anhei)
-	// #endif
-
+  const anhei = uni.getStorageSync("anhei");
+  uni.setStorageSync("anhei", !anhei);
+  // #endif
 }
 
 function search() {
-	if (str.value.trim() === "") {
-		proxy.$refs.msg.show({
-			model: "error",
-			text: "不能为空",
-			mask: true
-		})
-		return;
-	}
-	uni.navigateTo({
-		url: "search?key=" + str.value
-	})
+  if (str.value.trim() === "") {
+    proxy.$refs.msg.show({
+      model: "error",
+      text: "不能为空",
+      mask: true,
+    });
+    return;
+  }
+  uni.navigateTo({
+    url: "search?key=" + str.value,
+  });
 }
 
 function seLocal() {
-	if (language("language") == "English-US") {
-		uni.setLocale("zh-Hans")
-	} else {
-		uni.setLocale("en")
-	}
+  if (language("language") == "English-US") {
+    uni.setLocale("zh-Hans");
+  } else {
+    uni.setLocale("en");
+  }
 }
 
 function warinToast() {
-	proxy.$refs.msg.show({
-		model: "wait",
-		text: "还未开放",
-		mask: true
-	})
+  proxy.$refs.msg.show({
+    model: "wait",
+    text: "还未开放",
+    mask: true,
+  });
 }
 
 function setTheme(colorname: string) {
-	proxy.$refs.app.setTheme(colorname)
+  proxy.$refs.app.setTheme(colorname);
 }
 
 function changeCustomColor() {
-	console.log(1)
-	if (!showCustomColor.value || !showCustomName.value) {
-		proxy.$refs.msg.show({
-			model: "error",
-			text: "必填内容",
-			mask: true
-		})
-		return;
-	}
-	showCustom.value = false;
-	store.setTmVuetifyAddTheme(showCustomName.value, showCustomColor.value)
+  console.log(1);
+  if (!showCustomColor.value || !showCustomName.value) {
+    proxy.$refs.msg.show({
+      model: "error",
+      text: "必填内容",
+      mask: true,
+    });
+    return;
+  }
+  showCustom.value = false;
+  store.setTmVuetifyAddTheme(showCustomName.value, showCustomColor.value);
 }
 
-
 onLoad(() => {
-	getbannaer()
-	uni.setStorageSync('anhei', store.tmStore.dark)
-	get_gongneng()
-	get_news()
-	// #ifdef MP-WEIXIN
+  getbannaer();
+  uni.setStorageSync("anhei", store.tmStore.dark);
+  get_gongneng();
+  get_news();
+  // #ifdef MP-WEIXIN
 
-	// 在页面中定义插屏广告
-	let interstitialAd = null
+  // 在页面中定义插屏广告
+  let interstitialAd = null;
 
-	// 在页面onLoad回调事件中创建插屏广告实例
-	if (wx.createInterstitialAd) {
-		interstitialAd = wx.createInterstitialAd({
-			adUnitId: 'adunit-197d1e1914ce88ec'
-		})
-		interstitialAd.onLoad(() => { })
-		interstitialAd.onError((err) => { })
-		interstitialAd.onClose(() => { })
-	}
-	// 在适合的场景显示插屏广告
-	if (interstitialAd) {
-		interstitialAd.show().catch((err) => {
-			console.error(err)
-		})
-	}
+  // 在页面onLoad回调事件中创建插屏广告实例
+  if (wx.createInterstitialAd) {
+    interstitialAd = wx.createInterstitialAd({
+      adUnitId: "adunit-197d1e1914ce88ec",
+    });
+    interstitialAd.onLoad(() => {});
+    interstitialAd.onError((err) => {});
+    interstitialAd.onClose(() => {});
+  }
+  // 在适合的场景显示插屏广告
+  if (interstitialAd) {
+    interstitialAd.show().catch((err) => {
+      console.error(err);
+    });
+  }
 
-	// #endif
-})
+  // #endif
+});
 </script>
 <style lang="scss">
-
 </style>

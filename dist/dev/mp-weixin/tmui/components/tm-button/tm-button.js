@@ -140,9 +140,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "touchstart", "touchmove", "touchcancel", "touchend", "tap", "longpress", "getphonenumber", "getUserInfo", "getUserProfile", "error", "opensetting", "launchapp", "contact"],
   setup(__props, { emit: emits }) {
-    var _a;
+    var _a, _b, _c;
     const props = __props;
-    const { proxy } = common_vendor.getCurrentInstance();
+    const proxy = (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const formtype = common_vendor.computed$1(() => props.formType);
     let FormParent = null;
     if (formtype.value == "reset" || formtype.value == "submit") {
@@ -151,12 +151,18 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         if ((FormParent == null ? void 0 : FormParent.tmFormComnameId) == "tmFormId" || !FormParent) {
           break;
         } else {
-          FormParent = (_a = FormParent == null ? void 0 : FormParent.$parent) != null ? _a : void 0;
+          FormParent = (_c = FormParent == null ? void 0 : FormParent.$parent) != null ? _c : void 0;
         }
       }
     }
     const customCSSStyle = common_vendor.computed$1(() => {
-      return __spreadValues({ height: btnSizeObj.value.h + props.unit }, tmui_tool_lib_minxs.computedStyle(props));
+      return __spreadProps(__spreadValues({
+        height: btnSizeObj.value.h + props.unit
+      }, tmui_tool_lib_minxs.computedStyle(props)), {
+        border: "0px solid rgba(0, 0, 0, 0)",
+        background: "rgba(0, 0, 0, 0)",
+        borderRadius: "0px"
+      });
     });
     const customClass = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedClass(props));
     const isclickOn = common_vendor.ref(false);
@@ -292,10 +298,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         A: common_vendor.s(common_vendor.unref(customCSSStyle)),
         B: common_vendor.p({
           ["no-level"]: true,
-          _style: [{
+          _style: {
             opacity: isclickOn.value || common_vendor.unref(_disabled) ? 0.7 : 1
-          }],
-          ["hover-class"]: "bhover",
+          },
+          ["hover-class"]: "none",
           round: common_vendor.unref(btnSizeObj).round,
           width: common_vendor.unref(btnSizeObj).w,
           height: common_vendor.unref(btnSizeObj).h,
@@ -315,8 +321,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           ["border-style"]: props.borderStyle,
           border: props.border,
           blur: props.blur,
-          unit: props.unit,
-          _class: "flex flex-row flex-center pointer"
+          _class: "flex flex-row flex-center "
         })
       });
     };

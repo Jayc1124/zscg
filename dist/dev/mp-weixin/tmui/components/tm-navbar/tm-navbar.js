@@ -135,8 +135,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "close"],
   setup(__props, { emit: emits }) {
+    var _a, _b;
     const props = __props;
     tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const _height = common_vendor.computed$1(() => props.height);
     const _width = common_vendor.index.getSystemInfoSync().windowWidth;
     const statusBarHeight = common_vendor.index.getSystemInfoSync().statusBarHeight;
@@ -199,7 +201,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         e: common_vendor.p({
           unit: props.unit,
           ["font-size"]: props.iconFontSize,
-          _class: "pointer pb-12 pt-12 pr-12",
+          _class: "pointer pb-12 pt-12 px-24",
           color: common_vendor.unref(_homeColor),
           name: "tmicon-angle-left"
         })
@@ -209,7 +211,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         g: common_vendor.o(backhome),
         h: common_vendor.p({
           unit: props.unit,
-          _class: "pointer  pb-12 pt-12 pr-12",
+          _class: "pointer  pb-12 pt-12 px-24",
           color: common_vendor.unref(_homeColor),
           ["font-size"]: props.iconFontSize,
           name: "tmicon-md-home"

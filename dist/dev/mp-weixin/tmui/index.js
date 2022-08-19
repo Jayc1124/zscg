@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var _a, _b, _c;
+var _a, _b;
 var common_vendor = require("../common/vendor.js");
 var tmui_tool_lib_fetch = require("./tool/lib/fetch.js");
 var tmui_tool_theme_theme = require("./tool/theme/theme.js");
@@ -29,9 +29,10 @@ var tmui_tool_function_preview = require("./tool/function/preview.js");
 let pages = [];
 common_vendor.t.pages.forEach((el) => {
   var _a2, _b2;
+  let customType = (_b2 = (_a2 = el == null ? void 0 : el.style) == null ? void 0 : _a2.navigationStyle) != null ? _b2 : "default";
   pages.push({
     path: el.path,
-    custom: (_b2 = (_a2 = el == null ? void 0 : el.style) == null ? void 0 : _a2.navigationStyle) != null ? _b2 : "default"
+    custom: customType
   });
 });
 if (Array.isArray((_a = common_vendor.t) == null ? void 0 : _a.subPackages)) {
@@ -39,20 +40,24 @@ if (Array.isArray((_a = common_vendor.t) == null ? void 0 : _a.subPackages)) {
     let rootPath = el.root;
     el.pages.forEach((el2) => {
       var _a2, _b2;
+      let elany = el2;
       pages.push({
-        path: rootPath + "/" + el2.path,
-        custom: (_b2 = (_a2 = el2 == null ? void 0 : el2.style) == null ? void 0 : _a2.navigationStyle) != null ? _b2 : "default"
+        path: rootPath + "/" + elany.path,
+        custom: (_b2 = (_a2 = elany == null ? void 0 : elany.style) == null ? void 0 : _a2.navigationStyle) != null ? _b2 : "default"
       });
     });
   });
 }
+let pagers = common_vendor.t;
+let tabBar = (_b = pagers == null ? void 0 : pagers.tabBar) != null ? _b : {
+  color: "",
+  selectedColor: "",
+  borderStyle: "",
+  backgroundColor: "",
+  list: []
+};
 const $tm = {
-  tabBar: (_c = (_b = common_vendor.t) == null ? void 0 : _b.tabBar) != null ? _c : {
-    color: "",
-    selectedColor: "",
-    borderStyle: "",
-    backgroundColor: ""
-  },
+  tabBar,
   pages,
   isColor: tmui_tool_theme_theme.theme.isCssColor,
   u: __spreadProps(__spreadValues({}, tmui_tool_function_util.util), { preview: tmui_tool_function_preview.preview }),

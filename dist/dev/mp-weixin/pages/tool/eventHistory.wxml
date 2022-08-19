@@ -1,0 +1,1 @@
+<view><view wx:for="{{a}}" wx:for-item="item" wx:key="d" class="body"><view bindtap="{{item.c}}"><view style="font-weight:bold;font-size:35upx">{{item.a}}</view><view style="color:#a7a7a7">{{item.b}}</view></view></view></view>

@@ -46,18 +46,15 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _easycom_u_checkbox2 = common_vendor.resolveComponent("u-checkbox");
-  const _easycom_u_slider2 = common_vendor.resolveComponent("u-slider");
-  const _easycom_u_switch2 = common_vendor.resolveComponent("u-switch");
+  const _component_u_checkbox = common_vendor.resolveComponent("u-checkbox");
+  const _component_u_slider = common_vendor.resolveComponent("u-slider");
+  const _component_u_switch = common_vendor.resolveComponent("u-switch");
   const _easycom_t_color_picker2 = common_vendor.resolveComponent("t-color-picker");
-  (_easycom_u_checkbox2 + _easycom_u_slider2 + _easycom_u_switch2 + _easycom_t_color_picker2)();
+  (_component_u_checkbox + _component_u_slider + _component_u_switch + _easycom_t_color_picker2)();
 }
-const _easycom_u_checkbox = () => "../../../uni_modules/vk-uview-ui/components/u-checkbox/u-checkbox.js";
-const _easycom_u_slider = () => "../../../uni_modules/vk-uview-ui/components/u-slider/u-slider.js";
-const _easycom_u_switch = () => "../../../uni_modules/vk-uview-ui/components/u-switch/u-switch.js";
 const _easycom_t_color_picker = () => "../../../components/t-color-picker/t-color-picker.js";
 if (!Math) {
-  (_easycom_u_checkbox + _easycom_u_slider + _easycom_u_switch + _easycom_t_color_picker)();
+  _easycom_t_color_picker();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({

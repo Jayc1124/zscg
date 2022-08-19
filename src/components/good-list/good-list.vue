@@ -8,7 +8,7 @@
 					<!-- <tm-divider></tm-divider> -->
 					<view style="display: flex; flex-flow:row;justify-content: space-between;">
 						<view style="width:49%;">
-							<tm-image preview :round="2" :width="310" :height="200"
+							<tm-image  :round="2" :width="310" :height="200"
 								:src="good.img||'https://cdn2.jaycao.com/cdtu/cdtunews.jpg'">
 							</tm-image>
 						</view>

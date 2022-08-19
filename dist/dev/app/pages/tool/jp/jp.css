@@ -1,0 +1,150 @@
+
+.noNvueBorder[data-v-f76eb362]{
+	box-sizing: border-box;
+}
+
+
+
+.spin[data-v-513b896a] {
+	transform-origin: 50% 50%;
+	-webkit-animation: xhRote-513b896a 1.2s infinite linear;
+	        animation: xhRote-513b896a 1.2s infinite linear;
+}
+@-webkit-keyframes xhRote-513b896a {
+0% {
+		transform: rotate(0deg);
+}
+100% {
+		transform: rotate(360deg);
+}
+}
+@keyframes xhRote-513b896a {
+0% {
+		transform: rotate(0deg);
+}
+100% {
+		transform: rotate(360deg);
+}
+}
+
+
+
+
+.text-view[data-v-9735369a]{
+		box-sizing: border-box;
+}
+
+
+
+.button[data-v-fbe2c206]{
+	background: rgba(0, 0, 0, 0);
+	border: 0px solid rgba(0, 0, 0, 0);
+	padding: 0px;
+	border-radius: 0px;
+}
+.buttonHover[data-v-fbe2c206]{
+	background: rgba(0, 0, 0, 0);
+}
+.bhover[data-v-fbe2c206]{
+	opacity: 0.7;
+}
+.button[data-v-fbe2c206]::after{
+	background: transparent !important;
+	background-color: transparent  !important;
+	border:none  !important;
+	border-radius: 0px  !important;
+}
+
+
+
+
+uni-input[data-v-0f58feaf],uni-textarea[data-v-0f58feaf]{
+    background-color: transparent;
+    background: transparent;
+}
+
+
+
+.fade[data-v-155cc8af] {
+		opacity: 0;
+}
+.fade-reverse[data-v-155cc8af] {
+		opacity: 1;
+}
+.up[data-v-155cc8af] {
+		transform: translate3d(0,0%0);
+}
+.up-reverse[data-v-155cc8af] {
+		transform: translateY(-101%);
+}
+.down[data-v-155cc8af] {
+		transform: translateY(0%);
+}
+.down-reverse[data-v-155cc8af] {
+		transform: translateY(101%);
+}
+.left[data-v-155cc8af] {
+		transform: translateX(0%);
+}
+.left-reverse[data-v-155cc8af] {
+		transform: translateX(-101%);
+}
+.right[data-v-155cc8af] {
+		transform: translateX(0%);
+}
+.right-reverse[data-v-155cc8af] {
+		transform: translateX(101%);
+}
+.zoom[data-v-155cc8af] {
+		transform: scale(0.7, 0.7);
+		opacity: 0;
+}
+.zoom-reverse[data-v-155cc8af] {
+		transform: scale(1, 1);
+		opacity: 1;
+}
+
+
+
+.menu[data-v-a00065e2] {
+		z-index: 999;
+		transform: translateX(-101%);
+}
+.menu[data-v-a00065e2] {
+		transition-duration: 0.25s;
+		transition-timing-function: ease;
+		transition-property: transform;
+		transition-delay: 0ms;
+		transform: translateX(-101%);
+		z-index: 999;
+}
+.menuOn[data-v-a00065e2] {
+		transform: translateX(0%);
+}
+.body[data-v-a00065e2] {
+		transition-duration: 0.25s;
+		transition-timing-function: ease;
+		transition-property: transform;
+		transition-delay: 0ms;
+		transform: translateX(0%) scale(1);
+}
+.bodyOn[data-v-a00065e2] {
+		transform: translateX(70%) scale(0.8);
+}
+
+
+
+
+.blurbg[data-v-cf63bea2]{
+
+		-webkit-backdrop-filter: blur(4px);
+
+		        backdrop-filter: blur(4px);
+
+
+
+
+
+		opacity: 0;
+}
+

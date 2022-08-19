@@ -1,3 +1,4 @@
+@import "../../nvue.wxss";
 /*
 	sticky生效条件：
 	1、父元素不能overflow:hidden或者overflow:auto属性。(mescroll-body设置:sticky="true"即可, mescroll-uni本身没有设置overflow)

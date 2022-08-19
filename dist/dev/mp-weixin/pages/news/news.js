@@ -2,7 +2,11 @@
 var common_request = require("../../common/request.js");
 var uni_modules_mescrollUni_components_mescrollUni_mescrollMixins = require("../../uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js");
 var common_vendor = require("../../common/vendor.js");
+const TabBar = () => "../../components/TheTabBar.js";
 const _sfc_main = {
+  components: {
+    TabBar
+  },
   mixins: [uni_modules_mescrollUni_components_mescrollUni_mescrollMixins.MescrollMixin],
   data() {
     return {
@@ -19,15 +23,6 @@ const _sfc_main = {
           UserImage: "https://n1-q.mafengwo.net/s12/M00/D1/C3/wKgED1v3uaOADWepACAWS9q5Rhg19.jpeg?imageMogr2%2Fthumbnail%2F%21200x200r%2Fgravity%2FCenter%2Fcrop%2F%21200x200%2Fquality%2F90",
           UserName: "\u8BD7\u7684PHOTO",
           UserGPS: "\u676D\u5DDE"
-        },
-        {
-          id: 2,
-          Image: "https://b1-q.mafengwo.net/s15/M00/29/CD/CoUBGWEOpSGAGvNEAAcdPGsxn34626.png",
-          mp4: "",
-          title: "\u3010\u8702\u999611\u5468\u5E74\u7EAA\u5FF5\u30114018\u5929\u540E\uFF0C\u6211\u4EEC\u7EE7\u7EED\u7EA6\u5B9A\uFF01",
-          UserImage: "https://b1-q.mafengwo.net/s10/M00/73/96/wKgBZ1kSsyKAa_91AACgQYkA64o659.png?imageMogr2%2Fthumbnail%2F%21200x200r%2Fgravity%2FCenter%2Fcrop%2F%21200x200%2Fquality%2F90",
-          UserName: "\u6E38\u8BB0\u603B\u7F16\u8F91",
-          UserGPS: "\u5317\u4EAC"
         },
         {
           id: 3,
@@ -107,7 +102,6 @@ const _sfc_main = {
     };
   },
   onLoad() {
-    console.log(this.goods);
   },
   methods: {
     cu() {
@@ -146,8 +140,9 @@ if (!Array) {
   const _easycom_good_list2 = common_vendor.resolveComponent("good-list");
   const _easycom_tm_sticky2 = common_vendor.resolveComponent("tm-sticky");
   const _easycom_mescroll_uni2 = common_vendor.resolveComponent("mescroll-uni");
+  const _component_tab_bar = common_vendor.resolveComponent("tab-bar");
   const _easycom_tm_app2 = common_vendor.resolveComponent("tm-app");
-  (_easycom_tm_navbar2 + _easycom_FatFatMeng_Swiper_mfw2 + _easycom_tm_input2 + _easycom_tm_divider2 + _easycom_tm_tabs2 + _easycom_tm_sheet2 + _easycom_tm_skeleton2 + _easycom_good_list2 + _easycom_tm_sticky2 + _easycom_mescroll_uni2 + _easycom_tm_app2)();
+  (_easycom_tm_navbar2 + _easycom_FatFatMeng_Swiper_mfw2 + _easycom_tm_input2 + _easycom_tm_divider2 + _easycom_tm_tabs2 + _easycom_tm_sheet2 + _easycom_tm_skeleton2 + _easycom_good_list2 + _easycom_tm_sticky2 + _easycom_mescroll_uni2 + _component_tab_bar + _easycom_tm_app2)();
 }
 const _easycom_tm_navbar = () => "../../tmui/components/tm-navbar/tm-navbar.js";
 const _easycom_FatFatMeng_Swiper_mfw = () => "../../uni_modules/FatFatMeng-Swiper-mfw/components/FatFatMeng-Swiper-mfw/FatFatMeng-Swiper-mfw.js";
@@ -224,7 +219,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     t: common_vendor.p({
       height: "100%"
     }),
-    v: common_vendor.sr("app", "a851f742-0")
+    v: common_vendor.p({
+      active: 1
+    }),
+    w: common_vendor.sr("app", "a851f742-0")
   });
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/Code/app/tmui-cli-zscg/src/pages/news/news.vue"]]);

@@ -21,11 +21,11 @@
 	var search;
 	// #ifndef H5 || APP-PLUS-NVUE || MP-360
 	import trees from './libs/trees';
-	var cache = {},
+  import Parser from './libs/MpHtmlParser.js'
+	var cache = {};
 		// #ifdef MP-WEIXIN || MP-TOUTIAO
-		fs = uni.getFileSystemManager ? uni.getFileSystemManager() : null,
+	var	fs = uni.getFileSystemManager ? uni.getFileSystemManager() : null;
 		// #endif
-		Parser = require('./libs/MpHtmlParser.js');
 	var dom;
 	// 计算 cache 的 key
 	function hash(str) {
@@ -35,11 +35,11 @@
 	}
 	// #endif
 	// #ifdef H5 || APP-PLUS-NVUE || MP-360
+  import cfg from './libs/config.js'
 	var {
 		windowWidth,
 		platform
-	} = uni.getSystemInfoSync(),
-		cfg = require('./libs/config.js');
+	} = uni.getSystemInfoSync()
 	// #endif
 	// #ifdef APP-PLUS-NVUE
 	var weexDom = weex.requireModule('dom');
@@ -72,6 +72,7 @@
 	 */
 	export default {
 		name: 'parser',
+    emits: ["parse", "load", "ready", "error", "imgtap", "linkpress"],
 		data() {
 			return {
 				// #ifdef H5 || MP-360
@@ -94,6 +95,10 @@
 		props: {
 			html: String,
 			autopause: {
+				type: Boolean,
+				default: true
+			},
+      preview: {
 				type: Boolean,
 				default: true
 			},
@@ -184,27 +189,53 @@
 			}, 30)
 			// #endif
 		},
-		beforeDestroy() {
-			// #ifdef H5 || MP-360
-			if (this._observer) this._observer.disconnect();
-			// #endif
-			this.imgList.each(src => {
-				// #ifdef APP-PLUS
-				if (src && src.includes('_doc')) {
-					plus.io.resolveLocalFileSystemURL(src, entry => {
-						entry.remove();
-					});
-				}
-				// #endif
-				// #ifdef MP-WEIXIN || MP-TOUTIAO
-				if (src && src.includes(uni.env.USER_DATA_PATH))
-					fs && fs.unlink({
-						filePath: src
-					})
-				// #endif
-			})
-			clearInterval(this._timer);
-		},
+    // #ifndef VUE3
+    beforeDestroy() {
+    	// #ifdef H5 || MP-360
+    	if (this._observer) this._observer.disconnect();
+    	// #endif
+    	this.imgList.each(src => {
+    		// #ifdef APP-PLUS
+    		if (src && src.includes('_doc')) {
+    			plus.io.resolveLocalFileSystemURL(src, entry => {
+    				entry.remove();
+    			});
+    		}
+    		// #endif
+    		// #ifdef MP-WEIXIN || MP-TOUTIAO
+    		if (src && src.includes(uni.env.USER_DATA_PATH))
+    			fs && fs.unlink({
+    				filePath: src
+    			})
+    		// #endif
+    	})
+    	clearInterval(this._timer);
+    },
+    // #endif
+    
+    // #ifdef VUE3
+    beforeUnmount() {
+      // #ifdef H5 || MP-360
+      if (this._observer) this._observer.disconnect();
+      // #endif
+      this.imgList.each(src => {
+      	// #ifdef APP-PLUS
+      	if (src && src.includes('_doc')) {
+      		plus.io.resolveLocalFileSystemURL(src, entry => {
+      			entry.remove();
+      		});
+      	}
+      	// #endif
+      	// #ifdef MP-WEIXIN || MP-TOUTIAO
+      	if (src && src.includes(uni.env.USER_DATA_PATH))
+      		fs && fs.unlink({
+      			filePath: src
+      		})
+      	// #endif
+      })
+      clearInterval(this._timer);
+    },
+    // #endif
 		methods: {
 			// 设置富文本内容
 			setContent(html, append) {
@@ -297,7 +328,7 @@
 						_ts.imgList.push(img.getAttribute('original-src') || img.src || img.getAttribute('data-src'));
 						img.onclick = function(e) {
 							e.stopPropagation();
-							var preview = true;
+							var preview = _ts.preview;
 							this.ignore = () => preview = false;
 							_ts.$emit('imgtap', this);
 							if (preview) {

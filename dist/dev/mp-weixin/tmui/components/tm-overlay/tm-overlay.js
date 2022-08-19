@@ -58,7 +58,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "open", "close", "update:show"],
   setup(__props, { expose, emit: emits }) {
+    var _a, _b;
     const props = __props;
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const customCSSStyle = tmui_tool_lib_minxs.computedStyle(props);
     const customClass = tmui_tool_lib_minxs.computedClass(props);
     const width = common_vendor.ref(0);
@@ -76,6 +78,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         break;
       }
     }
+    sysinfo.windowHeight + sysinfo.windowTop;
     let timerId = NaN;
     const animationData = common_vendor.ref(null);
     const showMask = common_vendor.ref(false);

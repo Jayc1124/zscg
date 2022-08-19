@@ -77,4 +77,4 @@ cfg.ignoreTags.iframe = void 0;
 Object.assign(cfg.trustTags, makeMap('embed,iframe'));
 // #endif
 
-module.exports = cfg;
+export default cfg;

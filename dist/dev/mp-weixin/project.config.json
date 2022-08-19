@@ -6,18 +6,20 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": true,
     "minified": true,
+    "postcss": true,
+    "es6": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "ignoreUploadUnusedFiles": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.3",
+  "libVersion": "",
   "appid": "wx5a488e3a5f3cd592",
-  "projectname": "tmui3.0",
+  "projectname": "掌上成工",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

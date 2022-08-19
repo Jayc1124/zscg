@@ -1,0 +1,29 @@
+
+page {
+		background-color: #FFFFFF;
+}
+.popup {
+		padding: 40rpx;
+}
+.u-f-ajc {
+		display: flex;
+		justify-content: center;
+}
+.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+}
+.rect {
+		border-radius: 20rpx;
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.title {
+		font-weight: bold;
+}

@@ -1,9 +1,4 @@
-<!-- 
-	2021/6/29
-	xjm
-	2524931333@qq.com 
--->
-//<!-- #ifdef APP APP-PLUS -->
+
 <template>
 	<view>
 		<view class="cu-bar bg-white ">
@@ -130,4 +125,4 @@
 
 </style>
 
-<!-- #endif -->
+

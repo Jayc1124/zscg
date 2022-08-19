@@ -1,73 +1,127 @@
 <template>
-	<view>
-		<u-toast ref="uToast" />
-		<u-mask z-index='99999' :show="jz_show" @click="show = false">
-			<view class="warp">
-				<view class="rect u-f-ajc" @tap.stop>
-					<view class="title">
-						{{this.title}}
-					</view>
-					<u-loading size="30" class="loading" mode="circle" color="pink"></u-loading>
-				</view>
-			</view>
-		</u-mask>
-		<view class="u-flex-col u-p-30 u-col-center">
-			<u-image width='150rpx' height='150rpx' :src="data.avatar" shape="circle"></u-image>
-		</view>
-		<u-cell-group>
-			<u-cell-item title="用户名" :value="data.userName"></u-cell-item>
-			<u-cell-item title="账号" :value="data.xh"></u-cell-item>
-			<u-cell-item title="电话" :value="data.number"></u-cell-item>
-			<u-cell-item title="性别" :value="data.sex||'保密'"></u-cell-item>
-			<u-cell-item title="专业" :value="data.depName"></u-cell-item>
-			<u-cell-item title="校区" :value="xq_xs" @click="bangding(2)"></u-cell-item>
-			<u-cell-item title="教务密码" :value="jwpwd_xs" @click="bangding(0)"></u-cell-item>
-			<u-cell-item title="邮箱" :value="email_xs" @click="bangding(1)"></u-cell-item>
-		</u-cell-group>
-		<u-picker @confirm="tijiao" mode="selector" v-model="show2"  :default-selector="[0]" :range="selectorObj" range-key="cateName"></u-picker>
-		<u-popup width="500" height="500" border-radius="10" v-model="show" mode="center">
-			<view style="display: flex; justify-content:center;flex-flow: column;align-items:center;">
-				<view style="font-weight: bold;margin-right: 20upx;text-align: center; margin-top: 30upx;">
-					教务系统密码
-				</view>
-				<view
-					style=" margin-top: 80upx; display: flex; padding: 15upx;align-items: center;justify-content: center;">
-					<input
-						style=" border-radius: 10upx; height:100upx;background-color:rgba(0, 0, 255, 0.4);text-align: center;"
-						type="text" v-model="jwpwd" />
-				</view>
-				<u-button style=" margin-top: 80upx;" @click="xiugai(0)">修改</u-button>
-			</view>
-		</u-popup>
+    <tm-app >
+		<tm-navbar title="个人信息" :beforeBack="false" :hideBack="true" :hideHome="true">
+			<template v-slot:right>
+				<!-- <tm-icon name="tmicon-plus"></tm-icon> -->
+			</template>
+		</tm-navbar>
+        <tm-sheet>
+            <tm-text :font-size="24" _class="font-weight-b" color="grey" label="1.使用教务功能和二课报名必须得绑定个人密码"></tm-text>
+			<tm-divider></tm-divider>
+			<tm-text :font-size="24" _class="font-weight-b " color="grey" label="3.让同学进群,希望能获得大家的反馈,才有继续的必要"></tm-text>
+																<tm-divider></tm-divider>
+			<tm-text :font-size="24" _class="font-weight-b " color="grey" label="1.兴趣驱动,用爱发电~"></tm-text>
+											<tm-divider></tm-divider>
+			<tm-text :font-size="24" _class="font-weight-b " color="grey" label="4.我温你哭,我在群里等你~"></tm-text>
+	
+		
+			
+        </tm-sheet>
+ 
+        <view class="mb-32 mx-32 round-3 overflow">
+            <tm-cell showAvatar avatar="https://picsum.photos/200"  :margin="[0, 0]" :titleFontSize="30" title="">
+			  <template v-slot:right>
+                                 <tm-tag text :shadow="0" icon="tmicon-weixinzhifu" color="orange" size="l" :label="data.sign==1?'已加群':'未加群'"></tm-tag>
+                </template> </tm-cell>
+            <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="姓名">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.userName"></tm-text>
+                </template>
+            </tm-cell>
+		  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="账号">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.xh"></tm-text>
+                </template>
+            </tm-cell>
 
-		<u-popup width="500" height="500" border-radius="10" v-model="show1" mode="center">
-			<view style="display: flex; justify-content:center;flex-flow: column;align-items:center;">
-				<view style="font-weight: bold;margin-right: 20upx;text-align: center; margin-top: 30upx;">
-					邮箱
-				</view>
-				<view
-					style=" margin-top: 80upx; display: flex; padding: 15upx;align-items: center;justify-content: center;">
-					<input
-						style=" border-radius: 10upx; height:100upx;background-color:rgba(0, 0, 255, 0.4);text-align: center;"
-						type="text" v-model="youxiang" />
-				</view>
-				<u-button style=" margin-top: 80upx;" @click="xiugai(1)">修改</u-button>
-			</view>
-		</u-popup>
+			  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="性别">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.sex||'保密'"></tm-text>
+                </template>
+            </tm-cell>
+
+			  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="专业">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.depName"></tm-text>
+                </template>
+            </tm-cell>
+
+			  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="校区"  @click="bangding(2)">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.xq==1? '郫都校区':'宜宾校区'"></tm-text>
+                </template>
+            </tm-cell>
+
+		  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="教务密码" @click="bangding(0)">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.jwpwd||'点击绑定教务密码'"></tm-text>
+                </template>
+            </tm-cell>
+
+			  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="青春成工密码" @click="bangding(4)">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.erkePwd||'点击绑定青春成工密码'"></tm-text>
+                </template>
+            </tm-cell>
+
+			
+		  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="邮箱" @click="bangding(1)">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="youxiang||'点击绑定邮箱'"></tm-text>
+                </template>
+            </tm-cell>
+				  <tm-cell  :margin="[0, 0]" :titleFontSize="30" title="QQ" @click="bangding(3)">
+                <template v-slot:right>
+                   <tm-text :font-size="24" _class="font-weight-c" color="grey" :label="data.qq||'点击绑定QQ'"></tm-text>
+                </template>
+            </tm-cell>
+		
+          
+        </view>
+   
+	<view>
+	
+		 <tm-drawer placement="center" v-model:show="show"  @ok="xiugai(0)" okText="修改">
+		 <tm-input  v-model="jwpwd"></tm-input></tm-drawer>
+
+		 	 <tm-drawer placement="center" v-model:show="show1" @ok="xiugai(1)" okText="修改">
+		 <tm-input  v-model="youxiang"></tm-input></tm-drawer>
+		 
+		 		 	 <tm-drawer placement="center" v-model:show="show2" @ok="xiugai(2)" okText="修改">
+					 <tm-text label="1是成都2是宜宾"></tm-text>
+		 <tm-input  v-model="data.xq"></tm-input></tm-drawer>
+
+
+		 		 	 <tm-drawer placement="center" v-model:show="show3" @ok="xiugai(3)" okText="修改">
+		 <tm-input  v-model="qq"></tm-input></tm-drawer>
+
+		 		
+
+ 	 <tm-drawer placement="center" v-model:show="show4" @ok="xiugai(4)">
+		 <tm-input  v-model="data.erkePwd"></tm-input></tm-drawer>
+	
+
 	</view>
+	 </tm-app>
 </template>
 
 <script>
 	import request from '@/common/request.js';
+
 	export default {
+
 		data() {
 			return {
 				jz_show: false,
 				title: '更改中...',
 				data: {},
+				showWin:false,
 				show: false,
 				show1: false,
 				show2: false,
+				show3: false,
+				show4: false,
+				// ekpwd:'',
 				jwpwd: '',
 				youxiang: '',
 				jwpwd_xs: '',
@@ -86,6 +140,7 @@
 		},
 		onLoad(e) {
 			this.data = uni.getStorageSync('userinfo')
+			console.log(this.data)
 			this.shuaxin()
 			if(e.index == 0){
 				this.show = true
@@ -116,6 +171,18 @@
 				} else {
 					this.email_xs = '点击绑定邮箱'
 				}
+						if (this.data.qq) {
+					this.qq = this.data.qq
+					this.qq_xs = this.data.qq
+				} else {
+					this.qq_xs = '点击绑定QQ,用于进群自动激活(必填)'
+				}
+					if (this.data.erkePwd) {
+					this.erkePwd = this.data.erkePwd
+					this.erkePwd_xs = this.data.erkePwd
+				} else {
+					this.erkePwd_xs = '点击绑定QQ,用于进群自动激活(必填)'
+				}
 			},
 			bangding(index) {
 				if (index == 0) {
@@ -124,6 +191,12 @@
 					this.show1 = true
 				} else if (index == 2) {
 					this.show2 = true
+				}
+				else if (index == 3) {
+					this.show3 = true
+				}
+				else if (index == 4) {
+					this.show4 = true
 				}
 			},
 			tijiao(e){
@@ -139,19 +212,19 @@
 						uni.setStorageSync('userinfo', this.data)
 						this.shuaxin()
 					} else {
-						this.$refs.uToast
-							.show({
+						uni.showToast({
 								title: '修改失败',
-								// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-								type: 'error',
-								// 如果不需要图标，请设置为false
-								icon: true
+								// // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+								// type: 'error',
+								// // 如果不需要图标，请设置为false
+								// icon: true
 							})
 					}
 				})
 				
 			},
 			xiugai(index) {
+				this.showWin=true
 				this.jz_show = true
 				if (index == 0) {
 					request.httpTokenRequest({
@@ -165,13 +238,12 @@
 							this.shuaxin()
 							this.show = false
 						} else {
-							this.$refs.uToast
-								.show({
+							uni.showToast({
 									title: '修改失败',
-									// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-									type: 'error',
-									// 如果不需要图标，请设置为false
-									icon: true
+									// // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+									// type: 'error',
+									// // 如果不需要图标，请设置为false
+									// icon: true
 								})
 						}
 					})
@@ -186,6 +258,72 @@
 							uni.setStorageSync('userinfo', this.data)
 							this.shuaxin()
 							this.show1 = false
+						} else {
+							uni.showToast({
+									title: '修改失败',
+									// // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+									// type: 'error',
+									// // 如果不需要图标，请设置为false
+									// icon: true
+								})
+						}
+					})
+				}
+				else if (index == 2) {
+				request.httpTokenRequest({
+					url: 'wx/user/updateXq/?xq=' + this.data.xq,
+					method: 'get'
+				}).then(res => {
+					// this.jz_show = false
+					if (res.data.code == 200) {
+						this.data.xq =this.data.xq
+						uni.setStorageSync('userinfo', this.data)
+						this.shuaxin()
+					} else {
+						uni.showToast({
+								title: '修改失败',
+								// // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+								// type: 'error',
+								// // 如果不需要图标，请设置为false
+								// icon: true
+							})
+					}
+				})
+				}
+				else if (index == 3) {
+					request.httpTokenRequest({
+						url: 'wx/user/updateQq/?qq=' + this.qq,
+						method: 'get'
+					}).then(res => {
+						this.jz_show = false
+						if (res.data.code == 200) {
+							this.data.qq = this.qq
+							uni.setStorageSync('userinfo', this.data)
+							this.shuaxin()
+							this.show1 = false
+						} else {
+							this.$refs.uToast
+								.show({
+									title: '修改失败',
+									// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+									type: 'error',
+									// 如果不需要图标，请设置为false
+									icon: true
+								})
+						}
+					})
+				}
+				else if (index == 4) {
+					request.httpTokenRequest({
+						url: 'wx/user/erkePwd/?mm=' + this.erkePwd,
+						method: 'get'
+					}).then(res => {
+						this.jz_show = false
+						if (res.data.code == 200) {
+							this.data.erkePwd = this.erkePwd
+							uni.setStorageSync('userinfo', this.data)
+							this.shuaxin()
+							this.show1= false
 						} else {
 							this.$refs.uToast
 								.show({

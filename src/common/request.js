@@ -31,7 +31,7 @@ const request = (opts, data) => {
 	let promise = new Promise(function(resolve, reject) {
 		uni.request(httpDefaultOpts).then(
 			(res) => {
-				resolve(res[1])
+				resolve(res)
 			}
 		).catch(
 			(response) => {
@@ -43,6 +43,9 @@ const request = (opts, data) => {
 };
 // 不带token请求
 const httpRequest = (opts, data) => {
+	uni.showLoading({
+		title: '加载中'
+	});
 	uni.onNetworkStatusChange(function(res) {
 		if (!res.isConnected) {
 			uni.showToast({
@@ -67,13 +70,16 @@ const httpRequest = (opts, data) => {
 		dataType: 'json',
 	}
 	let promise = new Promise(function(resolve, reject) {
+		
 		uni.request(httpDefaultOpts).then(
 			(res) => {
 				// console.log(res[1])
+				uni.hideLoading()
 				resolve(res)
 			}
 		).catch(
 			(response) => {
+				uni.hideLoading()
 				reject(response)
 			}
 		)
@@ -81,6 +87,7 @@ const httpRequest = (opts, data) => {
 	return promise
 };
 const httpTokenRequest = (opts, data) => {
+	
 	uni.onNetworkStatusChange(function(res) {
 		if (!res.isConnected) {
 			uni.showToast({
@@ -109,6 +116,9 @@ const httpTokenRequest = (opts, data) => {
 			}
 		});
 	} else {
+		uni.showLoading({
+			// title: '加载中'
+		});
 		let httpDefaultOpts = {
 			url: baseUrl + opts.url,
 			data: data,
@@ -129,9 +139,13 @@ const httpTokenRequest = (opts, data) => {
 			uni.request(httpDefaultOpts).then(
 				(res) => {
 					if (res.data.code == 200) {
+						uni.hideLoading()
 						resolve(res)
 					} else {
-						if (res[1].data.code == 401) {
+						
+						uni.hideLoading()
+						if (res.data.code == 401) {
+							
 							uni.showToast({
 								title: 'Token已过期',
 								icon: "none",
@@ -143,6 +157,7 @@ const httpTokenRequest = (opts, data) => {
 								uni.setStorageSync('login_id',false);
 							}, 1000)
 						} else {
+							uni.hideLoading()
 							resolve(res)
 							// uni.showToast({
 							// 	title: '' + res[1].data.message,
@@ -153,6 +168,7 @@ const httpTokenRequest = (opts, data) => {
 				}
 			).catch(
 				(response) => {
+					uni.hideLoading()
 					reject(response)
 				}
 			)
@@ -238,6 +254,83 @@ const httpupload = (opts, data) => {
 };
 
 
+const httpJwRequest = (opts, data) => {
+	
+	uni.onNetworkStatusChange(function(res) {
+		if (!res.isConnected) {
+			uni.showToast({
+				title: '网络连接不可用！',
+				icon: 'none'
+			});
+		}
+		return false
+	});
+	let token= uni.getStorageSync("jwToken")
+	console.log("token:"+token)
+	if (token == '' || token == undefined || token == null) {
+		uni.showToast({
+			title: '服务尚未开启',
+			icon: 'none'
+		
+		});
+	} else {
+		uni.showLoading({
+			// title: '加载中'
+		});
+		let httpDefaultOpts = {
+			url: "https://jw.jaycao.com/cdgyxyhd/" + opts.url,
+			data: data,
+			method: opts.method,
+			header: opts.method == 'get' ? {
+				'token': token,
+				'X-Requested-With': 'XMLHttpRequest',
+				"Accept": "application/json",
+				"Content-Type": "application/json; charset=UTF-8"
+			} : {
+				'token': token,
+		
+				'Content-Type': 'application/json; charset=UTF-8'
+			},
+			dataType: 'json',
+		}
+		let promise = new Promise(function(resolve, reject) {
+			uni.request(httpDefaultOpts).then(
+				(res) => {
+					if (res.data.code == 200) {
+						uni.hideLoading()
+						resolve(res)
+					} else {
+						
+						uni.hideLoading()
+						if (res.data.code == 401) {
+							
+							uni.showToast({
+								title: '服务未开启',
+								icon: "none",
+							});
+							
+						} else {
+							uni.hideLoading()
+							resolve(res)
+							// uni.showToast({
+							// 	title: '' + res[1].data.message,
+							// 	icon: 'none'
+							// })
+						}
+					}
+				}
+			).catch(
+				(response) => {
+					uni.hideLoading()
+					reject(response)
+				}
+			)
+		})
+		return promise
+	}
+	// let token = uni.getStorageSync('token')
+	//此token是登录成功后后台返回保存在storage中的
+};
 const hadToken = () => {
 	let token = uni.getStorageSync('token');
 
@@ -257,6 +350,7 @@ const hadToken = () => {
 }
 export default {
 	baseUrl,
+	httpJwRequest,
 	httpRequest,
 	httpTokenRequest,
 	hadToken,

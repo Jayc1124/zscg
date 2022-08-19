@@ -37,7 +37,7 @@
 			<scroll-view :style="[{ width: `${props.width}rpx`, height: `${props.itemHeight + 4}rpx` }]"
 				:scroll-with-animation="true" :scroll-into-view="_scrollToId" :scroll-x="true" :show-scrollbar="false"
 				enable-flex class="tableHeader flex-row relative">
-				<view class="flex flex-row nowrap  nonvue" :class="[_align]"
+				<view class="flex flex-row nowrap  nonvue fulled" :class="[_align]"
 					:style="[{ height: `${props.itemHeight + 4}rpx` }]">
 					<view :id="tabsid + item.key" v-for="(item, index) in cacheTabs" :key="index">
 						<tm-sheet @click="changeKey(item.key)" :round="props.itemRound" :linear="props.itemLinear"
@@ -48,22 +48,27 @@
 								props.activeColor && item.key == _active ? props.activeColor : props.color
 							" :width="props.itemWidth" _class="flex-col flex-col-center-center" :margin="[0, 0]" :padding="[20, 0]"
 							:height="props.itemHeight">
-							<view :style="[props.itemWidth > 0 ? { width: props.itemWidth + 'rpx' } : {}]"
-								class="flex flex-col flex-col-center-center">
-								<tm-badge :dot="item.dot" :color="item.dotColor">
-									<view class="flex flex-row flex-center">
-										<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
-											:color="item.key == _active ? props.activeFontColor : props.unSelectedColor"
-											:font-size="item.key == _active ? props.activeFontSize : props.itemFontSize"
-											:name="item.icon">
-										</tm-icon>
-										<tm-text :userInteractionEnabled="false"
-											:font-size="item.key == _active ? props.activeFontSize : props.itemFontSize"
-											:_class="item.key == _active ? 'text-weight-b' : ''"
-											:color="item.key == _active ? props.activeFontColor : props.unSelectedColor"
-											:label="item.title">
-										</tm-text>
-									</view>
+							<view  :style="[props.itemWidth > 0 ? { width: props.itemWidth + 'rpx' } : {}]"
+								class="flex flex-row flex-row-center-center">
+								<view class="flex flex-row flex-center">
+									<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
+										:color="item.key == _active ? props.activeFontColor : props.unSelectedColor"
+										:font-size="item.key == _active ? props.activeFontSize : props.itemFontSize"
+										:name="item.icon">
+									</tm-icon>
+									<tm-text :userInteractionEnabled="false"
+										:font-size="item.key == _active ? props.activeFontSize : props.itemFontSize"
+										:_class="item.key == _active ? 'text-weight-b' : ''"
+										:color="item.key == _active ? props.activeFontColor : props.unSelectedColor"
+										:label="item.title">
+									</tm-text>
+								</view>
+								
+								<tm-badge v-if="item.dot&&!item.count" dot :color="item.dotColor">
+									<view :style="{ height: `${props.itemHeight/2}rpx` }"></view>
+								</tm-badge>
+								<tm-badge v-if="item.count&&!item.dot" :count="item.count" :color="item.dotColor">
+									<view :style="{ height: `${props.itemHeight-20}rpx` }"></view>
 								</tm-badge>
 							</view>
 						</tm-sheet>
@@ -99,16 +104,20 @@
 							(props.activeColor && item.key === _active ? props.activeColor : props.color)
 						" :width="props.itemWidth" _class="flex-center flex-row" :margin="[0, 0]" :padding="[20, 0]"
 						:height="props.itemHeight" unit="rpx">
-						<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
-							:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
-							:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
-							:name="item.icon">
-						</tm-icon>
-						<tm-text :userInteractionEnabled="false"
-							:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
-							:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
-							:label="item.title">
-						</tm-text>
+						<tm-badge  :dot="item.dot" :count="item.count" :color="item.dotColor">
+						<view class="flex flex-row flex-center">
+							<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
+								:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
+								:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
+								:name="item.icon">
+							</tm-icon>
+							<tm-text :userInteractionEnabled="false"
+								:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
+								:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
+								:label="item.title">
+							</tm-text>
+						</view>
+						</tm-badge>
 					</tm-sheet>
 				</view>
 				<view v-if="props.showTabsLineAni && props.itemWidth > 0" class=" absolute l-0 b-0" :style="{
@@ -134,16 +143,23 @@
 							(props.activeColor && item.key === _active ? props.activeColor : props.color)
 						" :width="_itemwidth" _class="flex-center flex-row" :margin="[0, 0]" :padding="[0, 0]"
 						:height="_itemheight" unit="px">
-						<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
-							:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
-							:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
-							:name="item.icon">
-						</tm-icon>
-						<tm-text :userInteractionEnabled="false"
-							:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
-							:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
-							:label="item.title">
-						</tm-text>
+						
+						
+						<tm-badge  :dot="item.dot" :count="item.count" :color="item.dotColor">
+						<view class="flex flex-row flex-center">
+							<tm-icon :userInteractionEnabled="false" v-if="item.icon" _class="pr-5"
+								:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
+								:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
+								:name="item.icon">
+							</tm-icon>
+							<tm-text :userInteractionEnabled="false"
+								:font-size="item.key === _active ? props.activeFontSize : props.itemFontSize"
+								:color="item.key === _active ? props.activeFontColor : props.unSelectedColor"
+								:label="item.title">
+							</tm-text>
+						</view>
+						</tm-badge>
+						
 					</tm-sheet>
 				</view>
 				<view v-if="props.showTabsLineAni && props.itemWidth > 0" class=" absolute l-0 b-0" :style="{
@@ -210,7 +226,7 @@ var dom = weex.requireModule('dom');
 const Binding = uni.requireNativePlugin('bindingx');
 const animation = uni.requireNativePlugin('animation')
 // #endif
-const { proxy } = <ComponentInternalInstance>getCurrentInstance()
+const proxy = getCurrentInstance()?.proxy??null;
 
 const bindxToken = ref(null);
 const emits = defineEmits(["update:activeName", "change", "click"]);
@@ -485,6 +501,7 @@ watchEffect(() => {
 			title: el?.title ?? String(index), 
 			icon: el?.icon ?? "" ,
 			dot: el?.dot ?? false,
+			count:el?.count ?? "",
 			dotColor: el?.dotColor ?? "red" 
 		})
 	})
@@ -523,6 +540,7 @@ function unbindKey(key: string | number) {
 watch(
 	() => props.activeName,
 	() => {
+		if(props.activeName==_active.value) return;
 		changeKey(props.activeName, false);
 	}
 );
@@ -574,7 +592,7 @@ watch(() => _active.value, () => {
 
 
 
-function onStart(event: Event) {
+function onStart(event: TouchEvent) {
 	if (!props.swiper) return;
 	isEndMove.value = true;
 	isMoveEnb = true
@@ -591,11 +609,12 @@ function onStart(event: Event) {
 			_starty.value = touch.y
 		}
 	} else {
+		
 		_startx.value = event.pageX - event.currentTarget.offsetLeft - ctxLeft
 		_starty.value = event.pageY - event.currentTarget.offsetTop - ctxTop
 	}
 }
-function onMove(event: Event) {
+function onMove(event: TouchEvent) {
 	if (!props.swiper || isMoveEnb == false) return;
 	if (event?.preventDefault) event?.preventDefault()
 	if (event?.stopPropagation) event?.stopPropagation()
@@ -623,10 +642,11 @@ function onMove(event: Event) {
 
 }
 
-function onEnd(event: Event) {
+function onEnd(event: TouchEvent) {
 	if (!props.swiper || !isMoveEnb) return;
 	isEndMove.value = false;
 	debounce2(() => {
+		
 		setDirXy(_x.value, _y.value, true)
 		isDrag.value = false
 	}, 250, true)
@@ -652,7 +672,7 @@ function setDirXy(x: number, y: number, isEnd = false) {
 		} else {
 			dirType.value = 'none'
 		}
-
+		
 	}, 300, true)
 
 	if (dirType.value == "right") {
@@ -710,6 +730,10 @@ function setDirXy(x: number, y: number, isEnd = false) {
 				}, 50, true)
 			} else {
 				timeDetail = 250;
+				nextTick(() => {
+					_x.value = 0;
+					_y.value = 0;
+				})
 			}
 		})
 		// #endif
@@ -734,6 +758,10 @@ function setDirXy(x: number, y: number, isEnd = false) {
 				}, 50, true)
 			} else {
 				timeDetail = 250;
+				nextTick(() => {
+					_x.value = 0;
+					_y.value = 0;
+				})
 			}
 		})
 		// #endif

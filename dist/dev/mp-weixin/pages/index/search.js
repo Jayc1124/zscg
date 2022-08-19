@@ -2,14 +2,13 @@
 var common_vendor = require("../../common/vendor.js");
 var common_assets = require("../../common/assets.js");
 if (!Math) {
-  (tmImage + tmText + tmInput + tmSheet + tmResult + tmCell + tmIcon + tmDivider + tmMessage + tmApp)();
+  (tmImage + tmText + tmInput + tmSheet + tmResult + tmCell + tmDivider + tmMessage + tmApp)();
 }
 const tmApp = () => "../../tmui/components/tm-app/tm-app.js";
 const tmSheet = () => "../../tmui/components/tm-sheet/tm-sheet.js";
 const tmMessage = () => "../../tmui/components/tm-message/tm-message.js";
 const tmInput = () => "../../tmui/components/tm-input/tm-input.js";
 const tmDivider = () => "../../tmui/components/tm-divider/tm-divider.js";
-const tmIcon = () => "../../tmui/components/tm-icon/tm-icon.js";
 const tmCell = () => "../../tmui/components/tm-cell/tm-cell.js";
 const tmImage = () => "../../tmui/components/tm-image/tm-image.js";
 const tmText = () => "../../tmui/components/tm-text/tm-text.js";
@@ -74,7 +73,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       { path: "/pages/fankui/overlay", title: "\u906E\u7F69 Overlay" },
       { path: "/pages/fankui/progress", title: "\u8FDB\u5EA6\u6761 Progress" },
       { path: "/pages/fankui/spin", title: "\u52A0\u8F7D\u4E2D Spin" },
-      { path: "/pages/fankui/skeleton", title: "\u9AA8\u67B6\u5C4F Skeleton" },
+      { path: "/pages/fankui/skeleton", title: "\u9AA8\u67B6\u5C4F Skeleton\u9AA8\u67B6\u5C4F " },
       { path: "/pages/fankui/translate", title: "\u52A8\u6548 Translate" },
       { path: "/pages/fankui/notification", title: "\u901A\u77E5\u63D0\u9192 Notificat, nextTickion", nextTick: common_vendor.nextTick },
       { path: "/pages/fankui/slideSwitch", title: "\u5DE6\u6ED1\u64CD\u4F5C\u680F slideSwitch" },
@@ -128,7 +127,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.p({
           _class: "text-weight-b",
           ["font-size"]: 36,
-          label: "TMUI 3.0.0"
+          label: "\u638C\u4E0A\u6210\u5DE5 3.0.0"
         }),
         c: common_vendor.p({
           color: "grey",
@@ -138,16 +137,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         e: common_vendor.o(search),
         f: common_vendor.o(($event) => str.value = $event),
         g: common_vendor.p({
-          placeholder: "\u7EC4\u4EF6\u4E2D\u6587/\u82F1\u6587\u540D\u79F0",
+          placeholder: "\u8F93\u5165\u5173\u952E\u5B57",
           border: 1,
           showClear: true,
           prefix: "tmicon-search",
-          searchLabel: "\u641C\u7D22\u7EC4\u4EF6",
+          searchLabel: "\u641C\u7D22",
           modelValue: str.value
         }),
         h: common_vendor.p({
           darkBgColor: "#050505",
-          margin: [0, 0]
+          margin: [0, 10]
         }),
         i: result.value.length === 0
       }, result.value.length === 0 ? {
@@ -172,22 +171,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         })
       } : {}, {
         m: common_vendor.p({
-          color: "orange",
-          ["font-size"]: 38,
-          name: "tmicon-heart-fill"
-        }),
-        n: common_vendor.p({
-          showAvatar: true,
-          round: 3,
-          titleFontSize: 30,
-          title: "\u884C\u52A8\u652F\u6301",
-          rightText: "\u770B\u5E7F\u544A\u8D5A\u79EF\u5206"
-        }),
-        o: common_vendor.p({
           color: "grey-2",
-          label: "tmui 3.0.0 \u539F\u751F\u6E32\u67D3\uFF0C\u5168\u7AEF\u517C\u5BB9"
+          label: "\u638C\u4E0A\u6210\u5DE5 3.0.0 \u539F\u751F\u6E32\u67D3\uFF0C\u5168\u7AEF\u517C\u5BB9"
         }),
-        p: common_vendor.sr("msg", "938c8c4e-11,938c8c4e-0")
+        n: common_vendor.sr("msg", "938c8c4e-9,938c8c4e-0")
       });
     };
   }

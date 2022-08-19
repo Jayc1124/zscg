@@ -1,0 +1,28 @@
+.mainBox[data-v-912988e4] {
+  height: 100vh;
+}
+.mainBox .logoImg[data-v-912988e4] {
+  width: 4.375rem;
+  height: 4.375rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-left: -2.1875rem;
+  top: 5.3125rem;
+  display: block;
+}
+.mainBox .logoName[data-v-912988e4] {
+  width: 23.4375rem;
+  position: absolute;
+  left: 0;
+  top: 10.625rem;
+  text-align: center;
+}
+.bottom_bg[data-v-912988e4] {
+  width: 23.4375rem;
+  position: fixed;
+  bottom: 0;
+}
+.bottom_bg uni-image[data-v-912988e4] {
+  width: 23.4375rem;
+}

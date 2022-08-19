@@ -29,7 +29,7 @@
 				url:'',
                 webviewStyles: {
                     progress: {
-                        // color: '#FF3333'
+                        color: false
                     }
                 }
             }

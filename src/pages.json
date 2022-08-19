@@ -5,16 +5,16 @@
 			"^tm-(.*)": "@/tmui/components/tm-$1/tm-$1.vue"
 		}
 	},
-	"pages": [{
+	"pages": [
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "掌上成工",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
-				
 			}
-			
-		},{
+		},
+		{
 			"path": "pages/index/search",
 			"style": {
 				"navigationBarTitleText": "掌上成工",
@@ -25,27 +25,35 @@
 			"path": "pages/news/news",
 			"style": {
 				"navigationBarTitleText": "成工要闻",
-
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
-
 			}
-
-		}, {
+		},
+		{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "掌上成工",
 				"navigationStyle": "custom"
 			}
-
-		}, {
+		},
+		{
 			"path": "pages/erke/erke",
 			"style": {
 				"navigationBarTitleText": "二课",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
-
+		},
+		{
+			"path": "pages/kebiao/index",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "课表",
+				"navigationStyle": "custom",
+				"backgroundColorTop": "#fff",
+				"backgroundColorBottom": "#F8F8F8",
+				"enablePullDownRefresh": true
+			  }
 		},
 		{
 			"path": "pages/login/wxLogin",
@@ -54,15 +62,12 @@
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
-
 		},
 		{
 			"path": "pages/bizhi/bizhi",
 			"style": {
 				"navigationBarTitleText": "壁纸"
-
 			}
-
 		},
 		{
 			"path": "pages/bizhi/infotp",
@@ -71,58 +76,68 @@
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
-
-		}
-
-		, {
+		},
+		{
 			"path": "pages/news/detail/detail",
 			"style": {
 				"navigationBarTitleText": "新闻详情页",
 				"enablePullDownRefresh": false
-				// "navigationStyle": "custom"	
+				// "navigationStyle": "custom"
 			}
-
 		},
-		 {
+		{
 			"path": "pages/luntan/luntan",
 			"style": {
 				"navigationBarTitleText": "社区",
 				"enablePullDownRefresh": false
-				// "navigationStyle": "custom"	
+				// "navigationStyle": "custom"
 			}
-		
-		}
-	    ,{
-            "path" : "pages/webview/webview",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "21312",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/webview/webview_f",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/webview/webview_w",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        },
+		},
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/webview/webview_f",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/webview/webview_w",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/webview/webview_jw/index",
+			"style": {
+				"navigationBarTitleText": "正在加载中..."
+			}
+		},
 		{
 			"path": "pages/me/me2/me2",
 			"style": {
 				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/me/abme/abme",
+			"style": {
+				"navigationBarTitleText": "关于作者"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/me/editme",
+			"style": {
+				"navigationBarTitleText": "信息修改",
 				"navigationStyle": "custom"
 			}
 		},
@@ -140,10 +155,63 @@
 				"navigationBarTitleText": "手持弹幕",
 				"enablePullDownRefresh": false
 			}
-
+		},
+		{
+			"path": "pages/tool/jp/jp",
+			"style": {
+				"navigationBarTitleText": "教务评价",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tool/phoneSign/phoneSign",
+			"style": {
+				"navigationBarTitleText": "签名",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tool/getTeacherNumber",
+			"style": {
+				"navigationBarTitleText": "教师查询",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tool/historyDeatil",
+			"style": {
+				"navigationBarTitleText": "历史上的今天",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tool/eventHistory",
+			"style": {
+				"navigationBarTitleText": "历史上的今天",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/news/search/index",
+			"style": {
+				"navigationBarTitleText": "search"
+			}
+		},
+		{
+			"path": "pages/webview/webwiew_erke/index",
+			"style": {
+				"navigationBarTitleText": "青春成工"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/webview/wb_ek1",
+			"style": {
+				"navigationBarTitleText": "二课报名"
+				// "navigationStyle": "custom"
+			}
 		}
-		
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -151,42 +219,61 @@
 		"backgroundColor": "#FFFFFF"
 	},
 	"tabBar": {
-		"color": "#aaaaaa",
-		"selectedColor": "#007AFF",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"iconPath": "static/tab_icon/document.png",
-				"selectedIconPath": "static/tab_icon/document_cur.png",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/news/news",
-				"iconPath": "static/tab_icon/comment.png",
-				"selectedIconPath": "static/tab_icon/comment_cur.png",
-				"text": "工院"
-			},
-
-			{
-				"pagePath": "pages/erke/erke",
-				"iconPath": "static/tab_icon/custom.png",
-				"selectedIconPath": "static/tab_icon/custom_cur.png",
-				"text": "二课"
-			},
-			{
-				"pagePath": "pages/luntan/luntan",
-				"iconPath": "static/tab_icon/tpl.png",
-				"selectedIconPath": "static/tab_icon/tpl_cur.png",
-				"text": "社区"
-			}
-
-			, {
-				"pagePath": "pages/me/me2/me2",
-				"iconPath": "static/tab_icon/my.png",
-				"selectedIconPath": "static/tab_icon/my_cur.png",
-				"text": "我的"
-			}
+		"custom": true,
+		"list": [
+		  {
+			"pagePath": "pages/index/index"
+		  },
+		  {
+			"pagePath": "pages/news/news"
+		  },
+		  {
+			"pagePath": "pages/erke/erke"
+		  },
+		  {
+			"pagePath": "pages/kebiao/index"
+		  },
+		  {
+			"pagePath": "pages/me/me2/me2"
+		  }
 		]
-	}
+	  }
+	// "tabBar": {
+	// 	"color": "#aaaaaa",
+	// 	"selectedColor": "#007AFF",
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [
+	// 		{
+	// 			"pagePath": "pages/index/index",
+	// 			"iconPath": "static/tab_icon/document.png",
+	// 			"selectedIconPath": "static/tab_icon/document_cur.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/news/news",
+	// 			"iconPath": "static/tab_icon/comment.png",
+	// 			"selectedIconPath": "static/tab_icon/comment_cur.png",
+	// 			"text": "工院"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/erke/erke",
+	// 			"iconPath": "static/tab_icon/custom.png",
+	// 			"selectedIconPath": "static/tab_icon/custom_cur.png",
+	// 			"text": "二课"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/kebiao/index",
+	// 			"iconPath": "static/tab_icon/tpl.png",
+	// 			"selectedIconPath": "static/tab_icon/tpl_cur.png",
+	// 			"text": "社区"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/me/me2/me2",
+	// 			"iconPath": "static/tab_icon/my.png",
+	// 			"selectedIconPath": "static/tab_icon/my_cur.png",
+	// 			"text": "我的"
+	// 		}
+	// 	]
+	// }
 }

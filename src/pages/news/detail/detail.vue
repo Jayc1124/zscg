@@ -30,8 +30,11 @@ import {useTmpiniaStore} from '@/tmui/tool/lib/tmpinia';
 const store = useTmpiniaStore();
 <!-- #endif -->
 			import request from '@/common/request.js';
+			import uParse from '../../../uni_modules/u-parse/u-parse.vue'
 export default{
-
+	 components: {
+ uParse
+  },
 		data() {
 			return {
 				tip: '可以分享链接到朋友圈了哦',

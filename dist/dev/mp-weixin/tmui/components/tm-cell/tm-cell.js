@@ -179,7 +179,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         i: common_vendor.unref(_computedValue).rightText
       }, common_vendor.unref(_computedValue).rightText ? {
         j: common_vendor.p({
-          _class: "nowrap",
+          _class: "nowrap pr-12",
           color: common_vendor.unref(_computedValue).rightColor,
           fontSize: common_vendor.unref(_computedValue).rightTextSize,
           label: common_vendor.unref(_computedValue).rightText

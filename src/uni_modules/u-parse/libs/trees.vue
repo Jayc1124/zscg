@@ -62,7 +62,7 @@
 			<!--#endif-->
 			<!--富文本-->
 			<!--#ifdef MP-WEIXIN || MP-QQ || APP-PLUS-->
-			<rich-text v-else-if="handler.use(n)" :id="n.attrs.id" :class="'_p __'+n.name" :nodes="[n]" />
+			<rich-text v-else-if="use(n)" :id="n.attrs.id" :class="'_p __'+n.name" :nodes="[n]" />
 			<!--#endif-->
 			<!--#ifndef MP-WEIXIN || MP-QQ || APP-PLUS-->
 			<rich-text v-else-if="!n.c" :id="n.attrs.id" :nodes="[n]" style="display:inline" />
@@ -72,11 +72,29 @@
 		</block>
 	</view>
 </template>
-<script module="handler" lang="wxs" src="./handler.wxs"></script>
 <script>
+	var inline = {
+		abbr: 1,
+		b: 1,
+		big: 1,
+		code: 1,
+		del: 1,
+		em: 1,
+		i: 1,
+		ins: 1,
+		label: 1,
+		q: 1,
+		small: 1,
+		span: 1,
+		strong: 1,
+		sub: 1,
+		sup: 1
+	}
+	let global = {};
 	global.Parser = {};
 	import trees from './trees'
-	const errorImg = require('../libs/config.js').errorImg;
+	import cfg from '../libs/config.js'
+	const errorImg = cfg.errorImg;
 	export default {
 		components: {
 			trees
@@ -108,9 +126,20 @@
 			this.init();
 		},
 		// #ifdef APP-PLUS
-		beforeDestroy() {
-			this.observer && this.observer.disconnect();
-		},
+    
+    // #ifndef VUE3
+    // 组件销毁前，将实例从u-form的缓存中移除
+    beforeDestroy() {
+      this.observer && this.observer.disconnect();
+    },
+    // #endif
+    
+    // #ifdef VUE3
+    beforeUnmount() {
+      this.observer && this.observer.disconnect();
+    },
+    // #endif
+    
 		// #endif
 		methods: {
 			init() {
@@ -279,6 +308,9 @@
 			},
 			_loadVideo(e) {
 				this.$set(this.ctrl, e.target.dataset.i, 0);
+			},
+			use(item) {
+				return !item.c && !inline[item.name] && (item.attrs.style || '').indexOf('display:inline') == -1
 			}
 		}
 	}

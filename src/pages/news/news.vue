@@ -18,8 +18,8 @@
 							@change="change">
 						</FatFatMeng-Swiper-mfw>
 					</view>
-					<image style="width: 100%;height: 245rpx; solid #f2f2f2"
-						src="https://www.mescroll.com/img/beibei/beibei2.jpg" />
+					<!-- <image style="width: 100%;height: 245rpx; solid #f2f2f2"
+						src="https://www.mescroll.com/img/beibei/beibei2.jpg" /> -->
 				</view>
 				<tm-sticky offset="0">
 					<template v-slot:sticky>
@@ -54,13 +54,20 @@
 
 			</mescroll-uni>
 		</view>
+		 <tab-bar :active="1"></tab-bar>
 	</tm-app>
 </template>
 
-<script>
+<script  >
+import TabBar from "@/components/TheTabBar.vue";
 	import request from '@/common/request.js';
 	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
+	
+
 	export default {
+		 components: {
+ TabBar
+  },
 		mixins: [MescrollMixin], // 使用mixin
 		data() {
 			return {
@@ -81,15 +88,7 @@
 						UserName: '诗的PHOTO', // 用户名
 						UserGPS: '杭州' // 当前所在的城市
 					},
-					{
-						id: 2,
-						Image: 'https://b1-q.mafengwo.net/s15/M00/29/CD/CoUBGWEOpSGAGvNEAAcdPGsxn34626.png', //轮播图(封面图)
-						mp4: '',
-						title: '【蜂首11周年纪念】4018天后，我们继续约定！', //标题
-						UserImage: 'https://b1-q.mafengwo.net/s10/M00/73/96/wKgBZ1kSsyKAa_91AACgQYkA64o659.png?imageMogr2%2Fthumbnail%2F%21200x200r%2Fgravity%2FCenter%2Fcrop%2F%21200x200%2Fquality%2F90', // 用户头像
-						UserName: '游记总编辑', // 用户名
-						UserGPS: '北京' // 当前所在的城市
-					},
+				
 					{
 						id: 3,
 						Image: 'https://n1-q.mafengwo.net/s16/M00/EB/2D/CoUBUmDlheiAdABtAAgo3xeAaaQ458.jpg?imageMogr2/thumbnail/!440x300r/strip/gravity/Center/crop/!440x300/quality/90', //轮播图(封面图)
@@ -170,7 +169,7 @@
 			}
 		},
 		onLoad() {
-			console.log(this.goods)
+			
 		},
 		methods: {
 			cu() {

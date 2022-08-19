@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tm-sheet": "../../tmui/components/tm-sheet/tm-sheet",
+    "tm-text": "../../tmui/components/tm-text/tm-text"
+  }
+}

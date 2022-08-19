@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "教师查询",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tm-input": "../../tmui/components/tm-input/tm-input"
+  }
+}

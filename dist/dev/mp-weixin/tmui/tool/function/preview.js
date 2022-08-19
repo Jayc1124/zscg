@@ -2,7 +2,7 @@
 var common_vendor = require("../../../common/vendor.js");
 function preview(url = "", list = [], rangKey = "url") {
   if (!url) {
-    common_vendor.index.$tm.toast("\u53C2\u6570\u6709\u8BEF");
+    common_vendor.index.$tm.u.toast("\u53C2\u6570\u6709\u8BEF");
     return;
   }
   if (arguments.length == 1) {
@@ -30,7 +30,7 @@ function preview(url = "", list = [], rangKey = "url") {
       });
     }
   } else {
-    common_vendor.index.$tm.toast("\u53C2\u6570\u6709\u8BEF");
+    common_vendor.index.$tm.u.toast("\u53C2\u6570\u6709\u8BEF");
   }
 }
 exports.preview = preview;

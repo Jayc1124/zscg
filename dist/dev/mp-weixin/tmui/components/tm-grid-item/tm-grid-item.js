@@ -74,10 +74,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click"],
   setup(__props, { emit: emits }) {
-    var _a;
+    var _a, _b, _c;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
-    const { proxy } = common_vendor.getCurrentInstance();
+    const proxy = (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const tmcfg = common_vendor.computed$1(() => store.tmStore);
     const isDark = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedDark(props, tmcfg.value));
     const tmcomputed = common_vendor.computed$1(() => {
@@ -90,12 +90,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       id: common_vendor.index.$tm.u.getUid(1),
       type: ""
     });
-    let parentFormItem = proxy.$parent;
+    let parentFormItem = proxy == null ? void 0 : proxy.$parent;
     while (parentFormItem) {
       if ((parentFormItem == null ? void 0 : parentFormItem.keyName) == "tmGrid" || !parentFormItem) {
         break;
       } else {
-        parentFormItem = (_a = parentFormItem == null ? void 0 : parentFormItem.$parent) != null ? _a : void 0;
+        parentFormItem = (_c = parentFormItem == null ? void 0 : parentFormItem.$parent) != null ? _c : void 0;
       }
     }
     common_vendor.onMounted(() => {

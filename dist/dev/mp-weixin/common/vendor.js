@@ -1509,15 +1509,15 @@ function initGetProvider(providers) {
     isFunction$1(complete) && complete(res);
   };
 }
-const UUID_KEY = "__DC_STAT_UUID";
+const UUID_KEY$1 = "__DC_STAT_UUID";
 let deviceId;
 function useDeviceId(global2 = wx) {
   return function addDeviceId(_2, toRes) {
-    deviceId = deviceId || global2.getStorageSync(UUID_KEY);
+    deviceId = deviceId || global2.getStorageSync(UUID_KEY$1);
     if (!deviceId) {
       deviceId = Date.now() + "" + Math.floor(Math.random() * 1e7);
       wx.setStorage({
-        key: UUID_KEY,
+        key: UUID_KEY$1,
         data: deviceId
       });
     }
@@ -1552,10 +1552,10 @@ function populateParameters(fromRes, toRes) {
   let _SDKVersion = SDKVersion;
   const hostLanguage = language.replace(/_/g, "-");
   const parameters = {
-    appId: "",
-    appName: "tmui3.0",
-    appVersion: "3.0.78",
-    appVersionCode: "100",
+    appId: "__UNI__96A1843",
+    appName: "\u638C\u4E0A\u6210\u5DE5",
+    appVersion: "3.0.7",
+    appVersionCode: 200,
     appLanguage: getAppLanguage(hostLanguage),
     uniCompileVersion: "3.5.4",
     uniRuntimeVersion: "3.5.4",
@@ -1695,10 +1695,10 @@ const getAppBaseInfo = {
       hostName: _hostName,
       hostSDKVersion: SDKVersion,
       hostTheme: theme,
-      appId: "",
-      appName: "tmui3.0",
-      appVersion: "3.0.78",
-      appVersionCode: "100",
+      appId: "__UNI__96A1843",
+      appName: "\u638C\u4E0A\u6210\u5DE5",
+      appVersion: "3.0.7",
+      appVersionCode: 200,
       appLanguage: getAppLanguage(hostLanguage)
     }));
   }
@@ -5599,6 +5599,34 @@ function vFor(source, renderItem) {
   }
   return ret;
 }
+function renderSlot(name, props = {}, key) {
+  const instance = getCurrentInstance();
+  const { parent, isMounted, ctx: { $scope } } = instance;
+  const vueIds = ($scope.properties || $scope.props).uI;
+  if (!vueIds) {
+    return;
+  }
+  if (!parent && !isMounted) {
+    onMounted(() => {
+      renderSlot(name, props, key);
+    }, instance);
+    return;
+  }
+  const invoker = findScopedSlotInvoker(vueIds, instance);
+  if (invoker) {
+    invoker(name, props, key);
+  }
+}
+function findScopedSlotInvoker(vueId, instance) {
+  let parent = instance.parent;
+  while (parent) {
+    const invokers = parent.$ssi;
+    if (invokers && invokers[vueId]) {
+      return invokers[vueId];
+    }
+    parent = parent.parent;
+  }
+}
 function stringifyStyle(value) {
   if (isString$1(value)) {
     return value;
@@ -5623,6 +5651,7 @@ function setupDevtoolsPlugin() {
 }
 const o$1 = (value, key) => vOn(value, key);
 const f$1 = (source, renderItem) => vFor(source, renderItem);
+const r$1 = (name, props, key) => renderSlot(name, props, key);
 const s$1 = (value) => stringifyStyle(value);
 const e = (target, ...sources) => extend(target, ...sources);
 const h$1 = (str) => hyphenate(str);
@@ -9923,7 +9952,10 @@ function injectGlobalFields(app, composer) {
 const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
   !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
 };
+const onShow = /* @__PURE__ */ createHook(ON_SHOW);
+const onLaunch = /* @__PURE__ */ createHook(ON_LAUNCH);
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
+const onPullDownRefresh = /* @__PURE__ */ createHook(ON_PULL_DOWN_REFRESH);
 const onShareTimeline = /* @__PURE__ */ createHook(ON_SHARE_TIMELINE);
 const onShareAppMessage = /* @__PURE__ */ createHook(ON_SHARE_APP_MESSAGE);
 const easycom = {
@@ -9972,6 +10004,17 @@ const pages = [
     }
   },
   {
+    path: "pages/kebiao/index",
+    style: {
+      navigationBarTextStyle: "black",
+      navigationBarTitleText: "\u8BFE\u8868",
+      navigationStyle: "custom",
+      backgroundColorTop: "#fff",
+      backgroundColorBottom: "#F8F8F8",
+      enablePullDownRefresh: true
+    }
+  },
+  {
     path: "pages/login/wxLogin",
     style: {
       navigationBarTitleText: "\u5FAE\u4FE1\u767B\u9646",
@@ -10010,7 +10053,7 @@ const pages = [
   {
     path: "pages/webview/webview",
     style: {
-      navigationBarTitleText: "21312",
+      navigationBarTitleText: "",
       enablePullDownRefresh: false
     }
   },
@@ -10029,9 +10072,28 @@ const pages = [
     }
   },
   {
+    path: "pages/webview/webview_jw/index",
+    style: {
+      navigationBarTitleText: "\u6B63\u5728\u52A0\u8F7D\u4E2D..."
+    }
+  },
+  {
     path: "pages/me/me2/me2",
     style: {
       navigationBarTitleText: "",
+      navigationStyle: "custom"
+    }
+  },
+  {
+    path: "pages/me/abme/abme",
+    style: {
+      navigationBarTitleText: "\u5173\u4E8E\u4F5C\u8005"
+    }
+  },
+  {
+    path: "pages/me/editme",
+    style: {
+      navigationBarTitleText: "\u4FE1\u606F\u4FEE\u6539",
       navigationStyle: "custom"
     }
   },
@@ -10049,6 +10111,59 @@ const pages = [
       navigationBarTitleText: "\u624B\u6301\u5F39\u5E55",
       enablePullDownRefresh: false
     }
+  },
+  {
+    path: "pages/tool/jp/jp",
+    style: {
+      navigationBarTitleText: "\u6559\u52A1\u8BC4\u4EF7",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/tool/phoneSign/phoneSign",
+    style: {
+      navigationBarTitleText: "\u7B7E\u540D",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/tool/getTeacherNumber",
+    style: {
+      navigationBarTitleText: "\u6559\u5E08\u67E5\u8BE2",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/tool/historyDeatil",
+    style: {
+      navigationBarTitleText: "\u5386\u53F2\u4E0A\u7684\u4ECA\u5929",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/tool/eventHistory",
+    style: {
+      navigationBarTitleText: "\u5386\u53F2\u4E0A\u7684\u4ECA\u5929",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/news/search/index",
+    style: {
+      navigationBarTitleText: "search"
+    }
+  },
+  {
+    path: "pages/webview/webwiew_erke/index",
+    style: {
+      navigationBarTitleText: "\u9752\u6625\u6210\u5DE5"
+    }
+  },
+  {
+    path: "pages/webview/wb_ek1",
+    style: {
+      navigationBarTitleText: "\u4E8C\u8BFE\u62A5\u540D"
+    }
   }
 ];
 const globalStyle = {
@@ -10058,40 +10173,22 @@ const globalStyle = {
   backgroundColor: "#FFFFFF"
 };
 const tabBar = {
-  color: "#aaaaaa",
-  selectedColor: "#007AFF",
-  borderStyle: "black",
-  backgroundColor: "#ffffff",
+  custom: true,
   list: [
     {
-      pagePath: "pages/index/index",
-      iconPath: "static/tab_icon/document.png",
-      selectedIconPath: "static/tab_icon/document_cur.png",
-      text: "\u9996\u9875"
+      pagePath: "pages/index/index"
     },
     {
-      pagePath: "pages/news/news",
-      iconPath: "static/tab_icon/comment.png",
-      selectedIconPath: "static/tab_icon/comment_cur.png",
-      text: "\u5DE5\u9662"
+      pagePath: "pages/news/news"
     },
     {
-      pagePath: "pages/erke/erke",
-      iconPath: "static/tab_icon/custom.png",
-      selectedIconPath: "static/tab_icon/custom_cur.png",
-      text: "\u4E8C\u8BFE"
+      pagePath: "pages/erke/erke"
     },
     {
-      pagePath: "pages/luntan/luntan",
-      iconPath: "static/tab_icon/tpl.png",
-      selectedIconPath: "static/tab_icon/tpl_cur.png",
-      text: "\u793E\u533A"
+      pagePath: "pages/kebiao/index"
     },
     {
-      pagePath: "pages/me/me2/me2",
-      iconPath: "static/tab_icon/my.png",
-      selectedIconPath: "static/tab_icon/my_cur.png",
-      text: "\u6211\u7684"
+      pagePath: "pages/me/me2/me2"
     }
   ]
 };
@@ -10101,6 +10198,939 @@ var t = {
   globalStyle,
   tabBar
 };
+const sys = index.getSystemInfoSync();
+const STAT_VERSION = "3.5.4";
+const STAT_URL = "https://tongji.dcloud.io/uni/stat";
+const STAT_H5_URL = "https://tongji.dcloud.io/uni/stat.gif";
+const PAGE_PVER_TIME = 1800;
+const APP_PVER_TIME = 300;
+const OPERATING_TIME = 10;
+const DIFF_TIME = 60 * 1e3 * 60 * 24;
+const uniStatisticsConfig = { "enable": true, "version": "1" };
+let statConfig = {
+  appid: "__UNI__96A1843"
+};
+let titleJsons = {};
+titleJsons = { "pages/index/index": "\u638C\u4E0A\u6210\u5DE5", "pages/index/search": "\u638C\u4E0A\u6210\u5DE5", "pages/news/news": "\u6210\u5DE5\u8981\u95FB", "pages/login/login": "\u638C\u4E0A\u6210\u5DE5", "pages/erke/erke": "\u4E8C\u8BFE", "pages/kebiao/index": "\u8BFE\u8868", "pages/login/wxLogin": "\u5FAE\u4FE1\u767B\u9646", "pages/bizhi/bizhi": "\u58C1\u7EB8", "pages/bizhi/infotp": "\u4E8C\u8BFE", "pages/news/detail/detail": "\u65B0\u95FB\u8BE6\u60C5\u9875", "pages/luntan/luntan": "\u793E\u533A", "pages/webview/webview_jw/index": "\u6B63\u5728\u52A0\u8F7D\u4E2D...", "pages/me/abme/abme": "\u5173\u4E8E\u4F5C\u8005", "pages/me/editme": "\u4FE1\u606F\u4FEE\u6539", "pages/tool/barrage/barrage": "\u624B\u6301\u5F39\u5E55", "pages/tool/jp/jp": "\u6559\u52A1\u8BC4\u4EF7", "pages/tool/phoneSign/phoneSign": "\u7B7E\u540D", "pages/tool/getTeacherNumber": "\u6559\u5E08\u67E5\u8BE2", "pages/tool/historyDeatil": "\u5386\u53F2\u4E0A\u7684\u4ECA\u5929", "pages/tool/eventHistory": "\u5386\u53F2\u4E0A\u7684\u4ECA\u5929", "pages/news/search/index": "search", "pages/webview/webwiew_erke/index": "\u9752\u6625\u6210\u5DE5", "pages/webview/wb_ek1": "\u4E8C\u8BFE\u62A5\u540D" };
+const UUID_KEY = "__DC_STAT_UUID";
+const UUID_VALUE = "__DC_UUID_VALUE";
+function getUuid() {
+  let uuid = "";
+  if (get_platform_name() === "n") {
+    try {
+      uuid = plus.runtime.getDCloudId();
+    } catch (e2) {
+      uuid = "";
+    }
+    return uuid;
+  }
+  try {
+    uuid = index.getStorageSync(UUID_KEY);
+  } catch (e2) {
+    uuid = UUID_VALUE;
+  }
+  if (!uuid) {
+    uuid = Date.now() + "" + Math.floor(Math.random() * 1e7);
+    try {
+      index.setStorageSync(UUID_KEY, uuid);
+    } catch (e2) {
+      index.setStorageSync(UUID_KEY, UUID_VALUE);
+    }
+  }
+  return uuid;
+}
+const get_uuid = (statData2) => {
+  return sys.deviceId || getUuid();
+};
+const stat_config = statConfig;
+const get_sgin = (statData2) => {
+  let arr = Object.keys(statData2);
+  let sortArr = arr.sort();
+  let sgin = {};
+  let sginStr = "";
+  for (var i2 in sortArr) {
+    sgin[sortArr[i2]] = statData2[sortArr[i2]];
+    sginStr += sortArr[i2] + "=" + statData2[sortArr[i2]] + "&";
+  }
+  return {
+    sign: "",
+    options: sginStr.substr(0, sginStr.length - 1)
+  };
+};
+const get_encodeURIComponent_options = (statData2) => {
+  let data = {};
+  for (let prop in statData2) {
+    data[prop] = encodeURIComponent(statData2[prop]);
+  }
+  return data;
+};
+const get_platform_name = () => {
+  const aliArr = ["y", "a", "p", "mp-ali"];
+  const platformList = {
+    app: "n",
+    "app-plus": "n",
+    h5: "h5",
+    "mp-weixin": "wx",
+    [aliArr.reverse().join("")]: "ali",
+    "mp-baidu": "bd",
+    "mp-toutiao": "tt",
+    "mp-qq": "qq",
+    "quickapp-native": "qn",
+    "mp-kuaishou": "ks",
+    "mp-lark": "lark",
+    "quickapp-webview": "qw"
+  };
+  if (platformList["mp-weixin"] === "ali") {
+    if (my && my.env) {
+      const clientName = my.env.clientName;
+      if (clientName === "ap")
+        return "ali";
+      if (clientName === "dingtalk")
+        return "dt";
+    }
+  }
+  return platformList["mp-weixin"];
+};
+const get_pack_name = () => {
+  let packName = "";
+  if (get_platform_name() === "wx" || get_platform_name() === "qq") {
+    if (index.canIUse("getAccountInfoSync")) {
+      packName = index.getAccountInfoSync().miniProgram.appId || "";
+    }
+  }
+  if (get_platform_name() === "n")
+    ;
+  return packName;
+};
+const get_version = () => {
+  return get_platform_name() === "n" ? plus.runtime.version : "";
+};
+const get_channel = () => {
+  const platformName = get_platform_name();
+  let channel = "";
+  if (platformName === "n") {
+    channel = plus.runtime.channel;
+  }
+  return channel;
+};
+const get_scene = (options) => {
+  const platformName = get_platform_name();
+  let scene = "";
+  if (options) {
+    return options;
+  }
+  if (platformName === "wx") {
+    scene = index.getLaunchOptionsSync().scene;
+  }
+  return scene;
+};
+const get_splicing = (data) => {
+  let str = "";
+  for (var i2 in data) {
+    str += i2 + "=" + data[i2] + "&";
+  }
+  return str.substr(0, str.length - 1);
+};
+const get_route$1 = (pageVm) => {
+  let _self = pageVm || get_page_vm();
+  if (get_platform_name() === "bd") {
+    let mp_route = _self.$mp && _self.$mp.page && _self.$mp.page.is;
+    let scope_route = _self.$scope && _self.$scope.is;
+    return mp_route || scope_route || "";
+  } else {
+    return _self.route || _self.$scope && _self.$scope.route || _self.$mp && _self.$mp.page.route;
+  }
+};
+const get_page_route = (pageVm) => {
+  let page = pageVm && (pageVm.$page || pageVm.$scope && pageVm.$scope.$page);
+  let lastPageRoute = index.getStorageSync("_STAT_LAST_PAGE_ROUTE");
+  if (!page)
+    return lastPageRoute || "";
+  return page.fullPath === "/" ? page.route : page.fullPath || page.route;
+};
+const get_page_vm = () => {
+  let pages2 = getCurrentPages();
+  let $page = pages2[pages2.length - 1];
+  if (!$page)
+    return null;
+  return $page.$vm;
+};
+const get_page_types = (self2) => {
+  if (self2.mpType === "page" || self2.$mpType === "page" || self2.$mp && self2.$mp.mpType === "page" || self2.$options.mpType === "page") {
+    return "page";
+  }
+  if (self2.mpType === "app" || self2.$mpType === "app" || self2.$mp && self2.$mp.mpType === "app" || self2.$options.mpType === "app") {
+    return "app";
+  }
+  return null;
+};
+const handle_data = (statData2) => {
+  let firstArr = [];
+  let contentArr = [];
+  let lastArr = [];
+  for (let i2 in statData2) {
+    const rd = statData2[i2];
+    rd.forEach((elm) => {
+      let newData = "";
+      {
+        newData = get_splicing(elm);
+      }
+      if (i2 === 0) {
+        firstArr.push(newData);
+      } else if (i2 === 3) {
+        lastArr.push(newData);
+      } else {
+        contentArr.push(newData);
+      }
+    });
+  }
+  firstArr.push(...contentArr, ...lastArr);
+  return JSON.stringify(firstArr);
+};
+const calibration = (eventName, options) => {
+  if (!eventName) {
+    console.error(`uni.report Missing [eventName] parameter`);
+    return true;
+  }
+  if (typeof eventName !== "string") {
+    console.error(`uni.report [eventName] Parameter type error, it can only be of type String`);
+    return true;
+  }
+  if (eventName.length > 255) {
+    console.error(`uni.report [eventName] Parameter length cannot be greater than 255`);
+    return true;
+  }
+  if (typeof options !== "string" && typeof options !== "object") {
+    console.error("uni.report [options] Parameter type error, Only supports String or Object type");
+    return true;
+  }
+  if (typeof options === "string" && options.length > 255) {
+    console.error(`uni.report [options] Parameter length cannot be greater than 255`);
+    return true;
+  }
+  if (eventName === "title" && typeof options !== "string") {
+    console.error(`uni.report [eventName] When the parameter is title, the [options] parameter can only be of type String`);
+    return true;
+  }
+};
+const get_page_name = (routepath) => {
+  return titleJsons && titleJsons[routepath] || "";
+};
+const Report_Data_Time = "Report_Data_Time";
+const Report_Status = "Report_Status";
+const is_report_data = () => {
+  return new Promise((resolve2, reject) => {
+    let start_time = "";
+    let end_time = new Date().getTime();
+    let diff_time = DIFF_TIME;
+    let report_status = 1;
+    try {
+      start_time = index.getStorageSync(Report_Data_Time);
+      report_status = index.getStorageSync(Report_Status);
+    } catch (e2) {
+      start_time = "";
+      report_status = 1;
+    }
+    if (report_status === "") {
+      requestData(({ enable }) => {
+        index.setStorageSync(Report_Data_Time, end_time);
+        index.setStorageSync(Report_Status, enable);
+        if (enable === 1) {
+          resolve2();
+        }
+      });
+      return;
+    }
+    if (report_status === 1) {
+      resolve2();
+    }
+    if (!start_time) {
+      index.setStorageSync(Report_Data_Time, end_time);
+      start_time = end_time;
+    }
+    if (end_time - start_time > diff_time) {
+      requestData(({ enable }) => {
+        index.setStorageSync(Report_Data_Time, end_time);
+        index.setStorageSync(Report_Status, enable);
+      });
+    }
+  });
+};
+const requestData = (done) => {
+  const appid2 = "__UNI__96A1843";
+  let formData = {
+    usv: STAT_VERSION,
+    conf: JSON.stringify({
+      ak: appid2
+    })
+  };
+  index.request({
+    url: STAT_URL,
+    method: "GET",
+    data: formData,
+    success: (res) => {
+      const { data } = res;
+      if (data.ret === 0) {
+        typeof done === "function" && done({
+          enable: data.enable
+        });
+      }
+    },
+    fail: (e2) => {
+      let report_status_code = 1;
+      try {
+        report_status_code = index.getStorageSync(Report_Status);
+      } catch (e3) {
+        report_status_code = 1;
+      }
+      if (report_status_code === "") {
+        report_status_code = 1;
+      }
+      typeof done === "function" && done({
+        enable: report_status_code
+      });
+    }
+  });
+};
+const get_report_Interval = (defaultTime) => {
+  let time = uniStatisticsConfig.reportInterval;
+  if (Number(time) === 0)
+    return 0;
+  time = time || defaultTime;
+  let reg = /(^[1-9]\d*$)/;
+  if (!reg.test(time))
+    return defaultTime;
+  return Number(time);
+};
+const appid = "__UNI__96A1843";
+const dbSet = (name, value) => {
+  let data = index.getStorageSync("$$STAT__DBDATA:" + appid) || {};
+  if (!data) {
+    data = {};
+  }
+  data[name] = value;
+  index.setStorageSync("$$STAT__DBDATA:" + appid, data);
+};
+const dbGet = (name) => {
+  let data = index.getStorageSync("$$STAT__DBDATA:" + appid) || {};
+  if (!data[name]) {
+    let dbdata = index.getStorageSync("$$STAT__DBDATA:" + appid);
+    if (!dbdata) {
+      dbdata = {};
+    }
+    if (!dbdata[name]) {
+      return void 0;
+    }
+    data[name] = dbdata[name];
+  }
+  return data[name];
+};
+const dbRemove = (name) => {
+  let data = index.getStorageSync("$$STAT__DBDATA:" + appid) || {};
+  if (data[name]) {
+    delete data[name];
+    index.setStorageSync("$$STAT__DBDATA:" + appid, data);
+  } else {
+    data = index.getStorageSync("$$STAT__DBDATA:" + appid);
+    if (data[name]) {
+      delete data[name];
+      index.setStorageSync("$$STAT__DBDATA:" + appid, data);
+    }
+  }
+};
+const FIRST_VISIT_TIME_KEY = "__first__visit__time";
+const LAST_VISIT_TIME_KEY = "__last__visit__time";
+const get_time = () => {
+  return parseInt(new Date().getTime() / 1e3);
+};
+const get_first_visit_time = () => {
+  const timeStorge = dbGet(FIRST_VISIT_TIME_KEY);
+  let time = 0;
+  if (timeStorge) {
+    time = timeStorge;
+  } else {
+    time = get_time();
+    dbSet(FIRST_VISIT_TIME_KEY, time);
+    dbRemove(LAST_VISIT_TIME_KEY);
+  }
+  return time;
+};
+const get_last_visit_time = () => {
+  const timeStorge = dbGet(LAST_VISIT_TIME_KEY);
+  let time = 0;
+  if (timeStorge) {
+    time = timeStorge;
+  }
+  dbSet(LAST_VISIT_TIME_KEY, get_time());
+  return time;
+};
+const PAGE_RESIDENCE_TIME = "__page__residence__time";
+let First_Page_Residence_Time = 0;
+let Last_Page_Residence_Time = 0;
+const set_page_residence_time = () => {
+  First_Page_Residence_Time = get_time();
+  dbSet(PAGE_RESIDENCE_TIME, First_Page_Residence_Time);
+  return First_Page_Residence_Time;
+};
+const get_page_residence_time = () => {
+  Last_Page_Residence_Time = get_time();
+  First_Page_Residence_Time = dbGet(PAGE_RESIDENCE_TIME);
+  return Last_Page_Residence_Time - First_Page_Residence_Time;
+};
+const TOTAL_VISIT_COUNT = "__total__visit__count";
+const get_total_visit_count = () => {
+  const timeStorge = dbGet(TOTAL_VISIT_COUNT);
+  let count = 1;
+  if (timeStorge) {
+    count = timeStorge;
+    count++;
+  }
+  dbSet(TOTAL_VISIT_COUNT, count);
+  return count;
+};
+const FIRST_TIME = "__first_time";
+const set_first_time = () => {
+  const time = new Date().getTime();
+  const timeStorge = dbSet(FIRST_TIME, time);
+  return timeStorge;
+};
+const get_residence_time = (type) => {
+  let residenceTime = 0;
+  const first_time = dbGet(FIRST_TIME);
+  const last_time = get_time();
+  if (first_time !== 0) {
+    residenceTime = last_time - first_time;
+  }
+  residenceTime = parseInt(residenceTime / 1e3);
+  residenceTime = residenceTime < 1 ? 1 : residenceTime;
+  if (type === "app") {
+    let overtime = residenceTime > APP_PVER_TIME ? true : false;
+    return {
+      residenceTime,
+      overtime
+    };
+  }
+  if (type === "page") {
+    let overtime = residenceTime > PAGE_PVER_TIME ? true : false;
+    return {
+      residenceTime,
+      overtime
+    };
+  }
+  return {
+    residenceTime
+  };
+};
+const eport_Interval = get_report_Interval(OPERATING_TIME);
+let statData = {
+  uuid: get_uuid(),
+  ak: stat_config.appid,
+  p: sys.platform === "android" ? "a" : "i",
+  ut: get_platform_name(),
+  mpn: get_pack_name(),
+  usv: STAT_VERSION,
+  v: get_version(),
+  ch: get_channel(),
+  cn: "",
+  pn: "",
+  ct: "",
+  t: get_time(),
+  tt: "",
+  brand: sys.brand || "",
+  md: sys.model,
+  sv: sys.system.replace(/(Android|iOS)\s/, ""),
+  mpsdk: sys.SDKVersion || "",
+  mpv: sys.version || "",
+  lang: sys.language,
+  pr: sys.pixelRatio,
+  ww: sys.windowWidth,
+  wh: sys.windowHeight,
+  sw: sys.screenWidth,
+  sh: sys.screenHeight
+};
+class Report {
+  constructor() {
+    this.self = "";
+    this.__licationShow = false;
+    this.__licationHide = false;
+    this.statData = statData;
+    this._navigationBarTitle = {
+      config: "",
+      page: "",
+      report: "",
+      lt: ""
+    };
+    this._query = {};
+    let registerInterceptor = typeof index.addInterceptor === "function";
+    if (registerInterceptor) {
+      this.addInterceptorInit();
+      this.interceptLogin();
+      this.interceptShare(true);
+      this.interceptRequestPayment();
+    }
+  }
+  addInterceptorInit() {
+    let self2 = this;
+    index.addInterceptor("setNavigationBarTitle", {
+      invoke(args) {
+        self2._navigationBarTitle.page = args.title;
+      }
+    });
+  }
+  interceptLogin() {
+    let self2 = this;
+    index.addInterceptor("login", {
+      complete() {
+        self2._login();
+      }
+    });
+  }
+  interceptShare(type) {
+    let self2 = this;
+    if (!type) {
+      self2._share();
+      return;
+    }
+    index.addInterceptor("share", {
+      success() {
+        self2._share();
+      },
+      fail() {
+        self2._share();
+      }
+    });
+  }
+  interceptRequestPayment() {
+    let self2 = this;
+    index.addInterceptor("requestPayment", {
+      success() {
+        self2._payment("pay_success");
+      },
+      fail() {
+        self2._payment("pay_fail");
+      }
+    });
+  }
+  _login() {
+    this.sendEventRequest({
+      key: "login"
+    }, 0);
+  }
+  _share() {
+    this.sendEventRequest({
+      key: "share"
+    }, 0);
+  }
+  _payment(key) {
+    this.sendEventRequest({
+      key
+    }, 0);
+  }
+  applicationShow() {
+    if (this.__licationHide) {
+      const time = get_residence_time("app");
+      if (time.overtime) {
+        let lastPageRoute = index.getStorageSync("_STAT_LAST_PAGE_ROUTE");
+        let options = {
+          path: lastPageRoute,
+          scene: this.statData.sc,
+          cst: 2
+        };
+        this.sendReportRequest(options);
+      }
+      this.__licationHide = false;
+    }
+  }
+  applicationHide(self2, type) {
+    if (!self2) {
+      self2 = get_page_vm();
+    }
+    this.__licationHide = true;
+    const time = get_residence_time();
+    const route = get_page_route(self2);
+    index.setStorageSync("_STAT_LAST_PAGE_ROUTE", route);
+    this.sendHideRequest({
+      urlref: route,
+      urlref_ts: time.residenceTime
+    }, type);
+    set_first_time();
+  }
+  pageShow(self2) {
+    this._navigationBarTitle = {
+      config: "",
+      page: "",
+      report: "",
+      lt: ""
+    };
+    const route = get_page_route(self2);
+    const routepath = get_route$1(self2);
+    this._navigationBarTitle.config = get_page_name(routepath);
+    if (this.__licationShow) {
+      set_first_time();
+      index.setStorageSync("_STAT_LAST_PAGE_ROUTE", route);
+      this.__licationShow = false;
+      return;
+    }
+    const time = get_residence_time("page");
+    if (time.overtime) {
+      let options = {
+        path: route,
+        scene: this.statData.sc,
+        cst: 3
+      };
+      this.sendReportRequest(options);
+    }
+    set_first_time();
+  }
+  pageHide(self2) {
+    if (!this.__licationHide) {
+      const time = get_residence_time("page");
+      let route = get_page_route(self2);
+      let lastPageRoute = index.getStorageSync("_STAT_LAST_PAGE_ROUTE");
+      if (!lastPageRoute) {
+        lastPageRoute = route;
+      }
+      index.setStorageSync("_STAT_LAST_PAGE_ROUTE", route);
+      this.sendPageRequest({
+        url: route,
+        urlref: lastPageRoute,
+        urlref_ts: time.residenceTime
+      });
+      return;
+    }
+  }
+  sendReportRequest(options, type) {
+    this._navigationBarTitle.lt = "1";
+    this._navigationBarTitle.config = get_page_name(options.path);
+    let is_opt = options.query && JSON.stringify(options.query) !== "{}";
+    let query = is_opt ? "?" + JSON.stringify(options.query) : "";
+    Object.assign(this.statData, {
+      lt: "1",
+      url: options.path + query || "",
+      t: get_time(),
+      sc: get_scene(options.scene),
+      fvts: get_first_visit_time(),
+      lvts: get_last_visit_time(),
+      tvc: get_total_visit_count(),
+      cst: options.cst || 1
+    });
+    if (get_platform_name() === "n") {
+      this.getProperty(type);
+    } else {
+      this.getNetworkInfo(type);
+    }
+  }
+  sendPageRequest(opt) {
+    let { url, urlref, urlref_ts } = opt;
+    this._navigationBarTitle.lt = "11";
+    let options = {
+      ak: this.statData.ak,
+      uuid: this.statData.uuid,
+      p: this.statData.p,
+      lt: "11",
+      ut: this.statData.ut,
+      url,
+      tt: this.statData.tt,
+      urlref,
+      urlref_ts,
+      ch: this.statData.ch,
+      usv: this.statData.usv,
+      t: get_time()
+    };
+    this.request(options);
+  }
+  sendHideRequest(opt, type) {
+    let { urlref, urlref_ts } = opt;
+    let options = {
+      ak: this.statData.ak,
+      uuid: this.statData.uuid,
+      p: this.statData.p,
+      lt: "3",
+      ut: this.statData.ut,
+      urlref,
+      urlref_ts,
+      ch: this.statData.ch,
+      usv: this.statData.usv,
+      t: get_time()
+    };
+    this.request(options, type);
+  }
+  sendEventRequest({ key = "", value = "" } = {}) {
+    let routepath = "";
+    try {
+      routepath = get_route$1();
+    } catch (error) {
+      const launch_options = dbGet("__launch_options");
+      routepath = launch_options.path;
+    }
+    this._navigationBarTitle.config = get_page_name(routepath);
+    this._navigationBarTitle.lt = "21";
+    let options = {
+      ak: this.statData.ak,
+      uuid: this.statData.uuid,
+      p: this.statData.p,
+      lt: "21",
+      ut: this.statData.ut,
+      url: routepath,
+      ch: this.statData.ch,
+      e_n: key,
+      e_v: typeof value === "object" ? JSON.stringify(value) : value.toString(),
+      usv: this.statData.usv,
+      t: get_time()
+    };
+    this.request(options);
+  }
+  sendPushRequest(options, cid2) {
+    let time = get_time();
+    const statData2 = {
+      lt: "101",
+      cid: cid2,
+      t: time,
+      ut: this.statData.ut
+    };
+    const stat_data = handle_data({
+      101: [statData2]
+    });
+    let optionsData = {
+      usv: STAT_VERSION,
+      t: time,
+      requests: stat_data
+    };
+    {
+      if (statData2.ut === "h5") {
+        this.imageRequest(optionsData);
+        return;
+      }
+    }
+    if (get_platform_name() === "n" && this.statData.p === "a") {
+      setTimeout(() => {
+        this.sendRequest(optionsData);
+      }, 200);
+      return;
+    }
+    this.sendRequest(optionsData);
+  }
+  getProperty(type) {
+    plus.runtime.getProperty(plus.runtime.appid, (wgtinfo) => {
+      this.statData.v = wgtinfo.version || "";
+      this.getNetworkInfo(type);
+    });
+  }
+  getNetworkInfo(type) {
+    index.getNetworkType({
+      success: (result) => {
+        this.statData.net = result.networkType;
+        this.getLocation(type);
+      }
+    });
+  }
+  getLocation(type) {
+    if (stat_config.getLocation) {
+      index.getLocation({
+        type: "wgs84",
+        geocode: true,
+        success: (result) => {
+          if (result.address) {
+            this.statData.cn = result.address.country;
+            this.statData.pn = result.address.province;
+            this.statData.ct = result.address.city;
+          }
+          this.statData.lat = result.latitude;
+          this.statData.lng = result.longitude;
+          this.request(this.statData, type);
+        }
+      });
+    } else {
+      this.statData.lat = 0;
+      this.statData.lng = 0;
+      this.request(this.statData, type);
+    }
+  }
+  request(data, type) {
+    let time = get_time();
+    const title = this._navigationBarTitle;
+    Object.assign(data, {
+      ttn: title.page,
+      ttpj: title.config,
+      ttc: title.report
+    });
+    let uniStatData = dbGet("__UNI__STAT__DATA") || {};
+    if (!uniStatData[data.lt]) {
+      uniStatData[data.lt] = [];
+    }
+    uniStatData[data.lt].push(data);
+    dbSet("__UNI__STAT__DATA", uniStatData);
+    let page_residence_time = get_page_residence_time();
+    if (page_residence_time < eport_Interval && !type)
+      return;
+    set_page_residence_time();
+    const stat_data = handle_data(uniStatData);
+    let optionsData = {
+      usv: STAT_VERSION,
+      t: time,
+      requests: stat_data
+    };
+    dbRemove("__UNI__STAT__DATA");
+    {
+      if (data.ut === "h5") {
+        this.imageRequest(optionsData);
+        return;
+      }
+    }
+    if (get_platform_name() === "n" && this.statData.p === "a") {
+      setTimeout(() => {
+        this.sendRequest(optionsData);
+      }, 200);
+      return;
+    }
+    this.sendRequest(optionsData);
+  }
+  getIsReportData() {
+    return is_report_data();
+  }
+  sendRequest(optionsData) {
+    {
+      this.getIsReportData().then(() => {
+        index.request({
+          url: STAT_URL,
+          method: "POST",
+          data: optionsData,
+          success: () => {
+          },
+          fail: (e2) => {
+            if (++this._retry < 3) {
+              setTimeout(() => {
+                this.sendRequest(optionsData);
+              }, 1e3);
+            }
+          }
+        });
+      });
+    }
+  }
+  imageRequest(data) {
+    this.getIsReportData().then(() => {
+      let image = new Image();
+      let options = get_sgin(get_encodeURIComponent_options(data)).options;
+      image.src = STAT_H5_URL + "?" + options;
+    });
+  }
+  sendEvent(key, value) {
+    if (calibration(key, value))
+      return;
+    if (key === "title") {
+      this._navigationBarTitle.report = value;
+      return;
+    }
+    this.sendEventRequest({
+      key,
+      value: typeof value === "object" ? JSON.stringify(value) : value
+    }, 1);
+  }
+}
+class Stat extends Report {
+  static getInstance() {
+    if (!index.__stat_instance) {
+      index.__stat_instance = new Stat();
+    }
+    return index.__stat_instance;
+  }
+  constructor() {
+    super();
+  }
+  pushEvent(options) {
+    if (index.getPushClientId) {
+      index.getPushClientId({
+        success: (res) => {
+          const cid2 = res.cid || false;
+          if (cid2) {
+            this.sendPushRequest(options, cid2);
+          }
+        }
+      });
+    }
+  }
+  launch(options, self2) {
+    set_page_residence_time();
+    this.__licationShow = true;
+    dbSet("__launch_options", options);
+    options.cst = 1;
+    this.sendReportRequest(options, true);
+  }
+  load(options, self2) {
+    this.self = self2;
+    this._query = options;
+  }
+  appHide(self2) {
+    this.applicationHide(self2, true);
+  }
+  appShow(self2) {
+    this.applicationShow(self2);
+  }
+  show(self2) {
+    this.self = self2;
+    if (get_page_types(self2) === "page") {
+      this.pageShow(self2);
+    }
+    if (get_platform_name() === "h5" || get_platform_name() === "n") {
+      if (get_page_types(self2) === "app") {
+        this.appShow();
+      }
+    }
+  }
+  hide(self2) {
+    this.self = self2;
+    if (get_page_types(self2) === "page") {
+      this.pageHide(self2);
+    }
+    if (get_platform_name() === "h5" || get_platform_name() === "n") {
+      if (get_page_types(self2) === "app") {
+        this.appHide();
+      }
+    }
+  }
+  error(em) {
+    let emVal = "";
+    if (!em.message) {
+      emVal = JSON.stringify(em);
+    } else {
+      emVal = em.stack;
+    }
+    let route = "";
+    try {
+      route = get_route();
+    } catch (e2) {
+      route = "";
+    }
+    let options = {
+      ak: this.statData.ak,
+      uuid: this.statData.uuid,
+      p: this.statData.p,
+      lt: "31",
+      url: route,
+      ut: this.statData.ut,
+      ch: this.statData.ch,
+      mpsdk: this.statData.mpsdk,
+      mpv: this.statData.mpv,
+      v: this.statData.v,
+      em: emVal,
+      usv: this.statData.usv,
+      t: parseInt(new Date().getTime() / 1e3)
+    };
+    this.request(options);
+  }
+}
+var Stat$1 = Stat;
+Stat$1.getInstance();
+function main() {
+  {
+    {
+      index.report = function(type, options) {
+      };
+    }
+  }
+}
+main();
 function n(e2) {
   return e2 && e2.__esModule && Object.prototype.hasOwnProperty.call(e2, "default") ? e2.default : e2;
 }
@@ -10330,7 +11360,7 @@ switch (f) {
 const p = h({}.UNICLOUD_DEBUG), m = h("[]");
 let _ = "";
 try {
-  _ = "";
+  _ = "__UNI__96A1843";
 } catch (e2) {
 }
 let w = {};
@@ -12277,18 +13307,24 @@ exports.nextTick = nextTick;
 exports.o = o$1;
 exports.onBeforeMount = onBeforeMount;
 exports.onBeforeUnmount = onBeforeUnmount;
+exports.onLaunch = onLaunch;
 exports.onLoad = onLoad;
 exports.onMounted = onMounted;
+exports.onPullDownRefresh = onPullDownRefresh;
 exports.onShareAppMessage = onShareAppMessage;
 exports.onShareTimeline = onShareTimeline;
+exports.onShow = onShow;
 exports.onUnmounted = onUnmounted;
 exports.p = p$1;
 exports.provide = provide;
+exports.r = r$1;
+exports.reactive = reactive;
 exports.ref = ref;
 exports.resolveComponent = resolveComponent;
 exports.rn = rn;
 exports.s = s$1;
 exports.sr = sr;
+exports.storeToRefs = storeToRefs;
 exports.t = t;
 exports.t$1 = t$1;
 exports.toRaw = toRaw;

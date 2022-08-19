@@ -63,7 +63,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     },
     duration: {
       type: Number,
-      default: 160
+      default: 250
     },
     overlayClick: {
       type: Boolean,
@@ -121,10 +121,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "open", "close", "update:show", "ok", "cancel"],
   setup(__props, { expose, emit: emits }) {
-    var _a;
+    var _a, _b;
     const props = __props;
     const drawerANI = common_vendor.ref(null);
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const tmcfg = common_vendor.computed$1(() => store.tmStore);
     const customCSSStyle = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedStyle(props));
     const customClass = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedClass(props));
@@ -137,6 +138,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const flag = common_vendor.ref(false);
     const timeid = common_vendor.ref(0);
     let timerId = NaN;
+    common_vendor.ref("close");
+    const drawerStauts = common_vendor.ref("close");
     let _show = common_vendor.ref(props.show);
     function debounce(func, wait = 500, immediate = false) {
       if (!isNaN(timerId))
@@ -154,10 +157,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }, wait);
       }
     }
-    let { windowWidth, windowHeight, windowTop, safeArea, statusBarHeight, titleBarHeight } = common_vendor.index.getSystemInfoSync();
-    syswidth.value = windowWidth;
-    sysheight.value = windowHeight;
-    sysheight.value = (_a = safeArea == null ? void 0 : safeArea.height) != null ? _a : windowHeight;
+    let sysinfo = common_vendor.index.getSystemInfoSync();
+    syswidth.value = sysinfo.windowWidth;
+    sysheight.value = sysinfo.windowHeight;
+    common_vendor.index.hideKeyboard();
+    let nowPage = getCurrentPages().pop();
+    for (let i = 0; i < common_vendor.index.$tm.pages.length; i++) {
+      if ((nowPage == null ? void 0 : nowPage.route) == common_vendor.index.$tm.pages[i].path && common_vendor.index.$tm.pages[i].custom == "custom") {
+        break;
+      }
+    }
     timeid.value = common_vendor.index.$tm.u.getUid(4);
     if (_show.value) {
       reverse.value = false;
@@ -167,7 +176,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       if (val) {
         opens();
       } else {
-        close();
+        closeFun();
       }
     });
     common_vendor.onMounted(() => opens());
@@ -246,6 +255,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       if (props.disabled)
         return;
       debounce(() => {
+        drawerStauts.value = "close";
+        flag.value = true;
         emits("ok");
         closeFun();
       }, props.duration, true);
@@ -254,32 +265,32 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       if (props.disabled)
         return;
       debounce(() => {
+        drawerStauts.value = "close";
+        flag.value = true;
         emits("cancel");
         closeFun();
       }, props.duration, true);
     }
     function OverLayOpen() {
-      debounce(() => {
-        common_vendor.nextTick(function() {
-          var _a2;
-          if (!drawerANI.value)
-            return;
-          flag.value = true;
-          (_a2 = drawerANI.value) == null ? void 0 : _a2.play();
-          timeid.value = setTimeout(function() {
-            emits("open");
-            flag.value = false;
-          }, props.duration);
-        });
-      }, props.duration, true);
+      common_vendor.nextTick(() => {
+        var _a2;
+        if (!drawerANI.value)
+          return;
+        (_a2 = drawerANI.value) == null ? void 0 : _a2.play();
+        flag.value = false;
+      });
     }
     function opens() {
       if (props.disabled)
         return;
       if (flag.value)
         return;
-      aniEnd.value = false;
-      reverse.value = reverse.value === false ? true : false;
+      debounce(() => {
+        flag.value = true;
+        aniEnd.value = false;
+        reverse.value = true;
+        drawerStauts.value = "open";
+      }, props.duration, true);
     }
     function open() {
       _show.value = true;
@@ -292,6 +303,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     }
     function animationClose() {
       aniEnd.value = true;
+      if (drawerStauts.value == "open") {
+        emits("open");
+        flag.value = false;
+      } else if (drawerStauts.value == "close") {
+        emits("close");
+        emits("update:show", false);
+        _show.value = false;
+        flag.value = false;
+      }
+      drawerStauts.value = "";
     }
     common_vendor.index.$tm.u.getUid(1);
     function close() {
@@ -299,20 +320,22 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         return;
       if (flag.value)
         return;
+      drawerStauts.value = "close";
+      flag.value = true;
       debounce(() => {
         emits("cancel");
         closeFun();
       }, props.duration, true);
     }
     function clickClose(e) {
-      if (props.disabled)
+      if (props.disabled || drawerStauts.value == "open")
         return;
       emits("click", e);
-      if (flag.value)
-        return;
       if (!props.overlayClick)
         return;
       debounce(() => {
+        drawerStauts.value = "close";
+        flag.value = true;
         emits("cancel");
         closeFun();
       }, props.duration, true);
@@ -320,25 +343,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     function closeFun() {
       if (props.disabled)
         return;
-      if (flag.value)
+      reverse.value = false;
+      if (!drawerANI.value)
         return;
       common_vendor.nextTick(function() {
-        reverse.value = false;
-        if (!drawerANI.value)
-          return;
-        flag.value = true;
-        common_vendor.nextTick(function() {
-          var _a2;
-          (_a2 = drawerANI.value) == null ? void 0 : _a2.play();
-          timeid.value = setTimeout(function() {
-            if (aniEnd.value) {
-              emits("close");
-              emits("update:show", false);
-              _show.value = false;
-              flag.value = false;
-            }
-          }, props.duration);
-        });
+        var _a2;
+        (_a2 = drawerANI.value) == null ? void 0 : _a2.play();
       });
     }
     expose({ close, open });

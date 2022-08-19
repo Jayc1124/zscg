@@ -136,8 +136,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["update:activeName", "change", "click"],
   setup(__props, { expose, emit: emits }) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     common_vendor.ref(null);
     const _align = common_vendor.computed$1(() => {
       let align_list = {
@@ -269,13 +271,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     common_vendor.watchEffect(() => {
       cacheTabs.value = [];
       props.list.forEach((el, index) => {
-        var _a, _b, _c, _d, _e;
+        var _a2, _b2, _c, _d, _e, _f;
         cacheTabs.value.push({
-          key: (_a = el == null ? void 0 : el.key) != null ? _a : String(index),
-          title: (_b = el == null ? void 0 : el.title) != null ? _b : String(index),
+          key: (_a2 = el == null ? void 0 : el.key) != null ? _a2 : String(index),
+          title: (_b2 = el == null ? void 0 : el.title) != null ? _b2 : String(index),
           icon: (_c = el == null ? void 0 : el.icon) != null ? _c : "",
           dot: (_d = el == null ? void 0 : el.dot) != null ? _d : false,
-          dotColor: (_e = el == null ? void 0 : el.dotColor) != null ? _e : "red"
+          count: (_e = el == null ? void 0 : el.count) != null ? _e : "",
+          dotColor: (_f = el == null ? void 0 : el.dotColor) != null ? _f : "red"
         });
       });
     });
@@ -305,6 +308,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }
     }
     common_vendor.watch(() => props.activeName, () => {
+      if (props.activeName == _active.value)
+        return;
       changeKey(props.activeName, false);
     });
     common_vendor.onMounted(() => {
@@ -321,13 +326,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     });
     common_vendor.watch(() => _active.value, () => {
       common_vendor.nextTick(() => {
-        var _a, _b;
+        var _a2, _b2;
         let index = cacheTabs.value.findIndex((el) => el.key == _active.value);
         if (index > -1) {
           if (typeof cacheTabs.value[index - 2] !== "undefined") {
-            _scrollToId.value = tabsid + ((_a = cacheTabs.value[index - 2]) == null ? void 0 : _a.key);
+            _scrollToId.value = tabsid + ((_a2 = cacheTabs.value[index - 2]) == null ? void 0 : _a2.key);
           } else {
-            _scrollToId.value = tabsid + ((_b = cacheTabs.value[0]) == null ? void 0 : _b.key);
+            _scrollToId.value = tabsid + ((_b2 = cacheTabs.value[0]) == null ? void 0 : _b2.key);
           }
         } else {
           _scrollToId.value = tabsid + _active.value;
@@ -520,7 +525,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           return common_vendor.e({
             a: item.icon
           }, item.icon ? {
-            b: "07988156-3-" + i0 + "," + ("07988156-2-" + i0),
+            b: "07988156-2-" + i0 + "," + ("07988156-1-" + i0),
             c: common_vendor.p({
               userInteractionEnabled: false,
               _class: "pr-5",
@@ -529,7 +534,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
               name: item.icon
             })
           } : {}, {
-            d: "07988156-4-" + i0 + "," + ("07988156-2-" + i0),
+            d: "07988156-3-" + i0 + "," + ("07988156-1-" + i0),
             e: common_vendor.p({
               userInteractionEnabled: false,
               ["font-size"]: item.key == _active.value ? props.activeFontSize : props.itemFontSize,
@@ -537,14 +542,27 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
               color: item.key == _active.value ? props.activeFontColor : props.unSelectedColor,
               label: item.title
             }),
-            f: "07988156-2-" + i0 + "," + ("07988156-1-" + i0),
-            g: common_vendor.p({
-              dot: item.dot,
+            f: item.dot && !item.count
+          }, item.dot && !item.count ? {
+            g: `${props.itemHeight / 2}rpx`,
+            h: "07988156-4-" + i0 + "," + ("07988156-1-" + i0),
+            i: common_vendor.p({
+              dot: true,
               color: item.dotColor
-            }),
-            h: common_vendor.o(($event) => changeKey(item.key)),
-            i: "07988156-1-" + i0 + ",07988156-0",
-            j: common_vendor.p({
+            })
+          } : {}, {
+            j: item.count && !item.dot
+          }, item.count && !item.dot ? {
+            k: `${props.itemHeight - 20}rpx`,
+            l: "07988156-5-" + i0 + "," + ("07988156-1-" + i0),
+            m: common_vendor.p({
+              count: item.count,
+              color: item.dotColor
+            })
+          } : {}, {
+            n: common_vendor.o(($event) => changeKey(item.key)),
+            o: "07988156-1-" + i0 + ",07988156-0",
+            p: common_vendor.p({
               round: props.itemRound,
               linear: props.itemLinear,
               linearDeep: props.itemLinearDeep,
@@ -559,8 +577,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
               padding: [20, 0],
               height: props.itemHeight
             }),
-            k: tabsid + item.key,
-            l: index
+            q: tabsid + item.key,
+            r: index
           });
         }),
         m: common_vendor.s(props.itemWidth > 0 ? {

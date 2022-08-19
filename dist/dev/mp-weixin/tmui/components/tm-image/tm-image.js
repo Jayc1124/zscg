@@ -116,12 +116,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["load", "error", "click", "delete", "close"],
   setup(__props, { emit: emits }) {
-    var _a;
+    var _a, _b, _c;
     const props = __props;
     const aniplay = common_vendor.ref(null);
-    const {
-      proxy
-    } = common_vendor.getCurrentInstance();
+    const proxy = (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     if (!props.height && !props.width) {
       console.error("\u9519\u8BEF\uFF1A\u56FE\u7247\u5BBD\u5EA6\u548C\u9AD8\u5EA6\u5FC5\u987B\u8BBE\u7F6E\u4E00\u4E2A");
     }
@@ -135,12 +133,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const loading = common_vendor.ref(true);
     const error = common_vendor.ref(false);
     const isRmove = common_vendor.ref(false);
-    let parent = proxy.$parent;
+    let parent = proxy == null ? void 0 : proxy.$parent;
     while (parent) {
       if ((parent == null ? void 0 : parent.tmImageGroup) == "tmImageGroup" || !parent) {
         break;
       } else {
-        parent = (_a = parent == null ? void 0 : parent.$parent) != null ? _a : void 0;
+        parent = (_c = parent == null ? void 0 : parent.$parent) != null ? _c : void 0;
       }
     }
     const ImagGrupList = common_vendor.inject("ImagGrupList", common_vendor.computed$1(() => []));
@@ -183,14 +181,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }
     }
     async function del() {
-      var _a2, _b;
+      var _a2, _b2;
       isRmove.value = false;
       if (!props.allowDelete) {
         emits("delete", props.src);
         return;
       }
       if ((_a2 = aniplay.value) == null ? void 0 : _a2.play) {
-        (_b = aniplay.value) == null ? void 0 : _b.play();
+        (_b2 = aniplay.value) == null ? void 0 : _b2.play();
       } else {
         isRmove.value = true;
         emits("close", props.src);

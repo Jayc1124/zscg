@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tm-drawer": "../tm-drawer/tm-drawer",
+    "tm-button": "../tm-button/tm-button",
+    "tm-text": "../tm-text/tm-text",
+    "tm-sheet": "../tm-sheet/tm-sheet"
+  }
+}

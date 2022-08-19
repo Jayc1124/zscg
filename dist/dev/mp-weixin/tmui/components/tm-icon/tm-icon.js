@@ -30,10 +30,6 @@ require("../../tool/function/preview.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "tm-icon",
   props: __spreadProps(__spreadValues({}, tmui_tool_lib_minxs.custom_props), {
-    label: {
-      type: String,
-      default: ""
-    },
     fontSize: {
       type: [Number],
       default: 34
@@ -61,8 +57,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }),
   emits: ["click", "longpress"],
   setup(__props, { emit: emits }) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const tmcfg = common_vendor.computed$1(() => store.tmStore);
     const customCSSStyle = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedStyle(props));
     const customClass = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedClass(props));
@@ -104,8 +102,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     });
     const spinComputed = common_vendor.computed$1(() => props.spin);
     const custom_space_size = common_vendor.inject("custom_space_size", [0, 0]);
-    common_vendor.computed$1(() => parseInt(props.fontSize || 34) + custom_space_size[0]);
-    common_vendor.computed$1(() => parseInt(props.fontSize || 34) + custom_space_size[1]);
+    common_vendor.computed$1(() => Math.ceil(props.fontSize || 34) + custom_space_size[0]);
+    common_vendor.computed$1(() => Math.ceil(props.fontSize || 34) + custom_space_size[1]);
     common_vendor.ref(null);
     common_vendor.watch(spinComputed, () => {
     });

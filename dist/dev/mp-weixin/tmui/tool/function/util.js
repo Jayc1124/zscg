@@ -327,16 +327,18 @@ function toast(word, mask = true, icon = "none") {
 }
 function getWindow() {
   const sysinfo = common_vendor.index.getSystemInfoSync();
-  common_vendor.index.hideKeyboard();
   let top = 0;
   let height = sysinfo.windowHeight;
   let nowPage = getCurrentPages().pop();
+  let isCustomHeader = false;
   for (let i = 0; i < common_vendor.index.$tm.pages.length; i++) {
     if ((nowPage == null ? void 0 : nowPage.route) == common_vendor.index.$tm.pages[i].path && common_vendor.index.$tm.pages[i].custom == "custom") {
+      isCustomHeader = true;
       break;
     }
   }
-  return { height, width: sysinfo.windowWidth, top };
+  let reulst = { height, width: sysinfo.windowWidth, top, isCustomHeader, sysinfo };
+  return reulst;
 }
 function routerTo(url, type = "navigate") {
   let funType = {

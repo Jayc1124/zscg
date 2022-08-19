@@ -88,12 +88,8 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _easycom_u_notice_bar2 = common_vendor.resolveComponent("u-notice-bar");
-  _easycom_u_notice_bar2();
-}
-const _easycom_u_notice_bar = () => "../../../uni_modules/vk-uview-ui/components/u-notice-bar/u-notice-bar.js";
-if (!Math) {
-  _easycom_u_notice_bar();
+  const _component_u_notice_bar = common_vendor.resolveComponent("u-notice-bar");
+  _component_u_notice_bar();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({

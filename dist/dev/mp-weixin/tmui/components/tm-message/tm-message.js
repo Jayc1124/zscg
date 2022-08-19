@@ -40,9 +40,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   },
   emits: ["click"],
   setup(__props, { expose, emit: emits }) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
     const tranAni = common_vendor.ref(null);
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const uid = common_vendor.ref(common_vendor.index.$tm.u.getUid(5));
     const bgColor = common_vendor.ref("white");
     const model_ref = common_vendor.ref(tmui_components_tmMessage_interface.modelType.info);
@@ -57,7 +59,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const dark_ref = common_vendor.ref(false);
     common_vendor.onUnmounted(() => clearTimeout(uid.value));
     common_vendor.watch(() => props.mask, (val) => showMask.value = val);
-    const zindex = { zIndex: "1000 !important" };
+    let zindex = {};
+    zindex = { zIndex: "1000 !important" };
     const modelIcon = common_vendor.computed$1(() => {
       return {
         load: {
@@ -103,9 +106,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       };
     });
     function msgOver() {
-      var _a, _b;
-      (_a = tranAni.value) == null ? void 0 : _a.stop();
-      (_b = tranAni.value) == null ? void 0 : _b.reset();
+      var _a2, _b2;
+      (_a2 = tranAni.value) == null ? void 0 : _a2.stop();
+      (_b2 = tranAni.value) == null ? void 0 : _b2.reset();
       clearTimeout(uid.value);
       uid.value = setTimeout(function() {
         if (dur.value > 0 && model_ref.value != "load") {
@@ -139,8 +142,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       reverse.value = false;
       showValue.value = true;
       setTimeout(() => {
-        var _a;
-        (_a = tranAni.value) == null ? void 0 : _a.play();
+        var _a2;
+        (_a2 = tranAni.value) == null ? void 0 : _a2.play();
       }, 80);
     }
     function hide() {
@@ -193,7 +196,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           blur: true,
           duration: 0,
           transprent: !showMask.value,
-          _style: zindex,
+          _style: common_vendor.unref(zindex),
           overlayClick: false,
           show: showValue.value
         })

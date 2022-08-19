@@ -31,6 +31,12 @@ const _sfc_main = {
     }
   },
   methods: {
+    nav(id) {
+      console.log(id);
+      common_vendor.index.navigateTo({
+        url: "/pages/webview/wb_ek1?detailData=" + encodeURIComponent(JSON.stringify("https://erke.jaycao.com/#/pages/acti/info?key=" + id))
+      });
+    },
     getDateDiff(data) {
       var timePublish = new Date(data);
       var timeNow = new Date();
@@ -76,22 +82,23 @@ if (!Math) {
   (_easycom_tm_text + _easycom_tm_divider + _easycom_tm_image + _easycom_tm_tag + _easycom_tm_sheet + _easycom_tm_result)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
+  return common_vendor.e({
     a: common_vendor.f($props.list, (good, k0, i0) => {
-      return common_vendor.e({
+      return {
         a: common_vendor.t$1(good.name),
         b: "dd0eb916-1-" + i0 + "," + ("dd0eb916-0-" + i0),
         c: "dd0eb916-2-" + i0 + "," + ("dd0eb916-0-" + i0),
-        d: "dd0eb916-3-" + i0 + "," + ("dd0eb916-0-" + i0),
-        e: common_vendor.p({
-          preview: true,
+        d: common_vendor.o(($event) => $options.nav(good.id)),
+        e: "dd0eb916-3-" + i0 + "," + ("dd0eb916-0-" + i0),
+        f: common_vendor.p({
           width: 300,
           round: 2,
           height: 200,
           src: good.logo
         }),
-        f: "dd0eb916-4-" + i0 + "," + ("dd0eb916-0-" + i0),
-        g: common_vendor.p({
+        g: common_vendor.o(($event) => $options.nav(good.id)),
+        h: "dd0eb916-4-" + i0 + "," + ("dd0eb916-0-" + i0),
+        i: common_vendor.p({
           text: true,
           shadow: 0,
           color: "blue",
@@ -99,8 +106,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           icon: "tmicon-tag-fill",
           label: good.category
         }),
-        h: "dd0eb916-5-" + i0 + "," + ("dd0eb916-0-" + i0),
-        i: common_vendor.p({
+        j: common_vendor.o(($event) => $options.nav(good.id)),
+        k: "dd0eb916-5-" + i0 + "," + ("dd0eb916-0-" + i0),
+        l: common_vendor.p({
           text: true,
           shadow: 0,
           color: "green",
@@ -108,8 +116,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           icon: "tmicon-position-fill",
           label: good.orgName
         }),
-        j: "dd0eb916-6-" + i0 + "," + ("dd0eb916-0-" + i0),
-        k: common_vendor.p({
+        m: common_vendor.o(($event) => $options.nav(good.id)),
+        n: "dd0eb916-6-" + i0 + "," + ("dd0eb916-0-" + i0),
+        o: common_vendor.p({
           text: true,
           shadow: 0,
           icon: "tmicon-rank",
@@ -117,8 +126,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           size: "m",
           label: $options.add(good.hours)
         }),
-        l: "dd0eb916-7-" + i0 + "," + ("dd0eb916-0-" + i0),
-        m: common_vendor.p({
+        p: common_vendor.o(($event) => $options.nav(good.id)),
+        q: "dd0eb916-7-" + i0 + "," + ("dd0eb916-0-" + i0),
+        r: common_vendor.p({
           text: true,
           shadow: 0,
           icon: "tmicon-weixinzhifu",
@@ -126,8 +136,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           size: "m",
           label: $options.format1(good.statusAll)
         }),
-        n: "dd0eb916-8-" + i0 + "," + ("dd0eb916-0-" + i0),
-        o: common_vendor.p({
+        s: common_vendor.o(($event) => $options.nav(good.id)),
+        t: "dd0eb916-8-" + i0 + "," + ("dd0eb916-0-" + i0),
+        v: common_vendor.p({
           text: true,
           shadow: 0,
           icon: "tmicon-clock-fill",
@@ -135,16 +146,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           size: "m",
           label: $options.getDateDiff(good.endTime)
         }),
-        p: "dd0eb916-0-" + i0
-      }, $props.list.length == 0 ? {
-        q: "dd0eb916-9-" + i0,
-        r: common_vendor.p({
-          showBtn: false
-        })
-      } : {}, {
-        s: "good" + good.id,
-        t: good.id
-      });
+        w: common_vendor.o(($event) => $options.nav(good.id)),
+        x: "dd0eb916-0-" + i0,
+        y: common_vendor.o(($event) => $options.nav(good.id), good.id),
+        z: "good" + good.id,
+        A: good.id
+      };
     }),
     b: common_vendor.p({
       ["font-size"]: 30,
@@ -152,10 +159,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       label: ""
     }),
     c: common_vendor.p({
-      margin: [5, 5]
+      margin: [5, 5],
+      round: 10
     }),
     d: $props.list.length == 0
-  };
+  }, $props.list.length == 0 ? {
+    e: common_vendor.p({
+      showBtn: false
+    })
+  } : {});
 }
 var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/Code/app/tmui-cli-zscg/src/components/erke-list/erke-list.vue"]]);
 wx.createComponent(Component);

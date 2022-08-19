@@ -35,19 +35,19 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "tm-tag",
   props: __spreadProps(__spreadValues({}, tmui_tool_lib_minxs.custom_props), {
     followTheme: {
-      type: [Boolean, String],
+      type: [Boolean],
       default: true
     },
     transprent: {
-      type: [Boolean, String],
+      type: [Boolean],
       default: false
     },
     border: {
-      type: [Number, String],
+      type: [Number],
       default: 0
     },
     round: {
-      type: [Number, String],
+      type: [Number],
       default: 2
     },
     shadow: {
@@ -79,11 +79,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       default: "m"
     },
     fontSize: {
-      type: [Number, String],
+      type: [Number],
       default: 0
     },
     closable: {
-      type: [Boolean, String],
+      type: [Boolean],
       default: false
     },
     icon: {

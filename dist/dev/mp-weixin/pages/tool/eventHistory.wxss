@@ -1,0 +1,13 @@
+
+.body{
+	background-color: #FFFFFF;
+	width: 90%;
+	margin: auto;
+	margin-top: 20rpx;
+	/* height: 200upx; */
+	border-radius: 10rpx;
+	margin-bottom: 10rpx;
+}
+.body>view>view{
+	padding: 20rpx 30rpx;
+}

@@ -102,5 +102,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/Code/app/tmui-cli-zscg/src/tmui/components/tm-text/tm-text.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-9735369a"], ["__file", "D:/Code/app/tmui-cli-zscg/src/tmui/components/tm-text/tm-text.vue"]]);
 wx.createComponent(Component);

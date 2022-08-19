@@ -3,14 +3,15 @@
   "enablePullDownRefresh": false,
   "navigationStyle": "custom",
   "usingComponents": {
+    "tab-bar": "../../components/TheTabBar",
     "tm-navbar": "../../tmui/components/tm-navbar/tm-navbar",
     "tm-tabs": "../../tmui/components/tm-tabs/tm-tabs",
     "tm-skeleton": "../../tmui/components/tm-skeleton/tm-skeleton",
     "tm-sheet": "../../tmui/components/tm-sheet/tm-sheet",
+    "tm-image": "../../tmui/components/tm-image/tm-image",
     "erke-list": "../../components/erke-list/erke-list",
     "tm-result": "../../tmui/components/tm-result/tm-result",
     "tm-sticky": "../../tmui/components/tm-sticky/tm-sticky",
-    "mescroll-uni": "../../uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni",
     "tm-app": "../../tmui/components/tm-app/tm-app"
   }
 }

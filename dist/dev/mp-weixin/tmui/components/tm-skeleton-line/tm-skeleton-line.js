@@ -33,8 +33,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     }
   },
   setup(__props) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const tmcfg = common_vendor.computed$1(() => store.tmStore);
     const isDark = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedDark(props, tmcfg.value));
     common_vendor.onMounted(() => {

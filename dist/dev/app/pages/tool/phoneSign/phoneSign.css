@@ -1,0 +1,123 @@
+
+body {
+		background: #fbfbfb;
+		height: auto;
+		overflow: hidden;
+}
+.wrapper {
+		width: 100%;
+		height: 95vh;
+		margin: 0.9375rem 0;
+		overflow: hidden;
+		display: flex;
+		align-content: center;
+		flex-direction: row;
+		justify-content: center;
+		font-size: 0.875rem;
+}
+.handWriting {
+		background: #fff;
+		width: 100%;
+		height: 95vh;
+}
+.handRight {
+		display: inline-flex;
+		align-items: center;
+}
+.handCenter {
+		border: 0.125rem dashed #e9e9e9;
+		flex: 5;
+		overflow: hidden;
+		box-sizing: border-box;
+}
+.handTitle {
+		transform: rotate(90deg);
+		flex: 1;
+		color: #666;
+}
+.handBtn uni-button {
+		font-size: 0.875rem;
+}
+.handBtn {
+		height: 95vh;
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-content: space-between;
+		flex: 1;
+}
+.delBtn {
+		position: absolute;
+		top: 7.8125rem;
+		left: 0;
+		transform: rotate(90deg);
+		color: #666;
+}
+.delBtn uni-image {
+		position: absolute;
+		top: 0.40625rem;
+		left: 0.78125rem;
+}
+.subBtn {
+		position: absolute;
+		bottom: 1.625rem;
+		left: -0.09375rem;
+		display: inline-flex;
+		transform: rotate(90deg);
+		background: #008ef6;
+		color: #fff;
+		margin-bottom: 0.9375rem;
+		text-align: center;
+		justify-content: center;
+}
+
+	/*Peach - 新增 - 保存*/
+.saveBtn {
+		position: absolute;
+		top: 11.71875rem;
+		left: 0;
+		transform: rotate(90deg);
+		color: #666;
+}
+.previewBtn {
+		position: absolute;
+		top: 15.625rem;
+		left: 0;
+		transform: rotate(90deg);
+		color: #666;
+}
+.uploadBtn {
+		position: absolute;
+		top: 19.53125rem;
+		left: 0;
+		transform: rotate(90deg);
+		color: #666;
+}
+
+	/*Peach - 新增 - 保存*/
+.black-select {
+		width: 1.875rem;
+		height: 1.875rem;
+		position: absolute;
+		top: 0.9375rem;
+		left: 0.78125rem;
+}
+.black-select.color_select {
+		width: 2.8125rem;
+		height: 2.8125rem;
+		top: 3.125rem;
+		left: 0.3125rem;
+}
+.red-select {
+		width: 1.875rem;
+		height: 1.875rem;
+		position: absolute;
+		top: 4.375rem;
+		left: 0.78125rem;
+}
+.red-select.color_select {
+		width: 2.8125rem;
+		height: 2.8125rem;
+		top: 3.75rem;
+		left: 0.3125rem;
+}

@@ -76,9 +76,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     }
   }),
   setup(__props) {
+    var _a, _b;
     const props = __props;
     const store = tmui_tool_lib_tmpinia.useTmpiniaStore();
     const borderDir = common_vendor.computed$1(() => props.vertical ? "left" : "bottom");
+    (_b = (_a = common_vendor.getCurrentInstance()) == null ? void 0 : _a.proxy) != null ? _b : null;
     const tmcfg = common_vendor.computed$1(() => store.tmStore);
     const isDark = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedDark(__spreadProps(__spreadValues({}, props), { borderDirection: borderDir.value }), tmcfg.value));
     const tmcomputed = common_vendor.computed$1(() => tmui_tool_lib_minxs.computedTheme(__spreadProps(__spreadValues({}, props), { borderDirection: borderDir.value }), isDark.value, tmcfg.value));
@@ -86,9 +88,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       return common_vendor.e({
         a: !props.label || props.vertical
       }, !props.label || props.vertical ? {
-        b: common_vendor.s(common_vendor.unref(tmcomputed).borderCss),
+        b: common_vendor.s({
+          backgroundColor: props.realColor ? common_vendor.unref(tmcomputed).color : common_vendor.unref(tmcomputed).border
+        }),
         c: common_vendor.s(props.vertical ? {
-          width: "0px",
+          width: props.border + "rpx",
           height: props.height + "rpx"
         } : ""),
         d: common_vendor.n(props.vertical ? `mx-${props.margin[0]}` : `my-${props.margin[1]}`)

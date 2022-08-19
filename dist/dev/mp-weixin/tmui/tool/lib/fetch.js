@@ -43,7 +43,6 @@ function request(cog = config, complete, beforeRequest2, afterRequest2) {
       }
       newConfig = __spreadValues(__spreadValues({}, newConfig), opts);
     }
-    console.log(newConfig);
     common_vendor.index.request({
       url: newConfig.url || "",
       data: newConfig.data,
@@ -104,8 +103,9 @@ class fetchNet {
     let newConfig = __spreadValues(__spreadValues({}, config), cog);
     if (typeof beforeFun == "function") {
       let testFun = await beforeFun();
+      let cb = { errMsg: "\u4E2D\u6B62\u8BF7\u6C42" };
       if (!testFun)
-        return;
+        return cb;
     }
     return request(newConfig, complete, beforeFun || beforeRequest, afterFun || afterRequest);
   }

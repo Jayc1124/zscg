@@ -1,0 +1,20 @@
+{
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "课表",
+  "navigationStyle": "custom",
+  "backgroundColorTop": "#fff",
+  "backgroundColorBottom": "#F8F8F8",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tm-app": "../../tmui/components/tm-app/tm-app",
+    "tm-icon": "../../tmui/components/tm-icon/tm-icon",
+    "tm-text": "../../tmui/components/tm-text/tm-text",
+    "tab-bar": "../../components/TheTabBar",
+    "tm-navbar": "../../tmui/components/tm-navbar/tm-navbar",
+    "tm-sticky": "../../tmui/components/tm-sticky/tm-sticky",
+    "tm-action-menu": "../../tmui/components/tm-action-menu/tm-action-menu",
+    "time-table-header": "../../components/timetable/TimeTableHeader",
+    "time-table-action": "../../components/timetable/TimeTableAction",
+    "time-table-content": "../../components/timetable/TimeTableContent"
+  }
+}
